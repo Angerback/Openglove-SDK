@@ -103,9 +103,14 @@ namespace OpenGloveSDK
                 int index = this.listBox1.Items.Add("Actuator " + selection + " assigned to " + region);
             }
             else {
-                String liberatedActuator = this.mappings[owner];
-                liberateActuator(liberatedActuator, sender);
-                this.mappings.Remove(owner);
+                
+                String liberatedActuator;
+                this.mappings.TryGetValue(owner, out liberatedActuator);
+                if (liberatedActuator != null) {
+                    liberateActuator(liberatedActuator, sender);
+                    this.mappings.Remove(owner);
+                }
+                
             }
 
         }
