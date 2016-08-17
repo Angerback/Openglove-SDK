@@ -87,8 +87,8 @@
             // 
             this.splitContainer1.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.splitContainer1.Panel2.Controls.Add(this.tabControlHand);
-            this.splitContainer1.Size = new System.Drawing.Size(992, 521);
-            this.splitContainer1.SplitterDistance = 305;
+            this.splitContainer1.Size = new System.Drawing.Size(1101, 530);
+            this.splitContainer1.SplitterDistance = 338;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox1
@@ -97,7 +97,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(290, 497);
+            this.groupBox1.Size = new System.Drawing.Size(325, 503);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mappings";
@@ -108,8 +108,9 @@
             this.listBox1.ItemHeight = 18;
             this.listBox1.Location = new System.Drawing.Point(6, 23);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(278, 454);
+            this.listBox1.Size = new System.Drawing.Size(313, 472);
             this.listBox1.TabIndex = 0;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // tabControlHand
             // 
@@ -169,8 +170,9 @@
             this.comboBox29.Location = new System.Drawing.Point(399, 434);
             this.comboBox29.Name = "comboBox29";
             this.comboBox29.Size = new System.Drawing.Size(38, 21);
+            this.comboBox29.Sorted = true;
             this.comboBox29.TabIndex = 28;
-            this.comboBox29.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox29.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox28
             // 
@@ -179,8 +181,9 @@
             this.comboBox28.Location = new System.Drawing.Point(468, 413);
             this.comboBox28.Name = "comboBox28";
             this.comboBox28.Size = new System.Drawing.Size(38, 21);
+            this.comboBox28.Sorted = true;
             this.comboBox28.TabIndex = 27;
-            this.comboBox28.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox28.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox27
             // 
@@ -189,8 +192,9 @@
             this.comboBox27.Location = new System.Drawing.Point(390, 397);
             this.comboBox27.Name = "comboBox27";
             this.comboBox27.Size = new System.Drawing.Size(38, 21);
+            this.comboBox27.Sorted = true;
             this.comboBox27.TabIndex = 26;
-            this.comboBox27.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox27.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox26
             // 
@@ -200,8 +204,9 @@
             this.comboBox26.Location = new System.Drawing.Point(603, 294);
             this.comboBox26.Name = "comboBox26";
             this.comboBox26.Size = new System.Drawing.Size(38, 21);
+            this.comboBox26.Sorted = true;
             this.comboBox26.TabIndex = 25;
-            this.comboBox26.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox26.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox25
             // 
@@ -211,8 +216,9 @@
             this.comboBox25.Location = new System.Drawing.Point(562, 327);
             this.comboBox25.Name = "comboBox25";
             this.comboBox25.Size = new System.Drawing.Size(38, 21);
+            this.comboBox25.Sorted = true;
             this.comboBox25.TabIndex = 24;
-            this.comboBox25.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox25.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox24
             // 
@@ -222,8 +228,9 @@
             this.comboBox24.Location = new System.Drawing.Point(512, 349);
             this.comboBox24.Name = "comboBox24";
             this.comboBox24.Size = new System.Drawing.Size(38, 21);
+            this.comboBox24.Sorted = true;
             this.comboBox24.TabIndex = 23;
-            this.comboBox24.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox24.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox23
             // 
@@ -233,8 +240,9 @@
             this.comboBox23.Location = new System.Drawing.Point(468, 349);
             this.comboBox23.Name = "comboBox23";
             this.comboBox23.Size = new System.Drawing.Size(38, 21);
+            this.comboBox23.Sorted = true;
             this.comboBox23.TabIndex = 22;
-            this.comboBox23.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox23.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox22
             // 
@@ -244,8 +252,9 @@
             this.comboBox22.Location = new System.Drawing.Point(414, 349);
             this.comboBox22.Name = "comboBox22";
             this.comboBox22.Size = new System.Drawing.Size(38, 21);
+            this.comboBox22.Sorted = true;
             this.comboBox22.TabIndex = 21;
-            this.comboBox22.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox22.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox21
             // 
@@ -255,8 +264,9 @@
             this.comboBox21.Location = new System.Drawing.Point(372, 349);
             this.comboBox21.Name = "comboBox21";
             this.comboBox21.Size = new System.Drawing.Size(38, 21);
+            this.comboBox21.Sorted = true;
             this.comboBox21.TabIndex = 20;
-            this.comboBox21.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox21.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox20
             // 
@@ -266,8 +276,9 @@
             this.comboBox20.Location = new System.Drawing.Point(507, 294);
             this.comboBox20.Name = "comboBox20";
             this.comboBox20.Size = new System.Drawing.Size(38, 21);
+            this.comboBox20.Sorted = true;
             this.comboBox20.TabIndex = 19;
-            this.comboBox20.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox20.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox19
             // 
@@ -277,8 +288,9 @@
             this.comboBox19.Location = new System.Drawing.Point(458, 294);
             this.comboBox19.Name = "comboBox19";
             this.comboBox19.Size = new System.Drawing.Size(38, 21);
+            this.comboBox19.Sorted = true;
             this.comboBox19.TabIndex = 18;
-            this.comboBox19.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox19.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox18
             // 
@@ -288,8 +300,9 @@
             this.comboBox18.Location = new System.Drawing.Point(414, 311);
             this.comboBox18.Name = "comboBox18";
             this.comboBox18.Size = new System.Drawing.Size(38, 21);
+            this.comboBox18.Sorted = true;
             this.comboBox18.TabIndex = 17;
-            this.comboBox18.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox18.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox17
             // 
@@ -299,8 +312,9 @@
             this.comboBox17.Location = new System.Drawing.Point(361, 311);
             this.comboBox17.Name = "comboBox17";
             this.comboBox17.Size = new System.Drawing.Size(38, 21);
+            this.comboBox17.Sorted = true;
             this.comboBox17.TabIndex = 16;
-            this.comboBox17.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox17.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox16
             // 
@@ -310,8 +324,9 @@
             this.comboBox16.Location = new System.Drawing.Point(500, 257);
             this.comboBox16.Name = "comboBox16";
             this.comboBox16.Size = new System.Drawing.Size(38, 21);
+            this.comboBox16.Sorted = true;
             this.comboBox16.TabIndex = 15;
-            this.comboBox16.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox16.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox15
             // 
@@ -321,8 +336,9 @@
             this.comboBox15.Location = new System.Drawing.Point(456, 257);
             this.comboBox15.Name = "comboBox15";
             this.comboBox15.Size = new System.Drawing.Size(38, 21);
+            this.comboBox15.Sorted = true;
             this.comboBox15.TabIndex = 14;
-            this.comboBox15.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox15.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox14
             // 
@@ -332,8 +348,9 @@
             this.comboBox14.Location = new System.Drawing.Point(405, 267);
             this.comboBox14.Name = "comboBox14";
             this.comboBox14.Size = new System.Drawing.Size(38, 21);
+            this.comboBox14.Sorted = true;
             this.comboBox14.TabIndex = 13;
-            this.comboBox14.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox14.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox13
             // 
@@ -343,8 +360,9 @@
             this.comboBox13.Location = new System.Drawing.Point(361, 284);
             this.comboBox13.Name = "comboBox13";
             this.comboBox13.Size = new System.Drawing.Size(38, 21);
+            this.comboBox13.Sorted = true;
             this.comboBox13.TabIndex = 12;
-            this.comboBox13.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox13.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox12
             // 
@@ -354,8 +372,9 @@
             this.comboBox12.Location = new System.Drawing.Point(507, 202);
             this.comboBox12.Name = "comboBox12";
             this.comboBox12.Size = new System.Drawing.Size(38, 21);
+            this.comboBox12.Sorted = true;
             this.comboBox12.TabIndex = 11;
-            this.comboBox12.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox12.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox11
             // 
@@ -365,8 +384,9 @@
             this.comboBox11.Location = new System.Drawing.Point(453, 202);
             this.comboBox11.Name = "comboBox11";
             this.comboBox11.Size = new System.Drawing.Size(41, 21);
+            this.comboBox11.Sorted = true;
             this.comboBox11.TabIndex = 10;
-            this.comboBox11.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox11.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox10
             // 
@@ -376,8 +396,9 @@
             this.comboBox10.Location = new System.Drawing.Point(399, 212);
             this.comboBox10.Name = "comboBox10";
             this.comboBox10.Size = new System.Drawing.Size(38, 21);
+            this.comboBox10.Sorted = true;
             this.comboBox10.TabIndex = 9;
-            this.comboBox10.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox10.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox9
             // 
@@ -387,8 +408,9 @@
             this.comboBox9.Location = new System.Drawing.Point(361, 248);
             this.comboBox9.Name = "comboBox9";
             this.comboBox9.Size = new System.Drawing.Size(38, 21);
+            this.comboBox9.Sorted = true;
             this.comboBox9.TabIndex = 8;
-            this.comboBox9.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox9.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox8
             // 
@@ -398,8 +420,9 @@
             this.comboBox8.Location = new System.Drawing.Point(507, 149);
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(38, 21);
+            this.comboBox8.Sorted = true;
             this.comboBox8.TabIndex = 7;
-            this.comboBox8.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox8.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox7
             // 
@@ -409,8 +432,9 @@
             this.comboBox7.Location = new System.Drawing.Point(453, 138);
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(38, 21);
+            this.comboBox7.Sorted = true;
             this.comboBox7.TabIndex = 6;
-            this.comboBox7.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox7.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox6
             // 
@@ -420,8 +444,9 @@
             this.comboBox6.Location = new System.Drawing.Point(399, 160);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(38, 21);
+            this.comboBox6.Sorted = true;
             this.comboBox6.TabIndex = 5;
-            this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox5
             // 
@@ -431,8 +456,9 @@
             this.comboBox5.Location = new System.Drawing.Point(345, 212);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(38, 21);
+            this.comboBox5.Sorted = true;
             this.comboBox5.TabIndex = 4;
-            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox4
             // 
@@ -442,8 +468,9 @@
             this.comboBox4.Location = new System.Drawing.Point(507, 95);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(38, 21);
+            this.comboBox4.Sorted = true;
             this.comboBox4.TabIndex = 3;
-            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox3
             // 
@@ -453,8 +480,9 @@
             this.comboBox3.Location = new System.Drawing.Point(453, 81);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(38, 21);
+            this.comboBox3.Sorted = true;
             this.comboBox3.TabIndex = 2;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox2
             // 
@@ -464,8 +492,9 @@
             this.comboBox2.Location = new System.Drawing.Point(399, 106);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(38, 21);
+            this.comboBox2.Sorted = true;
             this.comboBox2.TabIndex = 1;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // comboBox1
             // 
@@ -475,8 +504,9 @@
             this.comboBox1.Location = new System.Drawing.Point(345, 176);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(38, 21);
+            this.comboBox1.Sorted = true;
             this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.actuatorSelectionComboboxIndexChanged);
             // 
             // tabPageDorsal
             // 
@@ -492,7 +522,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 521);
+            this.ClientSize = new System.Drawing.Size(1101, 530);
             this.Controls.Add(this.splitContainer1);
             this.DoubleBuffered = true;
             this.Name = "Form1";
