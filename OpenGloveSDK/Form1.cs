@@ -185,6 +185,13 @@ namespace OpenGloveSDK
                 Console.WriteLine(saveConfigurationDialog.FileName);
                 this.saveConfiguration(this.mappings, saveConfigurationDialog.FileName);
                 this.toolStripStatusLabelProfile.Text = "Profile: " + saveConfigurationDialog.FileName;
+
+                string message = "File saved.";
+                string caption = "Save";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+
+                result = MessageBox.Show(message, caption, buttons, MessageBoxIcon.Information);
             }
         }
 
