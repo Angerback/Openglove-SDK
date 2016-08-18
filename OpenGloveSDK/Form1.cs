@@ -15,6 +15,7 @@ namespace OpenGloveSDK
     {
         private int ACTUATORS = 20;
 
+        //Solucion temporal
         private String[] actuators = {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
 
         private Dictionary<String, String> mappings;
@@ -78,6 +79,13 @@ namespace OpenGloveSDK
             }
         }
 
+        private void resetSelectors() {
+            foreach (ComboBox selector in this.selectors)
+            {
+                selector.SelectedIndex = 0;
+            }
+        }
+
         /// <summary>
         /// On a ComboBox index change, takes care of refreshing all the other combobox available on the form
         /// so the user can't select an actuator multiple times. Also handles when an actuator is released from
@@ -108,11 +116,8 @@ namespace OpenGloveSDK
                     liberateActuator(liberatedActuator, sender);
                     this.mappings[owner] = selection;
                 }
-
-                
             }
             else {
-                
                 String liberatedActuator;
                 this.mappings.TryGetValue(owner, out liberatedActuator);
                 if (liberatedActuator != null) {
@@ -129,6 +134,7 @@ namespace OpenGloveSDK
         /// <summary>
         /// Takes a dictionary and refreshes a list based on the changes made to the dictionary using
         /// therminology of hand regions.
+        /// DEV: Should go to backend.
         /// </summary>
         /// <param name="mappings"></param>
         private void refreshMappingsList(Dictionary<string, string> mappings)
@@ -148,7 +154,7 @@ namespace OpenGloveSDK
         /// <summary>
         /// Saves a Dictionary in a XML file with the provided name. 
         /// In upcoming releases it should recieve a "Hand" object of some kind.
-        /// It should be on some "backend" side, not on the view.
+        /// DEV: Should go to backend.
         /// </summary>
         /// <param name="mappings"></param>
         /// <param name="name"></param>
@@ -167,7 +173,7 @@ namespace OpenGloveSDK
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonSaveConfig_Click(object sender, EventArgs e)
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveConfigurationDialog = new SaveFileDialog();
             saveConfigurationDialog.Filter = "XML-File | *.xml";
@@ -178,9 +184,15 @@ namespace OpenGloveSDK
             {
                 Console.WriteLine(saveConfigurationDialog.FileName);
                 this.saveConfiguration(this.mappings, saveConfigurationDialog.FileName);
+                this.toolStripStatusLabelProfile.Text = "Profile: " + saveConfigurationDialog.FileName;
             }
         }
 
+        /// <summary>
+        /// Opens an OpenGlove XML Configuration File and creates a mappings dictionary. DEV: Should go to backend.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         Dictionary<String, String> openConfiguration(String fileName)
         {
             Dictionary<String, String> openedConfiguration;
@@ -208,11 +220,15 @@ namespace OpenGloveSDK
                 {
                     //Actualizar vista
                     this.refreshMappingsList(configuration);
+
+                    this.resetSelectors();
+
                     foreach (KeyValuePair<string, string> mapping in configuration)
                     {
                         this.selectors[Int32.Parse(mapping.Key)].SelectedItem = mapping.Value;
                         this.removeActuator(mapping.Value, this.selectors[Int32.Parse(mapping.Key)]);
                     }
+                    this.toolStripStatusLabelProfile.Text = "Profile: " + openConfigurationDialog.FileName;
                 }
                 else {
                     string message = "Archivo no existe.";
@@ -226,5 +242,6 @@ namespace OpenGloveSDK
 
             }
         }
+
     }
 }
