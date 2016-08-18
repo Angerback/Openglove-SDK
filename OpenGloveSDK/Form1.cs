@@ -192,6 +192,7 @@ namespace OpenGloveSDK
                 DialogResult result;
 
                 result = MessageBox.Show(message, caption, buttons, MessageBoxIcon.Information);
+
             }
         }
 
