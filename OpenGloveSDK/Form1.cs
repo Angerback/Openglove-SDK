@@ -183,11 +183,12 @@ namespace OpenGloveSDK
 
         Dictionary<String, String> openConfiguration(String fileName)
         {
-            Dictionary<String, String> openedConfiguration = new Dictionary<String, String>();
+            Dictionary<String, String> openedConfiguration;
 
             XDocument xml = XDocument.Load(fileName);
-            
-
+            openedConfiguration = xml.Root.Elements("mapping")
+                               .ToDictionary(c => (string)c.Element("region"),
+                                             c => (string)c.Element("actuator"));
 
             return openedConfiguration;
         }
@@ -203,8 +204,26 @@ namespace OpenGloveSDK
             {
                 
                 Dictionary <String, String> configuration = this.openConfiguration(openConfigurationDialog.FileName);
+                if (configuration != null)
+                {
+                    //Actualizar vista
+                    this.refreshMappingsList(configuration);
+                    foreach (KeyValuePair<string, string> mapping in configuration)
+                    {
+                        this.selectors[Int32.Parse(mapping.Key)].SelectedItem = mapping.Value;
+                        this.removeActuator(mapping.Value, this.selectors[Int32.Parse(mapping.Key)]);
+                    }
+                }
+                else {
+                    string message = "Archivo no existe.";
+                    string caption = "Archivo no existe.";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult result;
 
-                //Actualizar vista
+                    result = MessageBox.Show(message, caption, buttons);
+
+                }
+
             }
         }
     }
