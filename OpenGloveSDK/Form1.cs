@@ -77,6 +77,13 @@ namespace OpenGloveSDK
             }
         }
 
+        /// <summary>
+        /// On a ComboBox index change, takes care of refreshing all the other combobox available on the form
+        /// so the user can't select an actuator multiple times. Also handles when an actuator is released from
+        /// one region of the hand by selecting a blank option "".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void actuatorSelectionComboboxIndexChanged(object sender, EventArgs e)
         {
             String selection = (String)((ComboBox)sender).SelectedItem;
@@ -101,7 +108,7 @@ namespace OpenGloveSDK
                     this.mappings[owner] = selection;
                 }
 
-                int index = this.listBox1.Items.Add("Actuator " + selection + " assigned to " + region);
+                
             }
             else {
                 
@@ -114,18 +121,47 @@ namespace OpenGloveSDK
                 
             }
 
+            refreshMappingsList(this.mappings);
+
+        }
+
+        /// <summary>
+        /// Takes a dictionary and refreshes a list based on the changes made to the dictionary using
+        /// therminology of hand regions.
+        /// </summary>
+        /// <param name="mappings"></param>
+        private void refreshMappingsList(Dictionary<string, string> mappings)
+        {
+            this.mappingsList.Items.Clear();
+            foreach (KeyValuePair<string, string> mapping in mappings)
+            {
+                this.mappingsList.Items.Add("Actuator " + mapping.Value + " assigned to region " + mapping.Key);
+            }
+
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
+        /// <summary>
+        /// Saves a Dictionary in a XML file with the provided name. 
+        /// In upcoming releases it should recieve a "Hand" object of some kind.
+        /// </summary>
+        /// <param name="mappings"></param>
+        /// <param name="name"></param>
         private void saveConfiguration(Dictionary<String, String> mappings, String name) {
             XElement rootXML = new XElement("palm", mappings.Select(kv => new XElement("region_" + kv.Key , kv.Value)));
             rootXML.Save(name + ".xml");
         }
 
+        /// <summary>
+        /// Opens a save file dialog and saves the configuration made on the form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSaveConfig_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveConfigurationDialog = new SaveFileDialog();
