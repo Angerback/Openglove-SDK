@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace OpenGloveSDK
 {
@@ -118,6 +119,25 @@ namespace OpenGloveSDK
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void saveConfiguration(Dictionary<String, String> mappings, String name) {
+            XElement rootXML = new XElement("palm", mappings.Select(kv => new XElement("region_" + kv.Key , kv.Value)));
+            rootXML.Save(name + ".xml");
+        }
+
+        private void buttonSaveConfig_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveConfigurationDialog = new SaveFileDialog();
+            saveConfigurationDialog.Filter = "XML-File | *.xml";
+            saveConfigurationDialog.Title = "Save your configuration file";
+            saveConfigurationDialog.ShowDialog();
+
+            if (saveConfigurationDialog.FileName != "")
+            {
+                Console.WriteLine(saveConfigurationDialog.FileName);
+                this.saveConfiguration(this.mappings, saveConfigurationDialog.FileName);
+            }
         }
     }
 }
