@@ -1,0 +1,63 @@
+﻿<Window x:Class="OpenGloveSDKConfigurationPrototype2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OpenGloveSDKConfigurationPrototype2"
+        mc:Ignorable="d"
+        Title="OpenGlove Profile Tool" Height="712.99" Width="1028.412" Background="#FF00B47F" Foreground="White" ResizeMode="NoResize">
+    <Grid Background="#FFCBF3E7">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="201*"/>
+            <ColumnDefinition Width="734*"/>
+            <ColumnDefinition Width="85*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.ColumnSpan="3" Fill="#FF00B47F" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="1020"/>
+        <Label x:Name="labelHeader" Grid.ColumnSpan="3" Content="OpenGlove Profile Tool" HorizontalAlignment="Left" Height="51" Margin="10,10,0,0" VerticalAlignment="Top" Width="1000" Foreground="White" FontFamily="Helvetica" FontSize="36"/>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="35" Margin="-6,70,0,0" VerticalAlignment="Top" Width="1026" Grid.ColumnSpan="3" Background="#FF001912" FontSize="16">
+            <MenuItem x:Name="saveButton" Header="   Save" Foreground="White" Height="32" Width="56"/>
+            <MenuItem x:Name="openButton" Header="   Open" Foreground="White" Click="openButton_Click" Width="62" HorizontalAlignment="Left"/>
+        </Menu>
+        <Image x:Name="image" Height="540" VerticalAlignment="Top" Source="hand2.PNG" Stretch="UniformToFill" Margin="168,110,10,0" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <StatusBar HorizontalAlignment="Left" Height="24" Margin="0,658,0,0" VerticalAlignment="Top" Width="1020" Grid.ColumnSpan="3" Background="#FF00B47F">
+            <StatusBarItem x:Name="statusBarItemProfileLabel" Content="Profile:" Height="24" VerticalAlignment="Top" Background="#FF00B47F" Foreground="White" Width="52" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+            <StatusBarItem x:Name="statusBarItemProfile" Content="None" Height="24" VerticalAlignment="Top" Width="910" HorizontalAlignment="Left" Foreground="White"/>
+        </StatusBar>
+        <Grid x:Name="selectorsGrid" Grid.Column="1" Margin="332,138,71,246">
+            <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="0" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox2" HorizontalAlignment="Left" Margin="70,27,0,0" VerticalAlignment="Top" Width="41" Height="21" TabIndex="1" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox3" HorizontalAlignment="Left" Margin="130,4,0,0" VerticalAlignment="Top" Width="44" Height="20" TabIndex="2" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox4" HorizontalAlignment="Left" Margin="200,18,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="3" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox5" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" Width="47" Height="21" TabIndex="4" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox6" HorizontalAlignment="Left" Margin="70,78,0,0" VerticalAlignment="Top" Width="50" Height="21" TabIndex="5" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox7" HorizontalAlignment="Left" Margin="134,61,0,0" VerticalAlignment="Top" Width="44" Height="20" TabIndex="6" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox8" HorizontalAlignment="Left" Margin="200,78,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="7" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox9" HorizontalAlignment="Left" Margin="34,167,0,0" VerticalAlignment="Top" Width="42" Height="23" TabIndex="8" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox10" HorizontalAlignment="Left" Margin="80,133,0,0" VerticalAlignment="Top" Width="45" Height="23" TabIndex="9" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox11" HorizontalAlignment="Left" Margin="137,124,0,0" VerticalAlignment="Top" Width="47" Height="21" TabIndex="10" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox12" HorizontalAlignment="Left" Margin="195,136,0,0" VerticalAlignment="Top" Width="44" Height="20" TabIndex="11" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox13" HorizontalAlignment="Left" Margin="31,210,0,0" VerticalAlignment="Top" Width="49" Height="21" RenderTransformOrigin="0.521,0.619" TabIndex="12" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox14" HorizontalAlignment="Left" Margin="85,195,0,0" VerticalAlignment="Top" Width="46" Height="21" TabIndex="13" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox15" HorizontalAlignment="Left" Margin="134,187,0,0" VerticalAlignment="Top" Width="50" Height="21" TabIndex="14" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox16" HorizontalAlignment="Left" Margin="192,190,0,0" VerticalAlignment="Top" Width="47" Height="21" TabIndex="15" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox17" HorizontalAlignment="Left" Margin="42,244,0,0" VerticalAlignment="Top" Width="45" Height="21"  TabIndex="16" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox18" HorizontalAlignment="Left" Margin="92,229,0,0" VerticalAlignment="Top" Width="45" Height="21"  TabIndex="17" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox19" HorizontalAlignment="Left" Margin="140,223,0,0" VerticalAlignment="Top" Width="44" Height="21"  TabIndex="18" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox20" HorizontalAlignment="Left" Margin="192,223,0,0" VerticalAlignment="Top" Width="44" Height="21"  TabIndex="19" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox21" HorizontalAlignment="Left" Margin="42,279,0,0" VerticalAlignment="Top" Width="46" Height="21"  TabIndex="20" IsTabStop="False"/>
+            <ComboBox x:Name="comboBox22" HorizontalAlignment="Left" Margin="92,262,0,0" VerticalAlignment="Top" Width="44" Height="21"  TabIndex="21" IsTabStop="False"/>
+            <ComboBox x:Name="comboBox23" HorizontalAlignment="Left" Margin="142,256,0,0" VerticalAlignment="Top" Width="42" Height="21"  TabIndex="22" IsTabStop="False"/>
+            <ComboBox x:Name="comboBox24" HorizontalAlignment="Left" Margin="192,256,0,0" VerticalAlignment="Top" Width="43" Height="21"  TabIndex="23" IsTabStop="False"/>
+            <ComboBox x:Name="comboBox25" HorizontalAlignment="Left" Margin="257,237,0,0" VerticalAlignment="Top" Width="45" Height="21"  TabIndex="24" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+            <ComboBox x:Name="comboBox26" HorizontalAlignment="Left" Margin="285,195,0,0" VerticalAlignment="Top" Width="48" Height="21"  TabIndex="25" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
+        </Grid>
+        <ListView x:Name="listViewMappings" HorizontalAlignment="Left" Height="540" Margin="10,110,0,0" VerticalAlignment="Top" Width="354" Grid.ColumnSpan="2" IsSynchronizedWithCurrentItem="True">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
