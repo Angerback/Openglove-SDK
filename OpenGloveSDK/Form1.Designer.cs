@@ -64,7 +64,10 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabPageDorsal = new System.Windows.Forms.TabPage();
-            this.buttonSaveConfig = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -72,12 +75,13 @@
             this.groupBox1.SuspendLayout();
             this.tabControlHand.SuspendLayout();
             this.tabPagePalmar.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -88,18 +92,17 @@
             // 
             this.splitContainer1.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.splitContainer1.Panel2.Controls.Add(this.tabControlHand);
-            this.splitContainer1.Size = new System.Drawing.Size(1101, 530);
-            this.splitContainer1.SplitterDistance = 338;
+            this.splitContainer1.Size = new System.Drawing.Size(1005, 524);
+            this.splitContainer1.SplitterDistance = 308;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.buttonSaveConfig);
             this.groupBox1.Controls.Add(this.mappingsList);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(325, 503);
+            this.groupBox1.Size = new System.Drawing.Size(293, 512);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mappings";
@@ -110,7 +113,7 @@
             this.mappingsList.ItemHeight = 18;
             this.mappingsList.Location = new System.Drawing.Point(6, 23);
             this.mappingsList.Name = "mappingsList";
-            this.mappingsList.Size = new System.Drawing.Size(313, 436);
+            this.mappingsList.Size = new System.Drawing.Size(281, 472);
             this.mappingsList.TabIndex = 0;
             this.mappingsList.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -118,10 +121,10 @@
             // 
             this.tabControlHand.Controls.Add(this.tabPagePalmar);
             this.tabControlHand.Controls.Add(this.tabPageDorsal);
-            this.tabControlHand.Location = new System.Drawing.Point(3, 12);
+            this.tabControlHand.Location = new System.Drawing.Point(3, 3);
             this.tabControlHand.Name = "tabControlHand";
             this.tabControlHand.SelectedIndex = 0;
-            this.tabControlHand.Size = new System.Drawing.Size(680, 503);
+            this.tabControlHand.Size = new System.Drawing.Size(680, 512);
             this.tabControlHand.TabIndex = 0;
             // 
             // tabPagePalmar
@@ -160,7 +163,7 @@
             this.tabPagePalmar.Location = new System.Drawing.Point(4, 22);
             this.tabPagePalmar.Name = "tabPagePalmar";
             this.tabPagePalmar.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePalmar.Size = new System.Drawing.Size(672, 477);
+            this.tabPagePalmar.Size = new System.Drawing.Size(672, 486);
             this.tabPagePalmar.TabIndex = 0;
             this.tabPagePalmar.Text = "Palmar";
             this.tabPagePalmar.UseVisualStyleBackColor = true;
@@ -515,27 +518,53 @@
             this.tabPageDorsal.Location = new System.Drawing.Point(4, 22);
             this.tabPageDorsal.Name = "tabPageDorsal";
             this.tabPageDorsal.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDorsal.Size = new System.Drawing.Size(672, 477);
+            this.tabPageDorsal.Size = new System.Drawing.Size(672, 486);
             this.tabPageDorsal.TabIndex = 1;
             this.tabPageDorsal.Text = "Dorsal";
             this.tabPageDorsal.UseVisualStyleBackColor = true;
             // 
-            // buttonSaveConfig
+            // menuStrip1
             // 
-            this.buttonSaveConfig.Location = new System.Drawing.Point(6, 466);
-            this.buttonSaveConfig.Name = "buttonSaveConfig";
-            this.buttonSaveConfig.Size = new System.Drawing.Size(313, 31);
-            this.buttonSaveConfig.TabIndex = 1;
-            this.buttonSaveConfig.Text = "Save Configuration";
-            this.buttonSaveConfig.UseVisualStyleBackColor = true;
-            this.buttonSaveConfig.Click += new System.EventHandler(this.buttonSaveConfig_Click);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuFile});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1005, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStripMenuFile
+            // 
+            this.toolStripMenuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.saveAsToolStripMenuItem});
+            this.toolStripMenuFile.Name = "toolStripMenuFile";
+            this.toolStripMenuFile.Size = new System.Drawing.Size(37, 20);
+            this.toolStripMenuFile.Text = "File";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Text = "Save";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.buttonSaveConfig_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1101, 530);
+            this.ClientSize = new System.Drawing.Size(1005, 548);
             this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "OpenGlove SDK Configuration Tool";
@@ -547,7 +576,10 @@
             this.groupBox1.ResumeLayout(false);
             this.tabControlHand.ResumeLayout(false);
             this.tabPagePalmar.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -588,7 +620,10 @@
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button buttonSaveConfig;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuFile;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
     }
 }
 

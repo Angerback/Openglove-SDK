@@ -26,6 +26,7 @@ namespace OpenGloveSDK
             InitializeComponent();
             this.mappings = new Dictionary<string, string>();
             this.selectors = new List<ComboBox>();
+            //Buscar metodo mas eficiente que agregar uno por uno
             this.selectors.Add(this.comboBox1);
             this.selectors.Add(this.comboBox2);
             this.selectors.Add(this.comboBox3);
@@ -137,8 +138,6 @@ namespace OpenGloveSDK
             {
                 this.mappingsList.Items.Add("Actuator " + mapping.Value + " assigned to region " + mapping.Key);
             }
-
-
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -149,12 +148,18 @@ namespace OpenGloveSDK
         /// <summary>
         /// Saves a Dictionary in a XML file with the provided name. 
         /// In upcoming releases it should recieve a "Hand" object of some kind.
+        /// It should be on some "backend" side, not on the view.
         /// </summary>
         /// <param name="mappings"></param>
         /// <param name="name"></param>
         private void saveConfiguration(Dictionary<String, String> mappings, String name) {
-            XElement rootXML = new XElement("palm", mappings.Select(kv => new XElement("region_" + kv.Key , kv.Value)));
-            rootXML.Save(name + ".xml");
+            XElement rootXML = new XElement("hand");
+            foreach (KeyValuePair<string, string> mapping in mappings)
+            {
+                XElement mappingXML = new XElement("mapping", new XElement("region", mapping.Key), new XElement("actuator", mapping.Value));
+                rootXML.Add(mappingXML);
+            }
+            rootXML.Save(name);
         }
 
         /// <summary>
@@ -173,6 +178,33 @@ namespace OpenGloveSDK
             {
                 Console.WriteLine(saveConfigurationDialog.FileName);
                 this.saveConfiguration(this.mappings, saveConfigurationDialog.FileName);
+            }
+        }
+
+        Dictionary<String, String> openConfiguration(String fileName)
+        {
+            Dictionary<String, String> openedConfiguration = new Dictionary<String, String>();
+
+            XDocument xml = XDocument.Load(fileName);
+            
+
+
+            return openedConfiguration;
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openConfigurationDialog = new OpenFileDialog();
+            openConfigurationDialog.Filter = "XML-File | *.xml";
+            openConfigurationDialog.Title = "Open a configuration file";
+            openConfigurationDialog.ShowDialog();
+
+            if (openConfigurationDialog.FileName != "")
+            {
+                
+                Dictionary <String, String> configuration = this.openConfiguration(openConfigurationDialog.FileName);
+
+                //Actualizar vista
             }
         }
     }
