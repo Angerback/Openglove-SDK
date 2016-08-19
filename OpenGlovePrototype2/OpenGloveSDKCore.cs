@@ -78,10 +78,10 @@ namespace OpenGloveSDKBackend
         /// </summary>
         /// <param name="mappings"></param>
         /// <param name="name"></param>
-        private int saveConfiguration(Dictionary<String, String> mappings, String name)
+        public int saveConfiguration(String name)
         {
             XElement rootXML = new XElement("hand");
-            foreach (KeyValuePair<string, string> mapping in mappings)
+            foreach (KeyValuePair<string, string> mapping in this.Mappings)
             {
                 XElement mappingXML = new XElement("mapping", new XElement("region", mapping.Key), new XElement("actuator", mapping.Value));
                 rootXML.Add(mappingXML);
@@ -96,7 +96,7 @@ namespace OpenGloveSDKBackend
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        Dictionary<String, String> openConfiguration(String fileName)
+        public Dictionary<String, String> openConfiguration(String fileName)
         {
             Dictionary<String, String> openedConfiguration;
 
@@ -104,7 +104,7 @@ namespace OpenGloveSDKBackend
             openedConfiguration = xml.Root.Elements("mapping")
                                .ToDictionary(c => (string)c.Element("region"),
                                              c => (string)c.Element("actuator"));
-
+            this.Mappings = openedConfiguration;
             return openedConfiguration;
         }
 

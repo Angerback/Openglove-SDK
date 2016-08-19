@@ -1,4 +1,5 @@
-﻿using OpenGloveSDKBackend;
+﻿using Microsoft.Win32;
+using OpenGloveSDKBackend;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,6 @@ namespace OpenGloveSDKConfigurationPrototype2
 
         public MainWindow()
         {
-            
             InitializeComponent();
             this.sdkCore = OpenGloveSDKCore.getCore();
             this.initializeSelectors();
@@ -37,25 +37,12 @@ namespace OpenGloveSDKConfigurationPrototype2
             {
                 selectors.Add(selector);
             }
-
-            int actuatorsCount = sdkCore.getActuatorCount();
-            
+           
             actuators = new List<string>();
 
-            foreach (ComboBox selector in selectors)
-            {
-                selector.Items.Add("");
-            }
-
-            for (int i = 0; i < actuatorsCount; i++)
-            {
-                actuators.Add(i.ToString());
-                foreach (ComboBox selector in selectors)
-                {
-                    selector.Items.Add(i.ToString());
-                }
-            }
+            this.resetSelectors();
         }
+
         /// <summary>
         /// Erases an actuator from the selectors (ComboBox) that doesn't own it.
         /// </summary>
@@ -92,20 +79,101 @@ namespace OpenGloveSDKConfigurationPrototype2
         /// </summary>
         private void resetSelectors()
         {
+            /*
             foreach (ComboBox selector in this.selectors)
             {
                 selector.SelectedIndex = 0;
+            }
+            */
+            foreach (ComboBox selector in selectors)
+            {
+                selector.Items.Clear();
+                selector.Items.Add("");
+            }
+
+            for (int i = 0; i < sdkCore.getActuatorCount(); i++)
+            {
+                actuators.Add(i.ToString());
+                foreach (ComboBox selector in selectors)
+                {
+                    selector.Items.Add(i.ToString());
+                }
+            }
+
+            
+        }
+
+        /// <summary>
+        /// Takes a dictionary and refreshes a list based on the changes made to the dictionary using
+        /// therminology of hand regions.
+        /// DEV: Should go to backend.
+        /// </summary>
+        /// <param name="mappings"></param>
+        private void refreshMappingsList(Dictionary<string, string> mappings)
+        {
+            this.mappingsList.Items.Clear();
+            foreach (KeyValuePair<string, string> mapping in mappings)
+            {
+                this.mappingsList.Items.Add("Actuator " + mapping.Value + " assigned to region " + mapping.Key);
             }
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
+            SaveFileDialog saveConfigurationDialog = new SaveFileDialog();
+            saveConfigurationDialog.Filter = "XML-File | *.xml";
+            saveConfigurationDialog.Title = "Save your configuration file";
+            saveConfigurationDialog.ShowDialog();
 
+            if (saveConfigurationDialog.FileName != "")
+            {
+                Console.WriteLine(saveConfigurationDialog.FileName);
+                this.sdkCore.saveConfiguration(saveConfigurationDialog.FileName);
+                this.statusBarItemProfile.Content = saveConfigurationDialog.FileName;
+
+                string message = "File saved.";
+                string caption = "Save";
+                MessageBoxButton button = MessageBoxButton.OK;
+
+                MessageBox.Show(message, caption, button, MessageBoxImage.Information);
+
+            }
         }
 
         private void openButton_Click(object sender, RoutedEventArgs e)
         {
+            OpenFileDialog openConfigurationDialog = new OpenFileDialog();
+            openConfigurationDialog.Filter = "XML-File | *.xml";
+            openConfigurationDialog.Title = "Open a configuration file";
+            openConfigurationDialog.ShowDialog();
 
+            if (openConfigurationDialog.FileName != "")
+            {
+                this.sdkCore.openConfiguration(openConfigurationDialog.FileName);
+                if (this.sdkCore.Mappings != null)
+                {
+                    //Actualizar vista
+                    this.refreshMappingsList(this.sdkCore.Mappings);
+                    this.resetSelectors();
+                    
+                    foreach (KeyValuePair<string, string> mapping in this.sdkCore.Mappings.ToList())
+                    {
+                        this.selectors[Int32.Parse(mapping.Key)].SelectedItem = mapping.Value;
+                        this.removeActuator(mapping.Value, this.selectors[Int32.Parse(mapping.Key)]);
+                    }
+                    this.statusBarItemProfile.Content = openConfigurationDialog.FileName;
+                }
+                else
+                {
+                    string message = "File not found.";
+                    string caption = "File not found";
+                    MessageBoxButton button = MessageBoxButton.OK;
+
+                    MessageBox.Show(message, caption, button, MessageBoxImage.Error);
+
+                }
+
+            }
         }
 
         private void selectorsSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -144,7 +212,7 @@ namespace OpenGloveSDKConfigurationPrototype2
 
             }
 
-            //refreshMappingsList(this.sdkCore.Mappings);
+            refreshMappingsList(this.sdkCore.Mappings);
         }
     }
 }
