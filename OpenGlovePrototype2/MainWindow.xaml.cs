@@ -13,6 +13,11 @@ namespace OpenGloveSDKConfigurationPrototype2
     /// </summary>
     public partial class MainWindow : Window
     {
+        public class Row {
+            public String Actuator { get; set; }
+            public String Region { get; set; }
+        }
+
         private OpenGloveSDKCore sdkCore;
 
         private List<ComboBox> selectors;
@@ -112,9 +117,9 @@ namespace OpenGloveSDKConfigurationPrototype2
         private void refreshMappingsList(Dictionary<string, string> mappings)
         {
             this.mappingsList.Items.Clear();
-            foreach (KeyValuePair<string, string> mapping in mappings)
+            foreach (KeyValuePair<string, string> mapping in mappings.ToList())
             {
-                this.mappingsList.Items.Add("Actuator " + mapping.Value + " assigned to region " + mapping.Key);
+                this.mappingsList.Items.Add(new Row() { Actuator = mapping.Value, Region = mapping.Key});
             }
         }
 
@@ -186,31 +191,34 @@ namespace OpenGloveSDKConfigurationPrototype2
             // Si se selecciona un actuador, la idea es que no se pueda volver a seleccionar en otro punto de la mano.
 
             String owner = ((ComboBox)sender).TabIndex.ToString();
-            if (!selection.Equals(""))
-            {
-                removeActuator(selection, sender);
-                try
+            if (selection != null) {
+                if (!selection.Equals(""))
                 {
-                    this.sdkCore.Mappings.Add(owner, selection);
+                    removeActuator(selection, sender);
+                    try
+                    {
+                        this.sdkCore.Mappings.Add(owner, selection);
+                    }
+                    catch (Exception)
+                    {
+                        String liberatedActuator = this.sdkCore.Mappings[owner];
+                        liberateActuator(liberatedActuator, sender);
+                        this.sdkCore.Mappings[owner] = selection;
+                    }
                 }
-                catch (Exception)
+                else
                 {
-                    String liberatedActuator = this.sdkCore.Mappings[owner];
-                    liberateActuator(liberatedActuator, sender);
-                    this.sdkCore.Mappings[owner] = selection;
-                }
-            }
-            else
-            {
-                String liberatedActuator;
-                this.sdkCore.Mappings.TryGetValue(owner, out liberatedActuator);
-                if (liberatedActuator != null)
-                {
-                    liberateActuator(liberatedActuator, sender);
-                    this.sdkCore.Mappings.Remove(owner);
-                }
+                    String liberatedActuator;
+                    this.sdkCore.Mappings.TryGetValue(owner, out liberatedActuator);
+                    if (liberatedActuator != null)
+                    {
+                        liberateActuator(liberatedActuator, sender);
+                        this.sdkCore.Mappings.Remove(owner);
+                    }
 
+                }
             }
+            
 
             refreshMappingsList(this.sdkCore.Mappings);
         }

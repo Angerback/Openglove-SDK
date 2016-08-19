@@ -54,8 +54,10 @@
         <ListView x:Name="mappingsList" HorizontalAlignment="Left" Height="540" Margin="10,110,0,0" VerticalAlignment="Top" Width="354" IsSynchronizedWithCurrentItem="True" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Actuator" Width="120" DisplayMemberBinding="{Binding Actuator}" />
+                    <GridViewColumn Header="Region" Width="120" DisplayMemberBinding="{Binding Region}" />
                 </GridView>
+
             </ListView.View>
         </ListView>
 
