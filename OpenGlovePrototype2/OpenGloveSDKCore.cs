@@ -16,8 +16,9 @@ namespace OpenGloveSDKBackend
 
 
         //Datos de desarrollo temprano
-        private List<int> positivePins = new List<int>() { 10, 9, 6, 5, 3 };
-        private List<int> negativePins = new List<int>() { 15, 14, 12, 8, 2 };
+        private List<int> positivePins = new List<int>() { 10, 9, 6, 5, 3 }; //Aspectos del guante, hacer configuracion especial para esto
+        private List<int> negativePins = new List<int>() { 15, 14, 12, 8, 2 }; //Aspectos del guante, hacer configuracion especial para esto
+
         private List<string> negativeInit = new List<string>() { "LOW", "LOW", "LOW", "LOW", "LOW" };
         private List<string> positiveInit = new List<string>() { "HIGH", "HIGH", "HIGH", "HIGH", "HIGH" };
 
@@ -56,21 +57,22 @@ namespace OpenGloveSDKBackend
             Mappings = new Dictionary<string, string>();
         }
 
-        private int ACTUATORS = 20;
-
-        //Solucion temporal
-        private String[] actuators = { "", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" };
-
-        
-
         /// <summary>
         /// Mappings for region (key) and actuators (value).
         /// </summary>
         public Dictionary<String, String> Mappings { get; set; }
 
-        public int getActuatorCount()
+        /// <summary>
+        /// Gets how many actuators are in the current configuration of the glove.
+        /// </summary>
+        /// <returns></returns>
+        public int GetActuatorCount()
         {
-            return this.ACTUATORS;
+            return this.positivePins.Count;
+        }
+
+        public List<int> GetActuators() {
+            return this.positivePins;
         }
 
         /// <summary>
