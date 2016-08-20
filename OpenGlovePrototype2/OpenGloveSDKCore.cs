@@ -12,6 +12,36 @@ namespace OpenGloveSDKBackend
         //Simple singleton pattern for SDKCore
         private static OpenGloveSDKCore core;
 
+        private OpenGlove.OpenGlove openGlove;
+
+
+        //Datos de desarrollo temprano
+        private List<int> positivePins = new List<int>() { 10, 9, 6, 5, 3 };
+        private List<int> negativePins = new List<int>() { 15, 14, 12, 8, 2 };
+        private List<string> negativeInit = new List<string>() { "LOW", "LOW", "LOW", "LOW", "LOW" };
+        private List<string> positiveInit = new List<string>() { "HIGH", "HIGH", "HIGH", "HIGH", "HIGH" };
+
+        public void Connect(string port)
+        {
+            GetOpenGlove().OpenPort(port, 57600); //Baud rate deberia seleccionarse
+            GetOpenGlove().InitializeMotor(positivePins); //Positive pins deberian definirse
+            GetOpenGlove().InitializeMotor(negativePins); //Negative pins deberian definirse
+            GetOpenGlove().ActivateMotor(negativePins, negativeInit);
+        }
+
+        public void Disconnect() {
+            GetOpenGlove().ClosePort();
+        }
+
+        public void StartTest() {
+            GetOpenGlove().ActivateMotor(positivePins, positiveInit);
+        }
+
+        public void StopTest()
+        {
+            GetOpenGlove().ActivateMotor(positivePins, negativeInit);
+        }
+
         public static OpenGloveSDKCore getCore()
         {
             if (core == null)
@@ -30,6 +60,8 @@ namespace OpenGloveSDKBackend
 
         //Solucion temporal
         private String[] actuators = { "", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" };
+
+        
 
         /// <summary>
         /// Mappings for region (key) and actuators (value).
@@ -106,6 +138,14 @@ namespace OpenGloveSDKBackend
                                              c => (string)c.Element("actuator"));
             this.Mappings = openedConfiguration;
             return openedConfiguration;
+        }
+
+        public OpenGlove.OpenGlove GetOpenGlove()
+        {
+            if (this.openGlove == null) {
+                this.openGlove = new OpenGlove.OpenGlove();
+            }
+            return this.openGlove;
         }
 
 
