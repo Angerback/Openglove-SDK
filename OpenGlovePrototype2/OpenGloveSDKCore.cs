@@ -9,11 +9,19 @@ namespace OpenGloveSDKBackend
 {
     class OpenGloveSDKCore
     {
+        public OpenGloveSDKCore() {
+            Mappings = new Dictionary<string, string>();
+            if (BaudRate == 0) {
+                BaudRate = 57600;
+            }
+        }
+
         //Simple singleton pattern for SDKCore
         private static OpenGloveSDKCore core;
 
         private OpenGlove.OpenGlove openGlove;
 
+        public int BaudRate { get; set; }
 
         //Datos de desarrollo temprano
         private List<int> positivePins = new List<int>() { 10, 9, 6, 5, 3 }; //Aspectos del guante, hacer configuracion especial para esto
@@ -22,27 +30,44 @@ namespace OpenGloveSDKBackend
         private List<string> negativeInit = new List<string>() { "LOW", "LOW", "LOW", "LOW", "LOW" };
         private List<string> positiveInit = new List<string>() { "HIGH", "HIGH", "HIGH", "HIGH", "HIGH" };
 
+        /// <summary>
+        /// Starts a connection with an OpenGlove on the desired port.
+        /// </summary>
+        /// <param name="port"></param>
         public void Connect(string port)
         {
-            GetOpenGlove().OpenPort(port, 57600); //Baud rate deberia seleccionarse
+            GetOpenGlove().OpenPort(port, BaudRate);
             GetOpenGlove().InitializeMotor(positivePins); //Positive pins deberian definirse
             GetOpenGlove().InitializeMotor(negativePins); //Negative pins deberian definirse
             GetOpenGlove().ActivateMotor(negativePins, negativeInit);
         }
 
+        /// <summary>
+        /// Closes the current active connection.
+        /// </summary>
         public void Disconnect() {
             GetOpenGlove().ClosePort();
         }
 
+        /// <summary>
+        /// Sets all the configured actuators to HIGH state.
+        /// </summary>
         public void StartTest() {
             GetOpenGlove().ActivateMotor(positivePins, positiveInit);
         }
 
+        /// <summary>
+        /// Sets all the configured actuators to LOW state.
+        /// </summary>
         public void StopTest()
         {
             GetOpenGlove().ActivateMotor(positivePins, negativeInit);
         }
 
+        /// <summary>
+        /// Returns the instance of the SDKCore.
+        /// </summary>
+        /// <returns></returns>
         public static OpenGloveSDKCore getCore()
         {
             if (core == null)
@@ -50,11 +75,6 @@ namespace OpenGloveSDKBackend
                 core = new OpenGloveSDKCore();
             }
             return core;
-        }
-
-        private OpenGloveSDKCore()
-        {
-            Mappings = new Dictionary<string, string>();
         }
 
         /// <summary>
@@ -115,11 +135,32 @@ namespace OpenGloveSDKBackend
         public int saveConfiguration(String name)
         {
             XElement rootXML = new XElement("hand");
+            XElement mappings = new XElement("mappings");
+            rootXML.Add(mappings);
             foreach (KeyValuePair<string, string> mapping in this.Mappings)
             {
                 XElement mappingXML = new XElement("mapping", new XElement("region", mapping.Key), new XElement("actuator", mapping.Value));
-                rootXML.Add(mappingXML);
+                mappings.Add(mappingXML);
             }
+
+            XElement boardPins = new XElement("boardPins");
+            rootXML.Add(boardPins);
+            foreach (int pin in positivePins)
+            {
+                XElement positivePinXML = new XElement("positivePin");
+                positivePinXML.SetAttributeValue("pin", pin);
+                boardPins.Add(positivePinXML);
+            }
+
+            foreach (int pin in negativePins)
+            {
+                XElement negativePinXML = new XElement("negativePin");
+                negativePinXML.SetAttributeValue("pin", pin);
+                boardPins.Add(negativePinXML);
+            }
+
+            rootXML.SetAttributeValue("baudRate", BaudRate);
+
             rootXML.Save(name);
 
             return 0;
@@ -135,7 +176,7 @@ namespace OpenGloveSDKBackend
             Dictionary<String, String> openedConfiguration;
 
             XDocument xml = XDocument.Load(fileName);
-            openedConfiguration = xml.Root.Elements("mapping")
+            openedConfiguration = xml.Root.Element("mappings").Elements("mapping")
                                .ToDictionary(c => (string)c.Element("region"),
                                              c => (string)c.Element("actuator"));
             this.Mappings = openedConfiguration;
