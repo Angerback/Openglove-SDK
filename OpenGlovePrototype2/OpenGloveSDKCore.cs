@@ -23,6 +23,8 @@ namespace OpenGloveSDKBackend
 
         public int BaudRate { get; set; }
 
+        public List<int> allowedBaudRates { get; } = new List<int> { 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200 };
+
         //Datos de desarrollo temprano
         private List<int> positivePins = new List<int>() { 10, 9, 6, 5, 3 }; //Aspectos del guante, hacer configuracion especial para esto
         private List<int> negativePins = new List<int>() { 15, 14, 12, 8, 2 }; //Aspectos del guante, hacer configuracion especial para esto

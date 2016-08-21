@@ -161,7 +161,6 @@ namespace OpenGloveSDKConfigurationPrototype2
                 this.sdkCore.openConfiguration(openConfigurationDialog.FileName);
                 if (this.sdkCore.Mappings != null)
                 {
-                    System.Console.WriteLine("MAPPINGS VALIDOS");
                     //Actualizar vista
                     this.refreshMappingsList(this.sdkCore.Mappings);
                     this.resetSelectors();
@@ -230,8 +229,6 @@ namespace OpenGloveSDKConfigurationPrototype2
 
                     }
                 }
-
-
                 refreshMappingsList(this.sdkCore.Mappings);
             }
         }

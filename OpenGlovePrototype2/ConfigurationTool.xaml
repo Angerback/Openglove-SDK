@@ -18,7 +18,7 @@
             <MenuItem x:Name="saveButton" Header="   Save" Foreground="White" Height="32" Width="78" Click="saveButton_Click"/>
             <MenuItem x:Name="openButton" Header="   Open" Foreground="White" Click="openButton_Click" Width="83" HorizontalAlignment="Left"/>
         </Menu>
-        <Image x:Name="image" Height="540" VerticalAlignment="Top" Source="hand2.PNG" Stretch="UniformToFill" Margin="6,110,0,0" Grid.Column="1"/>
+        <Image x:Name="image" Height="540" VerticalAlignment="Top" Source="hand2.PNG" Margin="6,110,0,0" Grid.Column="1" Stretch="UniformToFill"/>
         <StatusBar Height="28" Margin="0,658,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="#FF00B47F">
             <StatusBarItem x:Name="statusBarItemProfileLabel" Content="Profile:" Height="24" VerticalAlignment="Top" Background="#FF00B47F" Foreground="White" Width="52" HorizontalAlignment="Left" Margin="12,0,0,0"/>
             <StatusBarItem x:Name="statusBarItemProfile" Content="None" Height="24" VerticalAlignment="Top" Width="910" HorizontalAlignment="Left" Foreground="White"/>

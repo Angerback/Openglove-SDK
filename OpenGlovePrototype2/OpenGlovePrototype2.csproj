@@ -56,8 +56,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="welcome.xaml.cs">
-      <DependentUpon>welcome.xaml</DependentUpon>
+    <Compile Include="Greeter.xaml.cs">
+      <DependentUpon>Greeter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PinsConfiguration.xaml.cs">
+      <DependentUpon>PinsConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="test.xaml.cs">
+      <DependentUpon>test.xaml</DependentUpon>
     </Compile>
     <Page Include="ConfigurationTool.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -71,7 +77,15 @@
       <DependentUpon>ConfigurationTool.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="welcome.xaml">
+    <Page Include="Greeter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PinsConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="test.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -112,6 +126,9 @@
       <Project>{cef4f9b5-732b-4af3-9963-deda08f9b0f7}</Project>
       <Name>OpenGlove API C Sharp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="A000011_featured.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
