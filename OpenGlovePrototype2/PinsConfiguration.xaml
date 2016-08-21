@@ -11,7 +11,20 @@
         <Image x:Name="image" HorizontalAlignment="Left" Height="340" Margin="314,49,0,0" VerticalAlignment="Top" Width="466" Source="A000011_featured.jpg" Stretch="UniformToFill"/>
         <Rectangle Fill="#FF00B47F" HorizontalAlignment="Left" Height="49" Stroke="Black" VerticalAlignment="Top" Width="780"/>
         <Label x:Name="labelHeader" Content="Pins Configuration" HorizontalAlignment="Left" Height="51" Margin="0,0,-220,0" VerticalAlignment="Top" Width="1000" Foreground="White" FontFamily="Helvetica" FontSize="36"/>
-        <Grid x:Name="pinsGrid" HorizontalAlignment="Left" Height="333" Margin="10,56,0,0" VerticalAlignment="Top" Width="290" ScrollViewer.CanContentScroll="True"/>
+        <Grid x:Name="pinsGrid" HorizontalAlignment="Left" Height="333" Margin="10,56,0,0" VerticalAlignment="Top" Width="290" ScrollViewer.CanContentScroll="True">
+            <DataGrid AutoGenerateColumns="False" x:Name="dataGridPins" HorizontalAlignment="Left" VerticalAlignment="Top" Height="257" Width="290" ScrollViewer.CanContentScroll="True" Margin="0,36,0,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=Pin}" />
+                    <DataGridComboBoxColumn Width="100" x:Name="Polarity" 
+                    SelectedValueBinding="{Binding Polarity, Mode=TwoWay}"  
+                    DisplayMemberPath="{Binding Polarity}" />
+                </DataGrid.Columns>
+
+            </DataGrid>
+            <Button x:Name="buttonSave" Content="Save" HorizontalAlignment="Left" Margin="0,303,0,0" VerticalAlignment="Top" Width="75" Click="buttonSave_Click"/>
+            <Label x:Name="labelBaud" Content="Baud Rate" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <ComboBox x:Name="comboBoxBaudRate" HorizontalAlignment="Left" Margin="69,4,0,0" VerticalAlignment="Top" Width="221"/>
+        </Grid>
 
     </Grid>
 </Window>
