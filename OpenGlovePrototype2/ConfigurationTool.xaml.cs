@@ -80,7 +80,7 @@ namespace OpenGloveSDKConfigurationPrototype2
         }
 
         /// <summary>
-        /// Resets all selectors to it's initial selection (index 0).
+        /// Resets all selectors to it's initial selection (index 0) and repopulates with available actuators.
         /// </summary>
         private void resetSelectors()
         {

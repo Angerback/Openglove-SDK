@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using OpenGloveSDKBackend;
+using OpenGloveSDKConfigurationPrototype2;
 
 namespace OpenGlovePrototype2
 {
@@ -55,26 +56,41 @@ namespace OpenGlovePrototype2
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             OpenGloveSDKCore core = OpenGloveSDKCore.getCore();
-            core.positivePins = new List<int>();
-            core.negativePins = new List<int>();
 
-            foreach (PinRow pin in pins)
+            if (this.comboBoxBaudRate.SelectedItem != null)
             {
-                if (pin.Polarity != null)
+                core.BaudRate = Int32.Parse(this.comboBoxBaudRate.SelectedItem.ToString());
+                core.positivePins = new List<int>();
+                core.negativePins = new List<int>();
+
+                foreach (PinRow pin in pins)
                 {
-                    if (pin.Polarity.Equals("Positive"))
+                    if (pin.Polarity != null)
                     {
-                        core.positivePins.Add(pin.Pin);
-                    }
-                    else
-                    {
-                        core.negativePins.Add(pin.Pin);
+                        if (pin.Polarity.Equals("Positive"))
+                        {
+                            core.positivePins.Add(pin.Pin);
+                        }
+                        else
+                        {
+                            core.negativePins.Add(pin.Pin);
+                        }
                     }
                 }
+
+                MainWindow mw = new MainWindow();
+
+                mw.Show();
+
+                this.Close();
             }
-
-            core.BaudRate = Int32.Parse(this.comboBoxBaudRate.SelectedItem.ToString());
-
+            else {
+                string message = "Must select BaudRate";
+                string caption = "BaudRate";
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBox.Show(message, caption, button, MessageBoxImage.Error);
+            }
+ 
         }
     }
 }

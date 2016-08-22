@@ -182,6 +182,31 @@ namespace OpenGloveSDKBackend
                                .ToDictionary(c => (string)c.Element("region"),
                                              c => (string)c.Element("actuator"));
             this.Mappings = openedConfiguration;
+
+            List<XElement> Xpins = xml.Root.Element("boardPins").Elements("positivePin").ToList();
+            List<int> positivePins = new List<int>();
+            foreach (XElement xpin in Xpins)
+            {
+                int pinNumber = Int32.Parse(xpin.Attribute("pin").Value);
+                positivePins.Add(pinNumber);
+            }
+
+            Xpins = xml.Root.Element("boardPins").Elements("negativePin").ToList();
+            List<int> negativePins = new List<int>();
+            foreach (XElement xpin in Xpins)
+            {
+                int pinNumber = Int32.Parse(xpin.Attribute("pin").Value);
+                negativePins.Add(pinNumber);
+            }
+
+            int baudRate = Int32.Parse(xml.Root.Attribute("baudRate").Value);
+
+            //Aqui deberia comprobarse que sean todos valores validos
+
+            this.positivePins = positivePins;
+            this.negativePins = negativePins;
+            this.BaudRate = baudRate;
+
             return openedConfiguration;
         }
 
