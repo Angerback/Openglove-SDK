@@ -19,19 +19,21 @@ namespace OpenGlovePrototype2
     /// <summary>
     /// Interaction logic for welcome.xaml
     /// </summary>
-    public partial class welcome : Window
+    public partial class TestWindow : Window
     {
         private OpenGloveSDKCore sdkCore;
 
-        public welcome()
+        public TestWindow()
         {
             InitializeComponent();
             sdkCore = OpenGloveSDKCore.getCore();
+            /*
             OpenFileDialog openConfigurationDialog = new OpenFileDialog();
             openConfigurationDialog.Filter = "XML-File | *.xml";
             openConfigurationDialog.Title = "Open a configuration file";
             openConfigurationDialog.ShowDialog();
             sdkCore.openConfiguration(openConfigurationDialog.FileName);
+            */
         }
 
         private void buttonRefreshPorts_Click(object sender, RoutedEventArgs e)

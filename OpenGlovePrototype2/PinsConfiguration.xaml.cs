@@ -33,7 +33,7 @@ namespace OpenGlovePrototype2
 
         public List<PinRow> pins;
         //LilyPad. Desconozco aun todos los posibles pines.
-        List<int> pinNumbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
+        List<int> pinNumbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
         List<String> Polarities;
 
         public PinsConfiguration()
@@ -78,7 +78,7 @@ namespace OpenGlovePrototype2
                     }
                 }
 
-                MainWindow mw = new MainWindow();
+                ConfigurationTool mw = new ConfigurationTool();
 
                 mw.Show();
 

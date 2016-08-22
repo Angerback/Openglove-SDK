@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using OpenGlovePrototype2;
 using OpenGloveSDKBackend;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace OpenGloveSDKConfigurationPrototype2
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ConfigurationTool : Window
     {
         public class Mapping {
             public String Actuator { get; set; }
@@ -24,11 +25,12 @@ namespace OpenGloveSDKConfigurationPrototype2
 
         private IEnumerable<int> actuators;
 
-        public MainWindow()
+        public ConfigurationTool()
         {
             InitializeComponent();
             this.sdkCore = OpenGloveSDKCore.getCore();
             this.initializeSelectors();
+            this.updateView();
         }
 
         /// <summary>
@@ -44,8 +46,6 @@ namespace OpenGloveSDKConfigurationPrototype2
             }
            
             actuators = new List<int>();
-
-            this.resetSelectors();
         }
 
         /// <summary>
@@ -84,8 +84,10 @@ namespace OpenGloveSDKConfigurationPrototype2
         /// </summary>
         private void resetSelectors()
         {
+
             foreach (ComboBox selector in this.selectors)
             {
+                selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
                 selector.SelectedIndex = 0;
             }
 
@@ -103,6 +105,10 @@ namespace OpenGloveSDKConfigurationPrototype2
                 {
                     selector.Items.Add(actuator);
                 }
+            }
+            foreach (ComboBox selector in selectors)
+            {
+                selector.SelectionChanged += new SelectionChangedEventHandler(selectorsSelectionChanged);
             }
         }
 
@@ -151,43 +157,52 @@ namespace OpenGloveSDKConfigurationPrototype2
             openConfigurationDialog.Title = "Open a configuration file";
             openConfigurationDialog.ShowDialog();
 
+            this.open(openConfigurationDialog);
+
+        }
+
+        private void open(OpenFileDialog openConfigurationDialog) {
             if (openConfigurationDialog.FileName != "")
             {
-                foreach (ComboBox selector in selectors)
-                {
-                    selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
-                }
-
                 this.sdkCore.openConfiguration(openConfigurationDialog.FileName);
-                if (this.sdkCore.Mappings != null)
-                {
-                    //Actualizar vista
-                    this.refreshMappingsList(this.sdkCore.Mappings);
-                    this.resetSelectors();
-                     
-                    foreach (KeyValuePair<string, string> mapping in this.sdkCore.Mappings.ToList())
-                    {
-                        this.selectors[Int32.Parse(mapping.Key)].SelectedItem = Int32.Parse(mapping.Value);
-                        this.removeActuator(mapping.Value, this.selectors[Int32.Parse(mapping.Key)]);
-                    }
-                    this.statusBarItemProfile.Content = openConfigurationDialog.FileName;
-                }
-                else
-                {
-                    string message = "File not found.";
-                    string caption = "File not found";
-                    MessageBoxButton button = MessageBoxButton.OK;
 
-                    MessageBox.Show(message, caption, button, MessageBoxImage.Error);
+                this.updateView();
+            }
+        }
 
-                }
-
-                foreach (ComboBox selector in selectors)
-                {
-                    selector.SelectionChanged += new SelectionChangedEventHandler(selectorsSelectionChanged);
-                }
+        private void updateView() {
+            foreach (ComboBox selector in selectors)
+            {
+                selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
             }
 
+            if (this.sdkCore.Mappings != null)
+            {
+                //Actualizar vista
+                this.refreshMappingsList(this.sdkCore.Mappings);
+                this.resetSelectors();
+
+                foreach (KeyValuePair<string, string> mapping in this.sdkCore.Mappings.ToList())
+                {
+                    this.selectors[Int32.Parse(mapping.Key)].SelectedItem = Int32.Parse(mapping.Value);
+                    this.removeActuator(mapping.Value, this.selectors[Int32.Parse(mapping.Key)]);
+                }
+                this.statusBarItemProfile.Content = this.sdkCore.profileName;
+            }
+            else
+            {
+                string message = "File not found.";
+                string caption = "File not found";
+                MessageBoxButton button = MessageBoxButton.OK;
+
+                MessageBox.Show(message, caption, button, MessageBoxImage.Error);
+
+            }
+
+            foreach (ComboBox selector in selectors)
+            {
+                selector.SelectionChanged += new SelectionChangedEventHandler(selectorsSelectionChanged);
+            }
         }
 
         private void selectorsSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -231,6 +246,12 @@ namespace OpenGloveSDKConfigurationPrototype2
                 }
                 refreshMappingsList(this.sdkCore.Mappings);
             }
+        }
+
+        private void buttonTestConfig_Click(object sender, RoutedEventArgs e)
+        {
+            TestWindow test = new TestWindow();
+            test.Show();
         }
     }
 }

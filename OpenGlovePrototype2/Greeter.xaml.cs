@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using OpenGloveSDKConfigurationPrototype2;
+using Microsoft.Win32;
+using OpenGloveSDKBackend;
 
 namespace OpenGlovePrototype2
 {
@@ -29,6 +32,23 @@ namespace OpenGlovePrototype2
             PinsConfiguration pinsConfig = new PinsConfiguration();
             pinsConfig.Show();
             this.Close();
+        }
+
+        private void buttonOpenProfile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openConfigurationDialog = new OpenFileDialog();
+            openConfigurationDialog.Filter = "XML-File | *.xml";
+            openConfigurationDialog.Title = "Open a configuration file";
+            openConfigurationDialog.ShowDialog();
+
+            if (openConfigurationDialog.FileName != null) {
+                OpenGloveSDKCore core = OpenGloveSDKCore.getCore();
+                core.openConfiguration(openConfigurationDialog.FileName);
+
+                ConfigurationTool config = new ConfigurationTool();
+                config.Show();
+                this.Close();
+            }
         }
     }
 }

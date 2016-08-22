@@ -1,4 +1,4 @@
-﻿<Window x:Class="OpenGloveSDKConfigurationPrototype2.MainWindow"
+﻿<Window x:Class="OpenGloveSDKConfigurationPrototype2.ConfigurationTool"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -51,7 +51,7 @@
             <ComboBox x:Name="comboBox25" HorizontalAlignment="Left" Margin="257,237,0,0" VerticalAlignment="Top" Width="45" Height="21"  TabIndex="24" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
             <ComboBox x:Name="comboBox26" HorizontalAlignment="Left" Margin="285,195,0,0" VerticalAlignment="Top" Width="48" Height="21"  TabIndex="25" IsTabStop="False" SelectionChanged="selectorsSelectionChanged"/>
         </Grid>
-        <ListView x:Name="mappingsList" HorizontalAlignment="Left" Height="540" Margin="10,110,0,0" VerticalAlignment="Top" Width="354" IsSynchronizedWithCurrentItem="True" Grid.ColumnSpan="2">
+        <ListView x:Name="mappingsList" HorizontalAlignment="Left" Height="272" Margin="10,110,0,0" VerticalAlignment="Top" Width="354" IsSynchronizedWithCurrentItem="True" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Actuator" Width="120" DisplayMemberBinding="{Binding Actuator}" />
@@ -60,6 +60,7 @@
 
             </ListView.View>
         </ListView>
+        <Button x:Name="buttonTestConfig" Content="Test Configuration" HorizontalAlignment="Left" Margin="10,387,0,0" VerticalAlignment="Top" Width="353" Height="43" Click="buttonTestConfig_Click"/>
 
     </Grid>
 </Window>

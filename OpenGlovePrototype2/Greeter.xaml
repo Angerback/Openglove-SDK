@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OpenGlovePrototype2"
         mc:Ignorable="d"
-        Title="Greeter" Height="110.933" Width="284.558">
+        Title="Greeter" Height="169.814" Width="284.558" ResizeMode="NoResize">
     <Grid>
         <Button x:Name="buttonCreateProfile" Content="New Profile" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="257" Height="58" FontSize="20" Click="buttonCreateProfile_Click"/>
+        <Button x:Name="buttonOpenProfile" Content="Open Profile" HorizontalAlignment="Left" Margin="12,73,0,0" VerticalAlignment="Top" Width="257" Height="57" FontSize="20" Click="buttonOpenProfile_Click"/>
     </Grid>
 </Window>

@@ -25,12 +25,14 @@ namespace OpenGloveSDKBackend
 
         public List<int> allowedBaudRates { get; } = new List<int> { 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200 };
 
-        //Datos de desarrollo temprano
-        public List<int> positivePins { get; set; } = new List<int>() { 10, 9, 6, 5, 3 }; //Aspectos del guante, hacer configuracion especial para esto
-        public List<int> negativePins { get; set; } = new List<int>() { 15, 14, 12, 8, 2 }; //Aspectos del guante, hacer configuracion especial para esto
+        public String profileName { get; set; }
 
-        private List<string> negativeInit = new List<string>() { "LOW", "LOW", "LOW", "LOW", "LOW" };
-        private List<string> positiveInit = new List<string>() { "HIGH", "HIGH", "HIGH", "HIGH", "HIGH" };
+        //Datos de desarrollo temprano
+        public List<int> positivePins { get; set; } //Aspectos del guante, hacer configuracion especial para esto
+        public List<int> negativePins { get; set; } //Aspectos del guante, hacer configuracion especial para esto
+
+        private List<string> negativeInit;
+        private List<string> positiveInit;
 
         /// <summary>
         /// Starts a connection with an OpenGlove on the desired port.
@@ -164,7 +166,7 @@ namespace OpenGloveSDKBackend
             rootXML.SetAttributeValue("baudRate", BaudRate);
 
             rootXML.Save(name);
-
+            this.profileName = name;
             return 0;
         }
 
@@ -215,7 +217,7 @@ namespace OpenGloveSDKBackend
                 this.positiveInit.Add("HIGH");
                 this.negativeInit.Add("LOW");
             }
-
+            this.profileName = fileName;
             return openedConfiguration;
         }
 
