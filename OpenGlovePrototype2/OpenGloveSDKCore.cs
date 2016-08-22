@@ -207,6 +207,15 @@ namespace OpenGloveSDKBackend
             this.negativePins = negativePins;
             this.BaudRate = baudRate;
 
+            this.positiveInit = new List<string>();
+            this.negativeInit = new List<string>();
+
+            for (int i = 0; i < positivePins.Count; i++)
+            {
+                this.positiveInit.Add("HIGH");
+                this.negativeInit.Add("LOW");
+            }
+
             return openedConfiguration;
         }
 
