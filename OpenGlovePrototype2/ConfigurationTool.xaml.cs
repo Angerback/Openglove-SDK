@@ -31,6 +31,10 @@ namespace OpenGloveSDKConfigurationPrototype2
             this.sdkCore = OpenGloveSDKCore.getCore();
             this.initializeSelectors();
             this.updateView();
+            foreach (ComboBox selector in this.selectors)
+            {
+                selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
+            }
         }
 
         /// <summary>
@@ -55,6 +59,7 @@ namespace OpenGloveSDKConfigurationPrototype2
         /// <param name="owner"></param>
         private void removeActuator(String actuator, object owner)
         {
+            Console.WriteLine("Removiendo actuador.");
             foreach (ComboBox selector in this.selectors)
             {
                 if (((ComboBox)owner) != selector)
@@ -106,6 +111,7 @@ namespace OpenGloveSDKConfigurationPrototype2
                     selector.Items.Add(actuator);
                 }
             }
+            
             foreach (ComboBox selector in selectors)
             {
                 selector.SelectionChanged += new SelectionChangedEventHandler(selectorsSelectionChanged);
@@ -123,7 +129,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             this.mappingsList.Items.Clear();
             foreach (KeyValuePair<string, string> mapping in mappings.ToList())
             {
-                Console.WriteLine("MAPPING: "+ mapping.Key + ", " + mapping.Value);
+                //Console.WriteLine("MAPPING: "+ mapping.Key + ", " + mapping.Value);
                 this.mappingsList.Items.Add(new Mapping() { Actuator = mapping.Value, Region = mapping.Key});
             }
         }
@@ -171,11 +177,12 @@ namespace OpenGloveSDKConfigurationPrototype2
         }
 
         private void updateView() {
+            
             foreach (ComboBox selector in selectors)
             {
                 selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
             }
-
+            
             if (this.sdkCore.Mappings != null)
             {
                 //Actualizar vista
@@ -198,7 +205,7 @@ namespace OpenGloveSDKConfigurationPrototype2
                 MessageBox.Show(message, caption, button, MessageBoxImage.Error);
 
             }
-
+            
             foreach (ComboBox selector in selectors)
             {
                 selector.SelectionChanged += new SelectionChangedEventHandler(selectorsSelectionChanged);
