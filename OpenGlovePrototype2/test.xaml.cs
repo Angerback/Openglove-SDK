@@ -27,6 +27,7 @@ namespace OpenGlovePrototype2
         {
             InitializeComponent();
             sdkCore = OpenGloveSDKCore.getCore();
+            //this.connectionBar.Visibility = Visibility.Hidden;
             /*
             OpenFileDialog openConfigurationDialog = new OpenFileDialog();
             openConfigurationDialog.Filter = "XML-File | *.xml";
@@ -55,6 +56,14 @@ namespace OpenGlovePrototype2
         private void buttonActivate_Click(object sender, RoutedEventArgs e)
         {
             string port = (string)listViewPorts.SelectedItem;
+            if (port == null) {
+                string message = "You must select a COM port.";
+                string caption = "COM Port Error";
+                MessageBoxButton button = MessageBoxButton.OK;
+
+                System.Windows.MessageBox.Show(message, caption, button, MessageBoxImage.Information);
+                return;
+            }
             //Establecer comunicacion
             sdkCore.Connect(port);
             this.buttonActivate.IsEnabled = false;

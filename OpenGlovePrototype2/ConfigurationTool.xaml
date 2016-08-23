@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OpenGloveSDKConfigurationPrototype2"
         mc:Ignorable="d"
-        Title="OpenGlove Profile Tool" Height="723.99" Width="1028.412" Background="#FF00B47F" Foreground="White" ResizeMode="NoResize">
+        Title="OpenGlove Profile Tool" Height="723.99" Width="1028.412" Background="#FF00B47F" Foreground="White" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Background="#FFCBF3E7">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="363*"/>

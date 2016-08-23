@@ -42,12 +42,14 @@ namespace OpenGlovePrototype2
             openConfigurationDialog.ShowDialog();
 
             if (openConfigurationDialog.FileName != null) {
-                OpenGloveSDKCore core = OpenGloveSDKCore.getCore();
-                core.openConfiguration(openConfigurationDialog.FileName);
+                if (openConfigurationDialog.FileName != "") {
+                    OpenGloveSDKCore core = OpenGloveSDKCore.getCore();
+                    core.openConfiguration(openConfigurationDialog.FileName);
 
-                ConfigurationTool config = new ConfigurationTool();
-                config.Show();
-                this.Close();
+                    ConfigurationTool config = new ConfigurationTool();
+                    config.Show();
+                    this.Close();
+                }
             }
         }
     }

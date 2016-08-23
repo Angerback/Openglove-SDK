@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OpenGlovePrototype2"
         mc:Ignorable="d"
-        Title="welcome" Height="306.709" Width="453.355">
+        Title="welcome" Height="306.709" Width="459.355" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="171*"/>
