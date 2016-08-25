@@ -43,10 +43,31 @@ namespace OpenGlovePrototype2
 
             if (openConfigurationDialog.FileName != null) {
                 if (openConfigurationDialog.FileName != "") {
-                    OpenGloveSDKCore core = OpenGloveSDKCore.getCore();
-                    core.openConfiguration(openConfigurationDialog.FileName);
+                    OpenGloveSDKCore core = OpenGloveSDKCore.GetCore();
+                    core.profileCfg.openProfileConfiguration(openConfigurationDialog.FileName, core.gloveCfg.gloveHash);
 
-                    ConfigurationTool config = new ConfigurationTool();
+                    ConfigurationTool config = new ConfigurationTool(false);
+                    config.Show();
+                    this.Close();
+                }
+            }
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openConfigurationDialog = new OpenFileDialog();
+            openConfigurationDialog.Filter = "XML-File | *.xml";
+            openConfigurationDialog.Title = "Open a glove configuration file";
+            openConfigurationDialog.ShowDialog();
+
+            if (openConfigurationDialog.FileName != null)
+            {
+                if (openConfigurationDialog.FileName != "")
+                {
+                    OpenGloveSDKCore core = OpenGloveSDKCore.GetCore();
+                    core.gloveCfg.openGloveConfiguration(openConfigurationDialog.FileName);
+
+                    ConfigurationTool config = new ConfigurationTool(true);
                     config.Show();
                     this.Close();
                 }

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using OpenGloveSDKBackend;
 using OpenGloveSDKConfigurationPrototype2;
+using System.Windows.Forms;
 
 namespace OpenGlovePrototype2
 {
@@ -50,45 +51,55 @@ namespace OpenGlovePrototype2
 
             Polarity.ItemsSource = Polarities;
 
-            this.comboBoxBaudRate.ItemsSource = OpenGloveSDKCore.getCore().allowedBaudRates;
+            this.comboBoxBaudRate.ItemsSource = OpenGloveSDKCore.GetCore().gloveCfg.allowedBaudRates;
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            OpenGloveSDKCore core = OpenGloveSDKCore.getCore();
+            OpenGloveSDKCore core = OpenGloveSDKCore.GetCore();
 
-            if (this.comboBoxBaudRate.SelectedItem != null)
-            {
-                core.BaudRate = Int32.Parse(this.comboBoxBaudRate.SelectedItem.ToString());
-                core.positivePins = new List<int>();
-                core.negativePins = new List<int>();
+            SaveFileDialog saveConfigurationDialog = new SaveFileDialog();
+            saveConfigurationDialog.Filter = "XML-File | *.xml";
+            saveConfigurationDialog.Title = "Save your configuration file";
+            saveConfigurationDialog.ShowDialog();
 
-                foreach (PinRow pin in pins)
+            if (saveConfigurationDialog.FileName != "") {
+                if (this.comboBoxBaudRate.SelectedItem != null)
                 {
-                    if (pin.Polarity != null)
+                    core.gloveCfg.BaudRate = Int32.Parse(this.comboBoxBaudRate.SelectedItem.ToString());
+                    core.gloveCfg.positivePins = new List<int>();
+                    core.gloveCfg.negativePins = new List<int>();
+
+                    foreach (PinRow pin in pins)
                     {
-                        if (pin.Polarity.Equals("Positive"))
+                        if (pin.Polarity != null)
                         {
-                            core.positivePins.Add(pin.Pin);
-                        }
-                        else
-                        {
-                            core.negativePins.Add(pin.Pin);
+                            if (pin.Polarity.Equals("Positive"))
+                            {
+                                core.gloveCfg.positivePins.Add(pin.Pin);
+                            }
+                            else
+                            {
+                                core.gloveCfg.negativePins.Add(pin.Pin);
+                            }
                         }
                     }
+                    /*
+                    ConfigurationTool mw = new ConfigurationTool();
+
+                    mw.Show();
+
+                    this.Close();*/
+
+                    core.gloveCfg.saveGloveConfiguration(saveConfigurationDialog.FileName);
                 }
-
-                ConfigurationTool mw = new ConfigurationTool();
-
-                mw.Show();
-
-                this.Close();
-            }
-            else {
-                string message = "Must select BaudRate";
-                string caption = "BaudRate";
-                MessageBoxButton button = MessageBoxButton.OK;
-                MessageBox.Show(message, caption, button, MessageBoxImage.Error);
+                else
+                {
+                    string message = "Must select BaudRate";
+                    string caption = "BaudRate";
+                    MessageBoxButton button = MessageBoxButton.OK;
+                    System.Windows.MessageBox.Show(message, caption, button, MessageBoxImage.Error);
+                }
             }
  
         }

@@ -1,18 +1,5 @@
 ﻿using OpenGloveSDKBackend;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace OpenGlovePrototype2
 {
@@ -26,7 +13,7 @@ namespace OpenGlovePrototype2
         public TestWindow()
         {
             InitializeComponent();
-            sdkCore = OpenGloveSDKCore.getCore();
+            sdkCore = OpenGloveSDKCore.GetCore();
             //this.connectionBar.Visibility = Visibility.Hidden;
             /*
             OpenFileDialog openConfigurationDialog = new OpenFileDialog();
@@ -49,7 +36,6 @@ namespace OpenGlovePrototype2
             }
             this.buttonActivate.IsEnabled = true;
 
-            
         }
 
         

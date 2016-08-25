@@ -25,16 +25,24 @@ namespace OpenGloveSDKConfigurationPrototype2
 
         private IEnumerable<int> actuators;
 
-        public ConfigurationTool()
+        public ConfigurationTool(bool creatingProfile)
         {
             InitializeComponent();
-            this.sdkCore = OpenGloveSDKCore.getCore();
+            this.sdkCore = OpenGloveSDKCore.GetCore();
             this.initializeSelectors();
-            this.updateView();
-            foreach (ComboBox selector in this.selectors)
+            if (!creatingProfile)
             {
-                selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
+                this.updateView();
+                foreach (ComboBox selector in this.selectors)
+                {
+                    selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
+                }
             }
+            else {
+                resetSelectors();
+            }
+
+
         }
 
         /// <summary>
@@ -144,7 +152,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             if (saveConfigurationDialog.FileName != "")
             {
                 Console.WriteLine(saveConfigurationDialog.FileName);
-                this.sdkCore.saveConfiguration(saveConfigurationDialog.FileName);
+                this.sdkCore.profileCfg.saveProfileConfiguration(saveConfigurationDialog.FileName, this.sdkCore.gloveCfg.gloveHash);
                 this.statusBarItemProfile.Content = saveConfigurationDialog.FileName;
 
                 string message = "File saved.";
@@ -170,7 +178,7 @@ namespace OpenGloveSDKConfigurationPrototype2
         private void open(OpenFileDialog openConfigurationDialog) {
             if (openConfigurationDialog.FileName != "")
             {
-                this.sdkCore.openConfiguration(openConfigurationDialog.FileName);
+                this.sdkCore.profileCfg.openProfileConfiguration(openConfigurationDialog.FileName, this.sdkCore.gloveCfg.gloveHash);
 
                 this.updateView();
             }
@@ -183,18 +191,18 @@ namespace OpenGloveSDKConfigurationPrototype2
                 selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
             }
             
-            if (this.sdkCore.Mappings != null)
+            if (this.sdkCore.profileCfg.Mappings != null)
             {
                 //Actualizar vista
-                this.refreshMappingsList(this.sdkCore.Mappings);
+                this.refreshMappingsList(this.sdkCore.profileCfg.Mappings);
                 this.resetSelectors();
 
-                foreach (KeyValuePair<string, string> mapping in this.sdkCore.Mappings.ToList())
+                foreach (KeyValuePair<string, string> mapping in this.sdkCore.profileCfg.Mappings.ToList())
                 {
                     this.selectors[Int32.Parse(mapping.Key)].SelectedItem = Int32.Parse(mapping.Value);
                     this.removeActuator(mapping.Value, this.selectors[Int32.Parse(mapping.Key)]);
                 }
-                this.statusBarItemProfile.Content = this.sdkCore.profileName;
+                this.statusBarItemProfile.Content = this.sdkCore.profileCfg.profileName;
             }
             else
             {
@@ -230,28 +238,28 @@ namespace OpenGloveSDKConfigurationPrototype2
                         removeActuator(selection, sender);
                         try
                         {
-                            this.sdkCore.Mappings.Add(owner, selection);
+                            this.sdkCore.profileCfg.Mappings.Add(owner, selection);
                         }
                         catch (Exception)
                         {
-                            String liberatedActuator = this.sdkCore.Mappings[owner];
+                            String liberatedActuator = this.sdkCore.profileCfg.Mappings[owner];
                             liberateActuator(liberatedActuator, sender);
-                            this.sdkCore.Mappings[owner] = selection;
+                            this.sdkCore.profileCfg.Mappings[owner] = selection;
                         }
                     }
                     else
                     {
                         String liberatedActuator;
-                        this.sdkCore.Mappings.TryGetValue(owner, out liberatedActuator);
+                        this.sdkCore.profileCfg.Mappings.TryGetValue(owner, out liberatedActuator);
                         if (liberatedActuator != null)
                         {
                             liberateActuator(liberatedActuator, sender);
-                            this.sdkCore.Mappings.Remove(owner);
+                            this.sdkCore.profileCfg.Mappings.Remove(owner);
                         }
 
                     }
                 }
-                refreshMappingsList(this.sdkCore.Mappings);
+                refreshMappingsList(this.sdkCore.profileCfg.Mappings);
             }
         }
 
