@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace OpenGloveSDKConfigurationPrototype2
 {
@@ -52,9 +54,9 @@ namespace OpenGloveSDKConfigurationPrototype2
         {
             selectors = new List<ComboBox>();
 
-            foreach (var selector in selectorsGrid.Children.OfType<ComboBox>())
+            foreach (var region in selectorsGrid.Children.OfType<Grid>())
             {
-                selectors.Add(selector);
+                selectors.Add(region.Children.OfType<ComboBox>().First());
             }
            
             actuators = new List<int>();
@@ -260,6 +262,7 @@ namespace OpenGloveSDKConfigurationPrototype2
                     }
                 }
                 refreshMappingsList(this.sdkCore.profileCfg.Mappings);
+                ((ComboBox)sender).Visibility = Visibility.Hidden;
             }
         }
 
@@ -267,6 +270,42 @@ namespace OpenGloveSDKConfigurationPrototype2
         {
             TestWindow test = new TestWindow();
             test.Show();
+        }
+
+        private void Border_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            ((Border)sender).BorderBrush = System.Windows.SystemColors.MenuHighlightBrush;
+        }
+
+        private void Border_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Color color = (Color)ColorConverter.ConvertFromString("#FFDFD991");
+            ((Border)sender).BorderBrush = SystemColors.ControlBrush ;
+        }
+
+        private void Rectangle_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            ((Rectangle)sender).Stroke = System.Windows.SystemColors.MenuHighlightBrush;
+        }
+
+        private void Rectangle_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            ((Rectangle)sender).Stroke = SystemColors.ControlBrush;
+        }
+
+        private void region1_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            //Frame selectorFrame = new Frame();
+            Grid region = (Grid)((Rectangle)sender).Parent;
+            ComboBox selector = region.Children.OfType<ComboBox>().First();
+
+            selector.Visibility = Visibility.Visible;
+            selector.IsDropDownOpen = true;
+        }
+
+        private void selectorClosed(object sender, EventArgs e)
+        {
+            ((ComboBox) sender).Visibility = Visibility.Hidden;
         }
     }
 }
