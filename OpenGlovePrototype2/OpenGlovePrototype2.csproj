@@ -119,16 +119,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="hand2.PNG" />
+    <ProjectReference Include="..\OpenGlove API C Sharp\OpenGlove API C Sharp\OpenGlove API C Sharp.csproj">
+      <Project>{cef4f9b5-732b-4af3-9963-deda08f9b0f7}</Project>
+      <Name>OpenGlove API C Sharp</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="A000011_featured.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenGlove API C Sharp\OpenGlove API C Sharp\OpenGlove API C Sharp.csproj">
-      <Project>{cef4f9b5-732b-4af3-9963-deda08f9b0f7}</Project>
-      <Name>OpenGlove API C Sharp</Name>
-    </ProjectReference>
+    <Resource Include="palm.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
