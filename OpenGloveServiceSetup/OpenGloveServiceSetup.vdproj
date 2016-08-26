@@ -15,14 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0EDD0B41CF83E83A8C05B9BD473FAB10"
-        "OwnerKey" = "8:_39DC299B0D35490A9E8C4D4078A82AD9"
+        "MsmKey" = "8:_0D2990C3B7BE4F41AA7E09F665A81FBF"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_39DC299B0D35490A9E8C4D4078A82AD9"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_0EDD0B41CF83E83A8C05B9BD473FAB10"
+        "OwnerKey" = "8:_0D2990C3B7BE4F41AA7E09F665A81FBF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EDD46FE6E9DC200A37CBAF1C92471012"
+        "OwnerKey" = "8:_0D2990C3B7BE4F41AA7E09F665A81FBF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -34,7 +40,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_39DC299B0D35490A9E8C4D4078A82AD9"
+        "OwnerKey" = "8:_0D2990C3B7BE4F41AA7E09F665A81FBF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EDD46FE6E9DC200A37CBAF1C92471012"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -55,6 +67,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -71,65 +99,81 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
     }
     "Deployable"
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_221E1527AC4843558DFA1653B8BE1D17"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_71A340530DCC43D2931F1888CCE4052A"
             {
             "Name" = "8:Primary output from OpenGloveService (Active)"
             "Condition" = "8:"
-            "Object" = "8:_39DC299B0D35490A9E8C4D4078A82AD9"
-            "FileType" = "3:2"
-            "InstallAction" = "3:4"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_B61882E6_C9B6_410F_8288_232ED71354E4"
-            "InstallerClass" = "11:TRUE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_3FFA996A767146C588C8BFCFAF289FFC"
-            {
-            "Name" = "8:Primary output from OpenGloveService (Active)"
-            "Condition" = "8:"
-            "Object" = "8:_39DC299B0D35490A9E8C4D4078A82AD9"
+            "Object" = "8:_0D2990C3B7BE4F41AA7E09F665A81FBF"
             "FileType" = "3:2"
             "InstallAction" = "3:2"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
-            "Identifier" = "8:_C7996DA9_FEB9_474D_9F4B_A9DE1D466C3B"
+            "Identifier" = "8:_160A5E7B_2E9F_40C6_963F_E35B86298A32"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_44705DB6D88D4BEB852CA0DA24952DF9"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_9E9B95D291CC4DFF87471B88AA20FF5A"
             {
             "Name" = "8:Primary output from OpenGloveService (Active)"
             "Condition" = "8:"
-            "Object" = "8:_39DC299B0D35490A9E8C4D4078A82AD9"
-            "FileType" = "3:2"
-            "InstallAction" = "3:3"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_899D01B0_407E_4C8D_89F6_BEAD10BA742F"
-            "InstallerClass" = "11:TRUE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_DFF13F6D7B2042BB8DE5F12E61A30A4C"
-            {
-            "Name" = "8:Primary output from OpenGloveService (Active)"
-            "Condition" = "8:"
-            "Object" = "8:_39DC299B0D35490A9E8C4D4078A82AD9"
+            "Object" = "8:_0D2990C3B7BE4F41AA7E09F665A81FBF"
             "FileType" = "3:2"
             "InstallAction" = "3:1"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
-            "Identifier" = "8:_B7F21BA5_EE3D_4FB2_990A_F1C369A16A2D"
+            "Identifier" = "8:_0E653E6F_F47B_4168_952A_A50517D39B83"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_A3C7963720114B9081F5E7465846C006"
+            {
+            "Name" = "8:Primary output from OpenGloveService (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_0D2990C3B7BE4F41AA7E09F665A81FBF"
+            "FileType" = "3:2"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_0A84D0A7_7866_444B_B9C5_E11E550760BF"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_DEAA546A3E2D44C380F8E06039E561DA"
+            {
+            "Name" = "8:Primary output from OpenGloveService (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_0D2990C3B7BE4F41AA7E09F665A81FBF"
+            "FileType" = "3:2"
+            "InstallAction" = "3:3"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_F9F4DF28_45B7_4021_884E_F8718A049DDD"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
@@ -170,6 +214,37 @@
                     }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_604CD6995F294DC4A98A76C2F55CDD1A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EDD46FE6E9DC200A37CBAF1C92471012"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:WcfServiceLibrary1, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_EDD46FE6E9DC200A37CBAF1C92471012"
+                    {
+                    "Name" = "8:WcfServiceLibrary1.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:WcfServiceLibrary1.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_604CD6995F294DC4A98A76C2F55CDD1A"
@@ -244,7 +319,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OpenGloveService"
         "ProductCode" = "8:{E3894136-AA3D-4FA7-829E-D9F5D29F0B8F}"
-        "PackageCode" = "8:{9226F502-81E4-446E-BE67-68908281E062}"
+        "PackageCode" = "8:{40B776C9-DC82-4857-B3FB-2975CEE76076}"
         "UpgradeCode" = "8:{3BA82F98-F6B0-442F-8C4A-2799D062FF10}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -763,7 +838,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_39DC299B0D35490A9E8C4D4078A82AD9"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0D2990C3B7BE4F41AA7E09F665A81FBF"
             {
             "SourcePath" = "8:..\\OpenGloveService\\obj\\Debug\\OpenGloveService.exe"
             "TargetName" = "8:"

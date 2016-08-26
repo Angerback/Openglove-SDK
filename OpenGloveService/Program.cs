@@ -14,12 +14,7 @@ namespace OpenGloveService
         /// </summary>
         static void Main()
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
-            {
-                new OpenGloveService()
-            };
-            ServiceBase.Run(ServicesToRun);
+            ServiceBase.Run(new OpenGloveService());
         }
     }
 }

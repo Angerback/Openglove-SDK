@@ -16,7 +16,7 @@ namespace OpenGloveService
             InitializeComponent();
         }
 
-        private void OpenGloveService_AfterInstall(object sender, InstallEventArgs e)
+        private void serviceInstaller1_AfterInstall(object sender, InstallEventArgs e)
         {
 
         }
