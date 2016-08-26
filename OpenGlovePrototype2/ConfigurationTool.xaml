@@ -713,7 +713,705 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="dorsoTab" Header="Dorso">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Image x:Name="image_Copy" Height="540" VerticalAlignment="Top" Source="dorso.PNG" Margin="0,0,95,-28" Stretch="UniformToFill"/>
+                    <Grid x:Name="selectorsGridDorso" Margin="-116,18,110,-46" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="-1"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <Grid Margin="68,116,507,333">
+                            <Rectangle x:Name="region30" HorizontalAlignment="Left" Height="48" Margin="15,1,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-0.789"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox30" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="29" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="151,36,409,412" RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.017"/>
+                                    <RotateTransform Angle="-0.067"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region31" HorizontalAlignment="Left" Height="62" Margin="21,14,0,0" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="3.439"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox31" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="30" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="229,26,327,410" RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region32" HorizontalAlignment="Right" Height="65" Margin="0,7,28,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-0.49"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox32" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="27" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="310,12,232,427" RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region33" HorizontalAlignment="Left" Height="59" Margin="24,19,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="3.582"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox33" HorizontalAlignment="Left" Margin="25,38,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="32" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="67,166,481,284" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region34" HorizontalAlignment="Left" Height="43" Margin="19,6,0,0" VerticalAlignment="Top" Width="33" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" Grid.ColumnSpan="2">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-9.463"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox34" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="33" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Grid.ColumnSpan="2" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="145,113,408,331" RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region35" HorizontalAlignment="Left" Height="57" Margin="22,6,0,0" VerticalAlignment="Top" Width="37" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-0.869"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox35" HorizontalAlignment="Left" Margin="15,25,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="25" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="240,97,327,358" RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region36" HorizontalAlignment="Left" Height="61" Margin="3,5,0,0" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-0.066"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox36" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="35" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="318,85,239,381" RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region37" HorizontalAlignment="Left" Height="59" Margin="14,9,0,0" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="3.576"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox37" HorizontalAlignment="Left" Margin="16,28,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="36" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="92,215,475,238" RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region38" HorizontalAlignment="Left" Height="53" Margin="10,5,0,0" VerticalAlignment="Top" Width="33" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-21.322"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox38" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="37" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="166,191,401,265" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region39" HorizontalAlignment="Left" Height="63" Margin="3,-3,0,0" VerticalAlignment="Top" Width="37" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-6.552"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox39" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="32" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="235,161,327,279" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region40" HorizontalAlignment="Left" Height="77" Margin="9,3,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-0.2"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox40" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="39" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="310,145,249,297" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region41" HorizontalAlignment="Left" Height="72" Margin="15,13,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="7.329"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox41" HorizontalAlignment="Left" Margin="17,38,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="40" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="84,263,418,153" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region42" HorizontalAlignment="Left" Height="38" Margin="38,22,0,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-11.996"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox42" HorizontalAlignment="Left" Margin="34,30,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="41" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="134,238,369,178" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region43" HorizontalAlignment="Left" Height="41" Margin="38,22,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-8.349"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox43" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="42" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="192,237,310,179" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region44" HorizontalAlignment="Left" Height="45" Margin="39,17,0,0" VerticalAlignment="Top" Width="46" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-1.239"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox44" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="43" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="250,236,253,180" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region45" HorizontalAlignment="Left" Height="48" Margin="49,14,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="3.702"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox45" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="44" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="89,302,413,114" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region46" HorizontalAlignment="Left" Height="41" Margin="42,21,0,0" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-11.435"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox46" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="45" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="142,292,360,124" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region47" HorizontalAlignment="Left" Height="39" Margin="41,22,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-8.893"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox47" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="46" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="194,285,307,131" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region48" HorizontalAlignment="Left" Height="42" Margin="41,20,0,0" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-6.363"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox48" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="47" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="250,281,253,135" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region49" HorizontalAlignment="Left" Height="37" Margin="37,23,0,0" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-0.786"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox49" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="48" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="99,343,403,73" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region50" HorizontalAlignment="Left" Height="35" Margin="41,23,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-11.606"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox50" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="49" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="150,334,353,82" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region51" HorizontalAlignment="Left" Height="34" Margin="40,22,0,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-9.262"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox51" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="50" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="201,327,301,89" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region52" HorizontalAlignment="Left" Height="34" Margin="38,23,0,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-6.307"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox52" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="51" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="253,323,250,93" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region53" HorizontalAlignment="Left" Height="33" Margin="35,23,0,0" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-1.264"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox53" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="49" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="343,289,158,126" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region54" HorizontalAlignment="Left" Height="55" Margin="24,32,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="44.179"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox54" HorizontalAlignment="Left" Margin="26,47,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="53" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="394,221,109,193" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region55" HorizontalAlignment="Left" Height="43" Margin="21,47,0,0" VerticalAlignment="Top" Width="59" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-42.982"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox55" HorizontalAlignment="Left" Margin="27,58,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="54" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="135,356,368,58" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region56" HorizontalAlignment="Left" Height="33" Margin="16,42,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-11.193"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox56" HorizontalAlignment="Left" Margin="37,46,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="55" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="235,343,268,71" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region57" HorizontalAlignment="Left" Height="58" Margin="22,44,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-5.327"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox57" HorizontalAlignment="Left" Margin="38,59,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="56" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                        <Grid Margin="140,394,363,20" RenderTransformOrigin="0.5,0.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.023"/>
+                                    <RotateTransform Angle="-0.093"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="region58" HorizontalAlignment="Left" Height="27" Margin="21,38,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-11.625"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <ComboBox x:Name="comboBox58" HorizontalAlignment="Left" Margin="39,40,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="57" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
             </TabItem>
         </TabControl>
         <StatusBar Height="28" Margin="0,658,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="#FF00B47F">
