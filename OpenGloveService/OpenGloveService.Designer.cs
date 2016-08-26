@@ -1,6 +1,6 @@
 ﻿namespace OpenGloveService
 {
-    partial class Service1
+    partial class OpenGloveService
     {
         /// <summary> 
         /// Required designer variable.

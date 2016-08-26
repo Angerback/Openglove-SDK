@@ -10,19 +10,22 @@ using System.Threading.Tasks;
 
 namespace OpenGloveService
 {
-    public partial class Service1 : ServiceBase
+    public partial class OpenGloveService : ServiceBase
     {
-        public Service1()
+        public OpenGloveService()
         {
             InitializeComponent();
         }
 
         protected override void OnStart(string[] args)
         {
+            
         }
 
         protected override void OnStop()
         {
         }
+
+        
     }
 }
