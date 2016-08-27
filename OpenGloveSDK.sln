@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGloveService", "OpenGlo
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "OpenGloveServiceSetup", "OpenGloveServiceSetup\OpenGloveServiceSetup.vdproj", "{7CE3D344-107D-46E2-9148-EA889076FD42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestServiceApp", "TestServiceApp\TestServiceApp.csproj", "{F03E905C-58F8-4FF6-BFB3-B94065457787}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGlove SDK Core", "ClassLibrary2\OpenGlove SDK Core.csproj", "{4B30E00B-B8CE-43BE-A57E-433B304A14A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,10 @@ Global
 		{905DAF6F-33D3-4CBC-8299-36FC7B109F6F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7CE3D344-107D-46E2-9148-EA889076FD42}.Debug|Any CPU.ActiveCfg = Debug
 		{7CE3D344-107D-46E2-9148-EA889076FD42}.Release|Any CPU.ActiveCfg = Release
-		{F03E905C-58F8-4FF6-BFB3-B94065457787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F03E905C-58F8-4FF6-BFB3-B94065457787}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F03E905C-58F8-4FF6-BFB3-B94065457787}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F03E905C-58F8-4FF6-BFB3-B94065457787}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B30E00B-B8CE-43BE-A57E-433B304A14A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B30E00B-B8CE-43BE-A57E-433B304A14A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B30E00B-B8CE-43BE-A57E-433B304A14A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B30E00B-B8CE-43BE-A57E-433B304A14A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace OpenGloveSDKBackend
+namespace OpenGlove
 {
-    class OpenGloveSDKCore
+    public class OpenGloveSDKCore
     {
         public class GloveConfiguration {
             public int BaudRate { get; set; }
@@ -95,6 +95,8 @@ namespace OpenGloveSDKBackend
 
             public String gloveHash { get; set; }
 
+            public int AreaCount { get; } = 58;
+
             /// <summary>
             /// Mappings for region (key) and actuators (value).
             /// </summary>
@@ -157,10 +159,10 @@ namespace OpenGloveSDKBackend
 
         public GloveConfiguration gloveCfg { get; }
 
-        private OpenGlove.OpenGlove openGlove;
+        private OpenGlove openGlove;
 
         public OpenGloveSDKCore() {
-            this.openGlove = new OpenGlove.OpenGlove();
+            this.openGlove = new OpenGlove();
             this.profileCfg = new ProfileConfiguration();
             this.gloveCfg = new GloveConfiguration();
         }
@@ -171,24 +173,24 @@ namespace OpenGloveSDKBackend
         /// <param name="port"></param>
         public void Connect(string port)
         {
-            GetOpenGlove().OpenPort(port, this.gloveCfg.BaudRate);
-            GetOpenGlove().InitializeMotor(this.gloveCfg.positivePins); //Positive pins deberian definirse
-            GetOpenGlove().InitializeMotor(this.gloveCfg.negativePins); //Negative pins deberian definirse
-            GetOpenGlove().ActivateMotor(this.gloveCfg.negativePins, this.gloveCfg.negativeInit);
+            openGlove.OpenPort(port, this.gloveCfg.BaudRate);
+            openGlove.InitializeMotor(this.gloveCfg.positivePins); //Positive pins deberian definirse
+            openGlove.InitializeMotor(this.gloveCfg.negativePins); //Negative pins deberian definirse
+            openGlove.ActivateMotor(this.gloveCfg.negativePins, this.gloveCfg.negativeInit);
         }
 
         /// <summary>
         /// Closes the current active connection.
         /// </summary>
         public void Disconnect() {
-            GetOpenGlove().ClosePort();
+            openGlove.ClosePort();
         }
 
         /// <summary>
         /// Sets all the configured actuators to HIGH state.
         /// </summary>
         public void StartTest() {
-            GetOpenGlove().ActivateMotor(this.gloveCfg.positivePins, this.gloveCfg.positiveInit);
+            openGlove.ActivateMotor(this.gloveCfg.positivePins, this.gloveCfg.positiveInit);
         }
 
         /// <summary>
@@ -196,7 +198,7 @@ namespace OpenGloveSDKBackend
         /// </summary>
         public void StopTest()
         {
-            GetOpenGlove().ActivateMotor(this.gloveCfg.positivePins, this.gloveCfg.negativeInit);
+            openGlove.ActivateMotor(this.gloveCfg.positivePins, this.gloveCfg.negativeInit);
         }
 
         /// <summary>
@@ -255,13 +257,10 @@ namespace OpenGloveSDKBackend
             }
         }
 
-        public OpenGlove.OpenGlove GetOpenGlove()
-        {
-            if (this.openGlove == null) {
-                this.openGlove = new OpenGlove.OpenGlove();
-            }
-            return this.openGlove;
+        public string[] GetPortNames() {
+            return this.openGlove.GetPortNames();
         }
+        
 
 
     }

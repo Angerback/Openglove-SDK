@@ -12,6 +12,7 @@ using System.Configuration;
 using System.Configuration.Install;
 using System.Threading;
 using System.ServiceModel.Description;
+using OpenGlove;
 
 namespace OpenGloveService
 {
@@ -29,26 +30,26 @@ namespace OpenGloveService
         // Start the Windows service.
         protected override void OnStart(string[] args)
         {
-            Debugger.Launch();
+            //Debugger.Launch();
 
             if (m_svcHost != null) m_svcHost.Close();
 
-            string strAdrHTTP = "http://localhost:9001/CalcService";
-            string strAdrTCP = "net.tcp://localhost:9002/CalcService";
+            string strAdrHTTP = "http://localhost:9001/OGService";
+            string strAdrTCP = "net.tcp://localhost:9002/OGService";
 
             Uri[] adrbase = { new Uri(strAdrHTTP), new Uri(strAdrTCP) };
-            m_svcHost = new ServiceHost(typeof(CalcService), adrbase);
+            m_svcHost = new ServiceHost(typeof(OGService), adrbase);
 
             ServiceMetadataBehavior mBehave = new ServiceMetadataBehavior();
             m_svcHost.Description.Behaviors.Add(mBehave);
 
             BasicHttpBinding httpb = new BasicHttpBinding();
-            m_svcHost.AddServiceEndpoint(typeof(ICalcService), httpb, strAdrHTTP);
+            m_svcHost.AddServiceEndpoint(typeof(IOGService), httpb, strAdrHTTP);
             m_svcHost.AddServiceEndpoint(typeof(IMetadataExchange),
             MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
 
             NetTcpBinding tcpb = new NetTcpBinding();
-            m_svcHost.AddServiceEndpoint(typeof(ICalcService), tcpb, strAdrTCP);
+            m_svcHost.AddServiceEndpoint(typeof(IOGService), tcpb, strAdrTCP);
             m_svcHost.AddServiceEndpoint(typeof(IMetadataExchange),
             MetadataExchangeBindings.CreateMexTcpBinding(), "mex");
 
@@ -67,39 +68,36 @@ namespace OpenGloveService
 
 
     [ServiceContract]
-    public interface ICalcService
+    public interface IOGService
     {
         [OperationContract]
-        double Add(double dblNum1, double dblNum2);
+        int[] GetMappings();
+
         [OperationContract]
-        double Subtract(double dblNum1, double dblNum2);
-        [OperationContract]
-        double Multiply(double dblNum1, double dblNum2);
-        [OperationContract]
-        double Divide(double dblNum1, double dblNum2);
+        OpenGloveSDKCore GetCore();
     }
 
-    public class CalcService : ICalcService
+    public class OGService : IOGService
     {
-        public double Add(double dblNum1, double dblNum2)
+        private OpenGloveSDKCore core = OpenGloveSDKCore.GetCore();
+
+        public int[] GetMappings()
         {
-            return (dblNum1 + dblNum2);
+            int[] mappingsList = new int[core.profileCfg.AreaCount];
+
+            foreach (KeyValuePair<string,string> mapping in core.profileCfg.Mappings.ToList())
+            {
+                mappingsList[Int32.Parse(mapping.Key)] = Int32.Parse(mapping.Value);
+            }
+
+            return mappingsList;
         }
 
-        public double Subtract(double dblNum1, double dblNum2)
-        {
-            return (dblNum1 - dblNum2);
-        }
-
-        public double Multiply(double dblNum1, double dblNum2)
-        {
-            return (dblNum1 * dblNum2);
-        }
-
-        public double Divide(double dblNum1, double dblNum2)
-        {
-            return ((dblNum2 == 0) ? 0 : (dblNum1 / dblNum2));
+        public OpenGloveSDKCore GetCore() {
+            if (this.core == null) {
+                this.core = OpenGloveSDKCore.GetCore();
+            }
+            return this.core;
         }
     }
-
 }

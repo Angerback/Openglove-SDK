@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using OpenGlovePrototype2;
-using OpenGloveSDKBackend;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +7,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using OpenGlove;
+using OpenGlovePrototype2.ServiceReference1;
 
 namespace OpenGloveSDKConfigurationPrototype2
 {
@@ -30,21 +31,56 @@ namespace OpenGloveSDKConfigurationPrototype2
         public ConfigurationTool(bool creatingProfile)
         {
             InitializeComponent();
-            this.sdkCore = OpenGloveSDKCore.GetCore();
-            this.initializeSelectors();
-            if (!creatingProfile)
+
+            bool serviceAvailabe = this.connectToService();
+
+            if (serviceAvailabe)
             {
-                this.updateView();
-                foreach (ComboBox selector in this.selectors)
+                this.sdkCore = OpenGloveSDKCore.GetCore();
+                this.initializeSelectors();
+                if (!creatingProfile)
                 {
-                    selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
+                    this.updateView();
+                    foreach (ComboBox selector in this.selectors)
+                    {
+                        selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
+                    }
+                }
+                else
+                {
+                    resetSelectors();
                 }
             }
-            else {
-                resetSelectors();
+            else
+            {
+                this.Close();
             }
 
+        }
 
+        /// <summary>
+        /// Tests if the OpenGlove Service is up and running and is responding.
+        /// </summary>
+        /// <returns></returns>
+        private bool connectToService()
+        {
+            OGServiceClient sdkClient = new OGServiceClient("BasicHttpBinding_IOGService");
+            int[] mappings = null;
+            try
+            {
+                mappings = sdkClient.GetMappings();
+                return true;
+            }
+            catch (Exception)
+            {
+                string message = "Failed to connect with SDK Service. Is it running?";
+                string caption = "Service failed";
+                MessageBoxButton button = MessageBoxButton.OK;
+
+                MessageBox.Show(message, caption, button, MessageBoxImage.Information);
+                return false;
+            }
+            
         }
 
         /// <summary>
@@ -144,6 +180,11 @@ namespace OpenGloveSDKConfigurationPrototype2
             }
         }
 
+        /// <summary>
+        /// Handles the action of saving a profile
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveConfigurationDialog = new SaveFileDialog();
@@ -166,6 +207,11 @@ namespace OpenGloveSDKConfigurationPrototype2
             }
         }
 
+        /// <summary>
+        /// Handles the action of opening a profile
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void openButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openConfigurationDialog = new OpenFileDialog();
@@ -177,6 +223,11 @@ namespace OpenGloveSDKConfigurationPrototype2
 
         }
 
+
+        /// <summary>
+        /// Handles the action of communicating with the core and opening the actual file.
+        /// </summary>
+        /// <param name="openConfigurationDialog"></param>
         private void open(OpenFileDialog openConfigurationDialog) {
             if (openConfigurationDialog.FileName != "")
             {
@@ -186,6 +237,9 @@ namespace OpenGloveSDKConfigurationPrototype2
             }
         }
 
+        /// <summary>
+        /// Sets the selectors and MappingsList to an updated state, meaningful for the user.
+        /// </summary>
         private void updateView() {
             
             foreach (ComboBox selector in selectors)
@@ -222,6 +276,11 @@ namespace OpenGloveSDKConfigurationPrototype2
             }
         }
 
+        /// <summary>
+        /// Handles the event of selectors (combobox in this case) changing their selection.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void selectorsSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (((ComboBox)sender).SelectedItem != null) {
@@ -266,28 +325,32 @@ namespace OpenGloveSDKConfigurationPrototype2
             }
         }
 
+        /// <summary>
+        /// Displays a window for testing the current profile
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonTestConfig_Click(object sender, RoutedEventArgs e)
         {
             TestWindow test = new TestWindow();
             test.Show();
         }
 
-        private void Border_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            ((Border)sender).BorderBrush = System.Windows.SystemColors.MenuHighlightBrush;
-        }
-
-        private void Border_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            Color color = (Color)ColorConverter.ConvertFromString("#FFDFD991");
-            ((Border)sender).BorderBrush = SystemColors.ControlBrush ;
-        }
-
+        /// <summary>
+        /// Handles the event of mouse entering a region. Highlights the sender region.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Rectangle_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
             ((Rectangle)sender).Stroke = System.Windows.SystemColors.MenuHighlightBrush;
         }
 
+        /// <summary>
+        /// Handles the event of mouse leaving a region. Dimms the sender region.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Rectangle_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
             ((Rectangle)sender).Stroke = SystemColors.ControlBrush;

@@ -1,4 +1,4 @@
-﻿using OpenGloveSDKBackend;
+﻿using OpenGlove;
 using System.Windows;
 
 namespace OpenGlovePrototype2
@@ -27,8 +27,7 @@ namespace OpenGlovePrototype2
         private void buttonRefreshPorts_Click(object sender, RoutedEventArgs e)
         {
             this.listViewPorts.Items.Clear();
-            sdkCore.GetOpenGlove();
-            string[] ports = sdkCore.GetOpenGlove().GetPortNames();
+            string[] ports = sdkCore.GetPortNames();
 
             foreach (var port in ports)
             {

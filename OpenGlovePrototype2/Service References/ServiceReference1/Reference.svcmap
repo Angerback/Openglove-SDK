@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2fcc66f4-1d34-40b7-8a77-b36302fe5a1d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9001/OGService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="9c7f6e6e-5f3c-4469-bfdc-f022d77d61b9" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="26023061-6db9-49ea-b958-d635ca57d300" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="0c3423d2-ff4a-434a-bd6b-772acea83606" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="2c213495-4612-40a7-9fa6-4a6111cb3b4f" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
+    <MetadataFile FileName="OpenGlove.xsd" MetadataType="Schema" ID="71573480-7f8f-44dc-889e-cf5055dac897" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

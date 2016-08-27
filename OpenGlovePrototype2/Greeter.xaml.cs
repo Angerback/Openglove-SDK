@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using OpenGloveSDKConfigurationPrototype2;
 using Microsoft.Win32;
-using OpenGloveSDKBackend;
+using OpenGlove;
 
 namespace OpenGlovePrototype2
 {
