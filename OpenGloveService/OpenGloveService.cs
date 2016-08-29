@@ -30,7 +30,7 @@ namespace OpenGloveService
         // Start the Windows service.
         protected override void OnStart(string[] args)
         {
-            //Debugger.Launch();
+            
 
             if (m_svcHost != null) m_svcHost.Close();
 
@@ -71,17 +71,53 @@ namespace OpenGloveService
     public interface IOGService
     {
         [OperationContract]
-        int[] GetMappings();
+        int[] GetMappingsArray();
 
         [OperationContract]
         OpenGloveSDKCore GetCore();
+
+        [OperationContract]
+        void SetConfiguration(int BaudRate, int[] positivePins, int[] negativePins, string[] positiveInit, string[] negativeInit, string gloveHash, string gloveName);
+
+        [OperationContract]
+        int GetBaudRate();
+
+        [OperationContract]
+        int[] GetPositivePins();
+
+        [OperationContract]
+        int[] GetNegativePins();
+
+        [OperationContract]
+        string[] GetPositiveInit();
+
+        [OperationContract]
+        string[] GetNegativeInit();
+
+        [OperationContract]
+        string GetGloveHash();
+
+        [OperationContract]
+        string GetGloveName();
+
+        [OperationContract]
+        void SetProfile(string profileName, string gloveHash, Dictionary<string, string> mappings);
+
+        [OperationContract]
+        string GetProfileName();
+
+        [OperationContract]
+        string GetProfileGloveHash();
+
+        [OperationContract]
+        Dictionary<string, string> GetMappingsDictionary();
     }
 
     public class OGService : IOGService
     {
         private OpenGloveSDKCore core = OpenGloveSDKCore.GetCore();
 
-        public int[] GetMappings()
+        public int[] GetMappingsArray()
         {
             int[] mappingsList = new int[core.profileCfg.AreaCount];
 
@@ -98,6 +134,74 @@ namespace OpenGloveService
                 this.core = OpenGloveSDKCore.GetCore();
             }
             return this.core;
+        }
+
+        public void SetConfiguration(int BaudRate, int[] positivePins, int[] negativePins, string[] positiveInit, string[] negativeInit, string gloveHash, string gloveName) {
+            Debugger.Launch();
+            this.core.gloveCfg.BaudRate = BaudRate;
+            this.core.gloveCfg.positivePins = positivePins.ToList();
+            this.core.gloveCfg.negativePins = negativePins.ToList();
+            this.core.gloveCfg.positiveInit = positiveInit.ToList();
+            this.core.gloveCfg.negativeInit = negativeInit.ToList();
+            this.core.gloveCfg.gloveHash = gloveHash;
+            this.core.gloveCfg.gloveName = gloveName;
+        }
+
+        public void SetProfile(string profileName, string gloveHash, Dictionary<string,string> mappings) {
+            Debugger.Launch();
+            this.core.profileCfg.profileName = profileName;
+            this.core.profileCfg.gloveHash = gloveHash;
+            this.core.profileCfg.Mappings = mappings;
+        }
+
+        public int GetBaudRate()
+        {
+            return this.core.gloveCfg.BaudRate;
+        }
+
+        public int[] GetPositivePins()
+        {
+            return this.core.gloveCfg.positivePins.ToArray();
+        }
+
+        public int[] GetNegativePins()
+        {
+            return this.core.gloveCfg.negativePins.ToArray();
+        }
+
+        public string[] GetPositiveInit()
+        {
+            return this.core.gloveCfg.positiveInit.ToArray();
+        }
+
+        public string[] GetNegativeInit()
+        {
+            return this.core.gloveCfg.negativeInit.ToArray();
+        }
+
+        public string GetGloveHash()
+        {
+            return this.core.gloveCfg.gloveHash;
+        }
+
+        public string GetGloveName()
+        {
+            return this.core.gloveCfg.gloveName;
+        }
+
+        public string GetProfileName()
+        {
+            return this.core.profileCfg.profileName;
+        }
+
+        public string GetProfileGloveHash()
+        {
+            return this.core.profileCfg.gloveHash;
+        }
+
+        public Dictionary<string, string> GetMappingsDictionary()
+        {
+            return this.core.profileCfg.Mappings;
         }
     }
 }

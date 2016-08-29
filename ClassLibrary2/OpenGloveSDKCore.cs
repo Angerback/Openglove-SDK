@@ -22,6 +22,8 @@ namespace OpenGlove
 
             public String gloveHash { get; set; }
 
+            public String gloveName { get; set; }
+
             public void openGloveConfiguration(String fileName)
             {
 
@@ -47,6 +49,7 @@ namespace OpenGlove
                 this.negativePins = negativePins;
                 this.BaudRate = baudRate;
                 this.gloveHash = (string)xml.Root.Attribute("gloveHash");
+                this.gloveName = (string)xml.Root.Attribute("gloveName");
 
                 this.positiveInit = new List<string>();
                 this.negativeInit = new List<string>();
@@ -84,6 +87,7 @@ namespace OpenGlove
                 gloveHash = positivePins.GetHashCode().ToString();
                 rootXML.SetAttributeValue("baudRate", BaudRate);
                 rootXML.SetAttributeValue("gloveHash", gloveHash);
+                rootXML.SetAttributeValue("gloveName", name);
                 rootXML.Save(name);
 
                 return 0;

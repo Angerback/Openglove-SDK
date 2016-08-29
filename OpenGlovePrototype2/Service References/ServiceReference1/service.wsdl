@@ -37,11 +37,11 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/OpenGlove" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IOGService_GetMappings_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetMappings" />
+  <wsdl:message name="IOGService_GetMappingsArray_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMappingsArray" />
   </wsdl:message>
-  <wsdl:message name="IOGService_GetMappings_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetMappingsResponse" />
+  <wsdl:message name="IOGService_GetMappingsArray_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMappingsArrayResponse" />
   </wsdl:message>
   <wsdl:message name="IOGService_GetCore_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCore" />
@@ -49,20 +49,140 @@
   <wsdl:message name="IOGService_GetCore_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCoreResponse" />
   </wsdl:message>
+  <wsdl:message name="IOGService_SetConfiguration_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_SetConfiguration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetBaudRate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBaudRate" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetBaudRate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBaudRateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetPositivePins_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPositivePins" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetPositivePins_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPositivePinsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetNegativePins_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegativePins" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetNegativePins_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegativePinsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetPositiveInit_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPositiveInit" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetPositiveInit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPositiveInitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetNegativeInit_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegativeInit" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetNegativeInit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNegativeInitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetGloveHash_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGloveHash" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetGloveHash_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGloveHashResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetGloveName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGloveName" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetGloveName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGloveNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_SetProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetProfile" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_SetProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetProfileName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfileName" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetProfileName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfileNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetProfileGloveHash_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfileGloveHash" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetProfileGloveHash_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfileGloveHashResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetMappingsDictionary_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMappingsDictionary" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetMappingsDictionary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMappingsDictionaryResponse" />
+  </wsdl:message>
   <wsdl:portType name="IOGService">
-    <wsdl:operation name="GetMappings">
-      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetMappings" message="tns:IOGService_GetMappings_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetMappingsResponse" message="tns:IOGService_GetMappings_OutputMessage" />
+    <wsdl:operation name="GetMappingsArray">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetMappingsArray" message="tns:IOGService_GetMappingsArray_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetMappingsArrayResponse" message="tns:IOGService_GetMappingsArray_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCore">
       <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetCore" message="tns:IOGService_GetCore_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetCoreResponse" message="tns:IOGService_GetCore_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="SetConfiguration">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/SetConfiguration" message="tns:IOGService_SetConfiguration_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/SetConfigurationResponse" message="tns:IOGService_SetConfiguration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBaudRate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetBaudRate" message="tns:IOGService_GetBaudRate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetBaudRateResponse" message="tns:IOGService_GetBaudRate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPositivePins">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetPositivePins" message="tns:IOGService_GetPositivePins_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetPositivePinsResponse" message="tns:IOGService_GetPositivePins_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNegativePins">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetNegativePins" message="tns:IOGService_GetNegativePins_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetNegativePinsResponse" message="tns:IOGService_GetNegativePins_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPositiveInit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetPositiveInit" message="tns:IOGService_GetPositiveInit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetPositiveInitResponse" message="tns:IOGService_GetPositiveInit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNegativeInit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetNegativeInit" message="tns:IOGService_GetNegativeInit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetNegativeInitResponse" message="tns:IOGService_GetNegativeInit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGloveHash">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetGloveHash" message="tns:IOGService_GetGloveHash_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetGloveHashResponse" message="tns:IOGService_GetGloveHash_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGloveName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetGloveName" message="tns:IOGService_GetGloveName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetGloveNameResponse" message="tns:IOGService_GetGloveName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetProfile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/SetProfile" message="tns:IOGService_SetProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/SetProfileResponse" message="tns:IOGService_SetProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetProfileName" message="tns:IOGService_GetProfileName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetProfileNameResponse" message="tns:IOGService_GetProfileName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileGloveHash">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetProfileGloveHash" message="tns:IOGService_GetProfileGloveHash_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetProfileGloveHashResponse" message="tns:IOGService_GetProfileGloveHash_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMappingsDictionary">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetMappingsDictionary" message="tns:IOGService_GetMappingsDictionary_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetMappingsDictionaryResponse" message="tns:IOGService_GetMappingsDictionary_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOGService" type="tns:IOGService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetMappings">
-      <soap:operation soapAction="http://tempuri.org/IOGService/GetMappings" style="document" />
+    <wsdl:operation name="GetMappingsArray">
+      <soap:operation soapAction="http://tempuri.org/IOGService/GetMappingsArray" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -79,12 +199,120 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SetConfiguration">
+      <soap:operation soapAction="http://tempuri.org/IOGService/SetConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBaudRate">
+      <soap:operation soapAction="http://tempuri.org/IOGService/GetBaudRate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPositivePins">
+      <soap:operation soapAction="http://tempuri.org/IOGService/GetPositivePins" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNegativePins">
+      <soap:operation soapAction="http://tempuri.org/IOGService/GetNegativePins" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPositiveInit">
+      <soap:operation soapAction="http://tempuri.org/IOGService/GetPositiveInit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNegativeInit">
+      <soap:operation soapAction="http://tempuri.org/IOGService/GetNegativeInit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGloveHash">
+      <soap:operation soapAction="http://tempuri.org/IOGService/GetGloveHash" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGloveName">
+      <soap:operation soapAction="http://tempuri.org/IOGService/GetGloveName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetProfile">
+      <soap:operation soapAction="http://tempuri.org/IOGService/SetProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileName">
+      <soap:operation soapAction="http://tempuri.org/IOGService/GetProfileName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileGloveHash">
+      <soap:operation soapAction="http://tempuri.org/IOGService/GetProfileGloveHash" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMappingsDictionary">
+      <soap:operation soapAction="http://tempuri.org/IOGService/GetMappingsDictionary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IOGService" type="tns:IOGService">
     <wsp:PolicyReference URI="#NetTcpBinding_IOGService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="GetMappings">
-      <soap12:operation soapAction="http://tempuri.org/IOGService/GetMappings" style="document" />
+    <wsdl:operation name="GetMappingsArray">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/GetMappingsArray" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -94,6 +322,114 @@
     </wsdl:operation>
     <wsdl:operation name="GetCore">
       <soap12:operation soapAction="http://tempuri.org/IOGService/GetCore" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetConfiguration">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/SetConfiguration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBaudRate">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/GetBaudRate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPositivePins">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/GetPositivePins" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNegativePins">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/GetNegativePins" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPositiveInit">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/GetPositiveInit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNegativeInit">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/GetNegativeInit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGloveHash">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/GetGloveHash" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGloveName">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/GetGloveName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetProfile">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/SetProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileName">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/GetProfileName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileGloveHash">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/GetProfileGloveHash" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMappingsDictionary">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/GetMappingsDictionary" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

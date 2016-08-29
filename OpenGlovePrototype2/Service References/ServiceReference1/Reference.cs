@@ -15,17 +15,89 @@ namespace OpenGlovePrototype2.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IOGService")]
     public interface IOGService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetMappings", ReplyAction="http://tempuri.org/IOGService/GetMappingsResponse")]
-        int[] GetMappings();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetMappingsArray", ReplyAction="http://tempuri.org/IOGService/GetMappingsArrayResponse")]
+        int[] GetMappingsArray();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetMappings", ReplyAction="http://tempuri.org/IOGService/GetMappingsResponse")]
-        System.Threading.Tasks.Task<int[]> GetMappingsAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetMappingsArray", ReplyAction="http://tempuri.org/IOGService/GetMappingsArrayResponse")]
+        System.Threading.Tasks.Task<int[]> GetMappingsArrayAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetCore", ReplyAction="http://tempuri.org/IOGService/GetCoreResponse")]
         OpenGlove.OpenGloveSDKCore GetCore();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetCore", ReplyAction="http://tempuri.org/IOGService/GetCoreResponse")]
         System.Threading.Tasks.Task<OpenGlove.OpenGloveSDKCore> GetCoreAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/SetConfiguration", ReplyAction="http://tempuri.org/IOGService/SetConfigurationResponse")]
+        void SetConfiguration(int BaudRate, int[] positivePins, int[] negativePins, string[] positiveInit, string[] negativeInit, string gloveHash, string gloveName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/SetConfiguration", ReplyAction="http://tempuri.org/IOGService/SetConfigurationResponse")]
+        System.Threading.Tasks.Task SetConfigurationAsync(int BaudRate, int[] positivePins, int[] negativePins, string[] positiveInit, string[] negativeInit, string gloveHash, string gloveName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetBaudRate", ReplyAction="http://tempuri.org/IOGService/GetBaudRateResponse")]
+        int GetBaudRate();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetBaudRate", ReplyAction="http://tempuri.org/IOGService/GetBaudRateResponse")]
+        System.Threading.Tasks.Task<int> GetBaudRateAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetPositivePins", ReplyAction="http://tempuri.org/IOGService/GetPositivePinsResponse")]
+        int[] GetPositivePins();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetPositivePins", ReplyAction="http://tempuri.org/IOGService/GetPositivePinsResponse")]
+        System.Threading.Tasks.Task<int[]> GetPositivePinsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetNegativePins", ReplyAction="http://tempuri.org/IOGService/GetNegativePinsResponse")]
+        int[] GetNegativePins();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetNegativePins", ReplyAction="http://tempuri.org/IOGService/GetNegativePinsResponse")]
+        System.Threading.Tasks.Task<int[]> GetNegativePinsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetPositiveInit", ReplyAction="http://tempuri.org/IOGService/GetPositiveInitResponse")]
+        string[] GetPositiveInit();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetPositiveInit", ReplyAction="http://tempuri.org/IOGService/GetPositiveInitResponse")]
+        System.Threading.Tasks.Task<string[]> GetPositiveInitAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetNegativeInit", ReplyAction="http://tempuri.org/IOGService/GetNegativeInitResponse")]
+        string[] GetNegativeInit();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetNegativeInit", ReplyAction="http://tempuri.org/IOGService/GetNegativeInitResponse")]
+        System.Threading.Tasks.Task<string[]> GetNegativeInitAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetGloveHash", ReplyAction="http://tempuri.org/IOGService/GetGloveHashResponse")]
+        string GetGloveHash();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetGloveHash", ReplyAction="http://tempuri.org/IOGService/GetGloveHashResponse")]
+        System.Threading.Tasks.Task<string> GetGloveHashAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetGloveName", ReplyAction="http://tempuri.org/IOGService/GetGloveNameResponse")]
+        string GetGloveName();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetGloveName", ReplyAction="http://tempuri.org/IOGService/GetGloveNameResponse")]
+        System.Threading.Tasks.Task<string> GetGloveNameAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/SetProfile", ReplyAction="http://tempuri.org/IOGService/SetProfileResponse")]
+        void SetProfile(string profileName, string gloveHash, System.Collections.Generic.Dictionary<string, string> mappings);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/SetProfile", ReplyAction="http://tempuri.org/IOGService/SetProfileResponse")]
+        System.Threading.Tasks.Task SetProfileAsync(string profileName, string gloveHash, System.Collections.Generic.Dictionary<string, string> mappings);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetProfileName", ReplyAction="http://tempuri.org/IOGService/GetProfileNameResponse")]
+        string GetProfileName();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetProfileName", ReplyAction="http://tempuri.org/IOGService/GetProfileNameResponse")]
+        System.Threading.Tasks.Task<string> GetProfileNameAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetProfileGloveHash", ReplyAction="http://tempuri.org/IOGService/GetProfileGloveHashResponse")]
+        string GetProfileGloveHash();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetProfileGloveHash", ReplyAction="http://tempuri.org/IOGService/GetProfileGloveHashResponse")]
+        System.Threading.Tasks.Task<string> GetProfileGloveHashAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetMappingsDictionary", ReplyAction="http://tempuri.org/IOGService/GetMappingsDictionaryResponse")]
+        System.Collections.Generic.Dictionary<string, string> GetMappingsDictionary();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetMappingsDictionary", ReplyAction="http://tempuri.org/IOGService/GetMappingsDictionaryResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, string>> GetMappingsDictionaryAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,12 +127,12 @@ namespace OpenGlovePrototype2.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public int[] GetMappings() {
-            return base.Channel.GetMappings();
+        public int[] GetMappingsArray() {
+            return base.Channel.GetMappingsArray();
         }
         
-        public System.Threading.Tasks.Task<int[]> GetMappingsAsync() {
-            return base.Channel.GetMappingsAsync();
+        public System.Threading.Tasks.Task<int[]> GetMappingsArrayAsync() {
+            return base.Channel.GetMappingsArrayAsync();
         }
         
         public OpenGlove.OpenGloveSDKCore GetCore() {
@@ -69,6 +141,102 @@ namespace OpenGlovePrototype2.ServiceReference1 {
         
         public System.Threading.Tasks.Task<OpenGlove.OpenGloveSDKCore> GetCoreAsync() {
             return base.Channel.GetCoreAsync();
+        }
+        
+        public void SetConfiguration(int BaudRate, int[] positivePins, int[] negativePins, string[] positiveInit, string[] negativeInit, string gloveHash, string gloveName) {
+            base.Channel.SetConfiguration(BaudRate, positivePins, negativePins, positiveInit, negativeInit, gloveHash, gloveName);
+        }
+        
+        public System.Threading.Tasks.Task SetConfigurationAsync(int BaudRate, int[] positivePins, int[] negativePins, string[] positiveInit, string[] negativeInit, string gloveHash, string gloveName) {
+            return base.Channel.SetConfigurationAsync(BaudRate, positivePins, negativePins, positiveInit, negativeInit, gloveHash, gloveName);
+        }
+        
+        public int GetBaudRate() {
+            return base.Channel.GetBaudRate();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetBaudRateAsync() {
+            return base.Channel.GetBaudRateAsync();
+        }
+        
+        public int[] GetPositivePins() {
+            return base.Channel.GetPositivePins();
+        }
+        
+        public System.Threading.Tasks.Task<int[]> GetPositivePinsAsync() {
+            return base.Channel.GetPositivePinsAsync();
+        }
+        
+        public int[] GetNegativePins() {
+            return base.Channel.GetNegativePins();
+        }
+        
+        public System.Threading.Tasks.Task<int[]> GetNegativePinsAsync() {
+            return base.Channel.GetNegativePinsAsync();
+        }
+        
+        public string[] GetPositiveInit() {
+            return base.Channel.GetPositiveInit();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetPositiveInitAsync() {
+            return base.Channel.GetPositiveInitAsync();
+        }
+        
+        public string[] GetNegativeInit() {
+            return base.Channel.GetNegativeInit();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetNegativeInitAsync() {
+            return base.Channel.GetNegativeInitAsync();
+        }
+        
+        public string GetGloveHash() {
+            return base.Channel.GetGloveHash();
+        }
+        
+        public System.Threading.Tasks.Task<string> GetGloveHashAsync() {
+            return base.Channel.GetGloveHashAsync();
+        }
+        
+        public string GetGloveName() {
+            return base.Channel.GetGloveName();
+        }
+        
+        public System.Threading.Tasks.Task<string> GetGloveNameAsync() {
+            return base.Channel.GetGloveNameAsync();
+        }
+        
+        public void SetProfile(string profileName, string gloveHash, System.Collections.Generic.Dictionary<string, string> mappings) {
+            base.Channel.SetProfile(profileName, gloveHash, mappings);
+        }
+        
+        public System.Threading.Tasks.Task SetProfileAsync(string profileName, string gloveHash, System.Collections.Generic.Dictionary<string, string> mappings) {
+            return base.Channel.SetProfileAsync(profileName, gloveHash, mappings);
+        }
+        
+        public string GetProfileName() {
+            return base.Channel.GetProfileName();
+        }
+        
+        public System.Threading.Tasks.Task<string> GetProfileNameAsync() {
+            return base.Channel.GetProfileNameAsync();
+        }
+        
+        public string GetProfileGloveHash() {
+            return base.Channel.GetProfileGloveHash();
+        }
+        
+        public System.Threading.Tasks.Task<string> GetProfileGloveHashAsync() {
+            return base.Channel.GetProfileGloveHashAsync();
+        }
+        
+        public System.Collections.Generic.Dictionary<string, string> GetMappingsDictionary() {
+            return base.Channel.GetMappingsDictionary();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, string>> GetMappingsDictionaryAsync() {
+            return base.Channel.GetMappingsDictionaryAsync();
         }
     }
 }

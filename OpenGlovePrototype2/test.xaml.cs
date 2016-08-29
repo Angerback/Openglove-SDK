@@ -37,7 +37,6 @@ namespace OpenGlovePrototype2
 
         }
 
-        
         private void buttonActivate_Click(object sender, RoutedEventArgs e)
         {
             string port = (string)listViewPorts.SelectedItem;

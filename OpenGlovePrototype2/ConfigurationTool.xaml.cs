@@ -33,10 +33,18 @@ namespace OpenGloveSDKConfigurationPrototype2
             InitializeComponent();
 
             bool serviceAvailabe = this.connectToService();
-
+            OGServiceClient sdkClient = new OGServiceClient("BasicHttpBinding_IOGService");
             if (serviceAvailabe)
             {
                 this.sdkCore = OpenGloveSDKCore.GetCore();
+                sdkCore.gloveCfg.BaudRate = sdkClient.GetBaudRate();
+                sdkCore.gloveCfg.gloveHash = sdkClient.GetGloveHash();
+                sdkCore.gloveCfg.gloveName = sdkClient.GetGloveName();
+                sdkCore.gloveCfg.positivePins = sdkClient.GetPositivePins().ToList();
+                sdkCore.gloveCfg.negativePins = sdkClient.GetNegativePins().ToList();
+                sdkCore.gloveCfg.positiveInit = sdkClient.GetPositiveInit().ToList();
+                sdkCore.gloveCfg.negativeInit = sdkClient.GetNegativeInit().ToList();
+
                 this.initializeSelectors();
                 if (!creatingProfile)
                 {
@@ -68,7 +76,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             int[] mappings = null;
             try
             {
-                mappings = sdkClient.GetMappings();
+                mappings = sdkClient.GetMappingsArray();
                 return true;
             }
             catch (Exception)
@@ -94,7 +102,12 @@ namespace OpenGloveSDKConfigurationPrototype2
             {
                 selectors.Add(region.Children.OfType<ComboBox>().First());
             }
-           
+
+            foreach (var region in selectorsGridDorso.Children.OfType<Grid>())
+            {
+                selectors.Add(region.Children.OfType<ComboBox>().First());
+            }
+
             actuators = new List<int>();
         }
 
