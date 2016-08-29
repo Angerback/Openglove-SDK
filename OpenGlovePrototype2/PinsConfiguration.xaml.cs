@@ -51,12 +51,12 @@ namespace OpenGlovePrototype2
 
             Polarity.ItemsSource = Polarities;
 
-            this.comboBoxBaudRate.ItemsSource = OpenGloveSDKCore.GetCore().gloveCfg.allowedBaudRates;
+            this.comboBoxBaudRate.ItemsSource = OGCore.GetCore().gloveCfg.allowedBaudRates;
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            OpenGloveSDKCore core = OpenGloveSDKCore.GetCore();
+            OGCore core = OGCore.GetCore();
 
             SaveFileDialog saveConfigurationDialog = new SaveFileDialog();
             saveConfigurationDialog.Filter = "XML-File | *.xml";
@@ -90,7 +90,6 @@ namespace OpenGlovePrototype2
                     mw.Show();
 
                     this.Close();*/
-
                     core.gloveCfg.saveGloveConfiguration(saveConfigurationDialog.FileName);
                 }
                 else

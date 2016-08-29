@@ -22,7 +22,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             public String Region { get; set; }
         }
 
-        private OpenGloveSDKCore sdkCore;
+        private OGCore sdkCore;
 
         private List<ComboBox> selectors;
 
@@ -36,7 +36,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             OGServiceClient sdkClient = new OGServiceClient("BasicHttpBinding_IOGService");
             if (serviceAvailabe)
             {
-                this.sdkCore = OpenGloveSDKCore.GetCore();
+                this.sdkCore = OGCore.GetCore();
                 sdkCore.gloveCfg.BaudRate = sdkClient.GetBaudRate();
                 sdkCore.gloveCfg.gloveHash = sdkClient.GetGloveHash();
                 sdkCore.gloveCfg.gloveName = sdkClient.GetGloveName();

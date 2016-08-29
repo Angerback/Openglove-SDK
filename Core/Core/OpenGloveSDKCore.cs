@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace OpenGlove
 {
-    public class OpenGloveSDKCore
+    public class OGCore
     {
         public class GloveConfiguration {
             public int BaudRate { get; set; }
@@ -157,7 +157,7 @@ namespace OpenGlove
         }
 
         //Simple singleton pattern for SDKCore
-        private static OpenGloveSDKCore core;
+        private static OGCore core;
 
         public ProfileConfiguration profileCfg { get; set; }
 
@@ -165,7 +165,7 @@ namespace OpenGlove
 
         private OpenGlove openGlove;
 
-        public OpenGloveSDKCore() {
+        public OGCore() {
             this.openGlove = new OpenGlove();
             this.profileCfg = new ProfileConfiguration();
             this.gloveCfg = new GloveConfiguration();
@@ -214,11 +214,11 @@ namespace OpenGlove
         /// Returns the instance of the SDKCore.
         /// </summary>
         /// <returns></returns>
-        public static OpenGloveSDKCore GetCore()
+        public static OGCore GetCore()
         {
             if (core == null)
             {
-                core = new OpenGloveSDKCore();
+                core = new OGCore();
             }
             return core;
         }

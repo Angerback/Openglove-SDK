@@ -74,7 +74,7 @@ namespace OpenGloveService
         int[] GetMappingsArray();
 
         [OperationContract]
-        OpenGloveSDKCore GetCore();
+        OGCore GetCore();
 
         [OperationContract]
         void SetConfiguration(int BaudRate, int[] positivePins, int[] negativePins, string[] positiveInit, string[] negativeInit, string gloveHash, string gloveName);
@@ -115,7 +115,7 @@ namespace OpenGloveService
 
     public class OGService : IOGService
     {
-        private OpenGloveSDKCore core = OpenGloveSDKCore.GetCore();
+        private OGCore core = OGCore.GetCore();
 
         public int[] GetMappingsArray()
         {
@@ -129,9 +129,9 @@ namespace OpenGloveService
             return mappingsList;
         }
 
-        public OpenGloveSDKCore GetCore() {
+        public OGCore GetCore() {
             if (this.core == null) {
-                this.core = OpenGloveSDKCore.GetCore();
+                this.core = OGCore.GetCore();
             }
             return this.core;
         }

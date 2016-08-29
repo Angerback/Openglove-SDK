@@ -175,9 +175,9 @@
       <Project>{7ac63864-7638-41c4-969c-d3197ef2bed9}</Project>
       <Name>NotifyIconWpf</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ClassLibrary2\OpenGlove SDK Core.csproj">
-      <Project>{4b30e00b-b8ce-43be-a57e-433b304a14a5}</Project>
-      <Name>OpenGlove SDK Core</Name>
+    <ProjectReference Include="..\Core\Core\Core.csproj">
+      <Project>{db720216-65ad-4a2d-b5eb-9a67a20d8636}</Project>
+      <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
