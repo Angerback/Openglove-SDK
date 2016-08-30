@@ -85,6 +85,7 @@ namespace OpenGlovePrototype2
 
         private void updateControls() {
             var config = sdkCore.gloveCfg;
+            this.buttonConnectGlove.IsEnabled = false;
             if (config.positivePins == null)
             {
                 Console.WriteLine("No config");
@@ -137,7 +138,7 @@ namespace OpenGlovePrototype2
                 pinsConfig.Show();
                 sdkCore.resetProfile();
                 sdkClient.SetProfile(sdkCore.profileCfg.profileName, sdkCore.profileCfg.gloveHash, sdkCore.profileCfg.Mappings);
-                this.Visibility = Visibility.Hidden;
+                //this.Visibility = Visibility.Hidden;
             }
               
         }
@@ -161,7 +162,7 @@ namespace OpenGlovePrototype2
 
                         ConfigurationTool config = new ConfigurationTool(false);
                         config.Show();
-                        this.Visibility = Visibility.Hidden;
+                        //this.Visibility = Visibility.Hidden;
                     }
                 }
             }
@@ -175,7 +176,7 @@ namespace OpenGlovePrototype2
             if (messageBoxResult == MessageBoxResult.Yes) {
                 ConfigurationTool config = new ConfigurationTool(true);
                 config.Show();
-                this.Visibility = Visibility.Hidden;
+                //this.Visibility = Visibility.Hidden;
                 this.updateControls();
             }
             

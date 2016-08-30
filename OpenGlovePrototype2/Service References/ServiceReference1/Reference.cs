@@ -22,10 +22,10 @@ namespace OpenGlovePrototype2.ServiceReference1 {
         System.Threading.Tasks.Task<int[]> GetMappingsArrayAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetCore", ReplyAction="http://tempuri.org/IOGService/GetCoreResponse")]
-        OpenGlove.OpenGloveSDKCore GetCore();
+        OpenGlove.OGCore GetCore();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetCore", ReplyAction="http://tempuri.org/IOGService/GetCoreResponse")]
-        System.Threading.Tasks.Task<OpenGlove.OpenGloveSDKCore> GetCoreAsync();
+        System.Threading.Tasks.Task<OpenGlove.OGCore> GetCoreAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/SetConfiguration", ReplyAction="http://tempuri.org/IOGService/SetConfigurationResponse")]
         void SetConfiguration(int BaudRate, int[] positivePins, int[] negativePins, string[] positiveInit, string[] negativeInit, string gloveHash, string gloveName);
@@ -135,11 +135,11 @@ namespace OpenGlovePrototype2.ServiceReference1 {
             return base.Channel.GetMappingsArrayAsync();
         }
         
-        public OpenGlove.OpenGloveSDKCore GetCore() {
+        public OpenGlove.OGCore GetCore() {
             return base.Channel.GetCore();
         }
         
-        public System.Threading.Tasks.Task<OpenGlove.OpenGloveSDKCore> GetCoreAsync() {
+        public System.Threading.Tasks.Task<OpenGlove.OGCore> GetCoreAsync() {
             return base.Channel.GetCoreAsync();
         }
         

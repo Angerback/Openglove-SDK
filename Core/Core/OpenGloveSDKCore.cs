@@ -88,6 +88,7 @@ namespace OpenGlove
                 rootXML.SetAttributeValue("baudRate", BaudRate);
                 rootXML.SetAttributeValue("gloveHash", gloveHash);
                 rootXML.SetAttributeValue("gloveName", name);
+                this.gloveName = name;
                 rootXML.Save(name);
 
                 return 0;

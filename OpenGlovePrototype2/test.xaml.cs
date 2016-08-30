@@ -8,12 +8,12 @@ namespace OpenGlovePrototype2
     /// </summary>
     public partial class TestWindow : Window
     {
-        private OpenGloveSDKCore sdkCore;
+        private OGCore sdkCore;
 
         public TestWindow()
         {
             InitializeComponent();
-            sdkCore = OpenGloveSDKCore.GetCore();
+            sdkCore = OGCore.GetCore();
             //this.connectionBar.Visibility = Visibility.Hidden;
             /*
             OpenFileDialog openConfigurationDialog = new OpenFileDialog();
