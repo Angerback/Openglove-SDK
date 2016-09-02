@@ -208,7 +208,7 @@ namespace OpenGlovePrototype2
 
         private void buttonConnectGlove_Click(object sender, RoutedEventArgs e)
         {
-            TestWindow test = new TestWindow();
+            TestWindow test = new TestWindow(sdkClient);
             test.Show();
         }
 
@@ -222,5 +222,15 @@ namespace OpenGlovePrototype2
                 this.Close();
             }
         }
+
+        private async void button_Click(object sender, RoutedEventArgs e)
+        {
+            Dictionary<string, string> test = await sdkClient.getGlovesAsync();
+            foreach (var item in test)
+            {
+                Console.WriteLine(item.Key + ": " + item.Value);
+            }
+        }
+
     }
 }

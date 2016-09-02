@@ -1688,7 +1688,6 @@
 
             </ListView.View>
         </ListView>
-        <Button x:Name="buttonTestConfig" Content="Test Configuration" HorizontalAlignment="Left" Margin="10,387,0,0" VerticalAlignment="Top" Width="353" Height="43" Click="buttonTestConfig_Click"/>
 
     </Grid>
 </Window>

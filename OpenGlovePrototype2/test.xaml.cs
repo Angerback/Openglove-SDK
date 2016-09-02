@@ -1,4 +1,5 @@
 ﻿using OpenGlove;
+using OpenGlovePrototype2.ServiceReference1;
 using System.Windows;
 
 namespace OpenGlovePrototype2
@@ -10,10 +11,14 @@ namespace OpenGlovePrototype2
     {
         private OGCore sdkCore;
 
-        public TestWindow()
+        private OGServiceClient sdkClient;
+
+        public TestWindow(OGServiceClient sdkClient)
         {
             InitializeComponent();
             sdkCore = OGCore.GetCore();
+
+            this.sdkClient = sdkClient;
             //this.connectionBar.Visibility = Visibility.Hidden;
             /*
             OpenFileDialog openConfigurationDialog = new OpenFileDialog();
@@ -40,7 +45,8 @@ namespace OpenGlovePrototype2
         private void buttonActivate_Click(object sender, RoutedEventArgs e)
         {
             string port = (string)listViewPorts.SelectedItem;
-            if (port == null) {
+            if (port == null)
+            {
                 string message = "You must select a COM port.";
                 string caption = "COM Port Error";
                 MessageBoxButton button = MessageBoxButton.OK;
@@ -49,7 +55,31 @@ namespace OpenGlovePrototype2
                 return;
             }
             //Establecer comunicacion
-            sdkCore.Connect(port);
+
+            try
+            {
+                sdkClient.Connect(port, true);
+            }
+            catch (System.UnauthorizedAccessException)
+            {
+                string message = "Cannot access Device. Try repairing it.";
+                string caption = "COM Port Error";
+                MessageBoxButton button = MessageBoxButton.OK;
+
+                System.Windows.MessageBox.Show(message, caption, button, MessageBoxImage.Information);
+                return;
+            }
+            catch (System.IO.IOException)
+            {
+                string message = "Cannot access Device. Try connecting again.";
+                string caption = "Device error";
+                MessageBoxButton button = MessageBoxButton.OK;
+
+                System.Windows.MessageBox.Show(message, caption, button, MessageBoxImage.Information);
+                return;
+            }
+
+
             this.buttonActivate.IsEnabled = false;
             this.buttonStop.IsEnabled = true;
             this.buttonVibrate.IsEnabled = true;
@@ -57,7 +87,7 @@ namespace OpenGlovePrototype2
 
         private void buttonStop_Click(object sender, RoutedEventArgs e)
         {
-            sdkCore.Disconnect();
+            sdkClient.Disconnect((string)listViewPorts.SelectedItem);
             this.buttonActivate.IsEnabled = true;
             this.buttonStop.IsEnabled = false;
             this.buttonVibrate.IsEnabled = false;
@@ -66,7 +96,7 @@ namespace OpenGlovePrototype2
         private void buttonVibrate_Click(object sender, RoutedEventArgs e)
         {
             //Activar motores
-            sdkCore.StartTest();
+            sdkClient.StartTest((string)listViewPorts.SelectedItem);
             this.buttonVibrate.IsEnabled = false;
             this.buttonStopVibrate.IsEnabled = true;
         }
@@ -74,7 +104,7 @@ namespace OpenGlovePrototype2
         private void buttonStopVibrate_Click(object sender, RoutedEventArgs e)
         {
             //Desactivar motores
-            sdkCore.StopTest();
+            sdkClient.StopTest((string)listViewPorts.SelectedItem);
             this.buttonVibrate.IsEnabled = true;
             this.buttonStopVibrate.IsEnabled = false;
         }

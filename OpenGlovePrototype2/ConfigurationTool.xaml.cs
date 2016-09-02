@@ -338,6 +338,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             }
         }
 
+        /*
         /// <summary>
         /// Displays a window for testing the current profile
         /// </summary>
@@ -348,7 +349,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             TestWindow test = new TestWindow();
             test.Show();
         }
-
+        */
         /// <summary>
         /// Handles the event of mouse entering a region. Highlights the sender region.
         /// </summary>

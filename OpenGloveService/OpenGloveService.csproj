@@ -48,6 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="InTheHand.Net.Personal, Version=3.5.605.0, Culture=neutral, PublicKeyToken=ea38caa273134499, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
@@ -90,6 +91,10 @@
       <Project>{db720216-65ad-4a2d-b5eb-9a67a20d8636}</Project>
       <Name>Core</Name>
       <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenGlove API C Sharp\OpenGlove API C Sharp\OpenGlove API C Sharp.csproj">
+      <Project>{cef4f9b5-732b-4af3-9963-deda08f9b0f7}</Project>
+      <Name>OpenGlove API C Sharp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

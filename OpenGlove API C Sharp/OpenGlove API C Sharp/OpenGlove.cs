@@ -5,10 +5,16 @@ using System.Collections.Generic;
 namespace OpenGlove
 {
     /// <summary>
-    /// Represents an OpenGlove device instance. Provide methods for communicatiopn with the device, initialize and activate vibration motors, besides others actuators and sensors
+    /// Represents an OpenGlove device instance. Provide methods for communication with the device, initialize and activate vibration motors, besides others actuators and sensors
     /// </summary>
     public class OpenGlove
     {
+        public string Address { get; set; }
+
+        public string Name { get; set; }
+
+        public bool IsRightHand { get; set; }
+
         /// <summary>
         /// An OpenGlove communication module instance.
         /// </summary>

@@ -13,6 +13,7 @@ using System.Configuration.Install;
 using System.Threading;
 using System.ServiceModel.Description;
 using OpenGlove;
+using InTheHand.Net.Sockets;
 
 namespace OpenGloveService
 {
@@ -111,11 +112,35 @@ namespace OpenGloveService
 
         [OperationContract]
         Dictionary<string, string> GetMappingsDictionary();
+
+
+
+        [OperationContract]
+        Dictionary<string, string> getGloves();
+
+        [OperationContract]
+        string[] GetPortNames();
+
+        [OperationContract]
+        string Connect(string port, bool right);
+
+        [OperationContract]
+        void Disconnect(string gloveName);
+
+        [OperationContract]
+        void StartTest(string gloveName);
+
+        [OperationContract]
+        void StopTest(string gloveName);
     }
 
     public class OGService : IOGService
     {
-        private OGCore core = OGCore.GetCore();
+        private OGCore core;
+
+        public OGService() {
+            core = OGCore.GetCore();
+        }
 
         public int[] GetMappingsArray()
         {
@@ -137,7 +162,7 @@ namespace OpenGloveService
         }
 
         public void SetConfiguration(int BaudRate, int[] positivePins, int[] negativePins, string[] positiveInit, string[] negativeInit, string gloveHash, string gloveName) {
-            Debugger.Launch();
+            
             this.core.gloveCfg.BaudRate = BaudRate;
             this.core.gloveCfg.positivePins = positivePins.ToList();
             this.core.gloveCfg.negativePins = negativePins.ToList();
@@ -202,6 +227,90 @@ namespace OpenGloveService
         public Dictionary<string, string> GetMappingsDictionary()
         {
             return this.core.profileCfg.Mappings;
+        }
+
+        public Dictionary<string, string> getGloves()
+        {
+            Dictionary<string, string> gloves = new Dictionary<string, string>();
+
+            var bluetoothClient = new BluetoothClient();
+
+            var devices = bluetoothClient.DiscoverDevices();
+
+            foreach (var device in devices)
+
+            {
+                if (device.DeviceName.Contains("OpenGlove")) {
+                    string address = device.DeviceAddress.ToString();
+                    string name = device.DeviceName;
+                    gloves.Add(address,name);
+                }
+            }
+            
+            return gloves;
+        }
+
+        public string[] GetPortNames()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Connect(string port, bool right)
+        {
+            Debugger.Launch();
+            string result = "ERROR";
+            //Establecer comunicacion
+            OpenGlove.OpenGlove glove = null;
+            core.gloves.TryGetValue(port, out glove);
+            if (glove == null)
+            {
+                core.gloves[port] = new OpenGlove.OpenGlove();
+                core.gloves[port].OpenPort(port, core.gloveCfg.BaudRate);
+                core.gloves[port].InitializeMotor(core.gloveCfg.positivePins); //Positive pins deberian definirse
+                core.gloves[port].InitializeMotor(core.gloveCfg.negativePins); //Negative pins deberian definirse
+                core.gloves[port].ActivateMotor(core.gloveCfg.negativePins, core.gloveCfg.negativeInit);
+                core.gloves[port].Name = port;
+                core.gloves[port].IsRightHand = right;
+                result = port;
+            }
+            return result;
+        }
+
+        public void Disconnect(string gloveName)
+        {
+            Debugger.Launch();
+            OpenGlove.OpenGlove glove = null;
+            core.gloves.TryGetValue(gloveName, out glove);
+            if (glove != null) {
+                core.gloves[gloveName].ClosePort();
+            }
+                
+
+        }
+
+        public void StartTest(string gloveName)
+        {
+            Debugger.Launch();
+            OpenGlove.OpenGlove glove = null;
+            core.gloves.TryGetValue(gloveName, out glove);
+            if (glove != null)
+            {
+                core.gloves[gloveName].ActivateMotor(core.gloveCfg.positivePins, core.gloveCfg.positiveInit);
+            }
+
+
+        }
+
+        public void StopTest(string gloveName)
+        {
+            Debugger.Launch();
+            OpenGlove.OpenGlove glove = null;
+            core.gloves.TryGetValue(gloveName, out glove);
+            if (glove != null)
+            {
+                core.gloves[gloveName].ActivateMotor(core.gloveCfg.positivePins, core.gloveCfg.negativeInit);
+            }
+
         }
     }
 }

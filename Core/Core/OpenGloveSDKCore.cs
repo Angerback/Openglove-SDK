@@ -166,10 +166,13 @@ namespace OpenGlove
 
         private OpenGlove openGlove;
 
+        public Dictionary<string, OpenGlove> gloves { get; set; }
+
         public OGCore() {
             this.openGlove = new OpenGlove();
             this.profileCfg = new ProfileConfiguration();
             this.gloveCfg = new GloveConfiguration();
+            this.gloves = new Dictionary<string, OpenGlove>();
         }
 
         public void resetProfile()

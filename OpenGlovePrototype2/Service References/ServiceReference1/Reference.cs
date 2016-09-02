@@ -98,6 +98,42 @@ namespace OpenGlovePrototype2.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetMappingsDictionary", ReplyAction="http://tempuri.org/IOGService/GetMappingsDictionaryResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, string>> GetMappingsDictionaryAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/getGloves", ReplyAction="http://tempuri.org/IOGService/getGlovesResponse")]
+        System.Collections.Generic.Dictionary<string, string> getGloves();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/getGloves", ReplyAction="http://tempuri.org/IOGService/getGlovesResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, string>> getGlovesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetPortNames", ReplyAction="http://tempuri.org/IOGService/GetPortNamesResponse")]
+        string[] GetPortNames();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetPortNames", ReplyAction="http://tempuri.org/IOGService/GetPortNamesResponse")]
+        System.Threading.Tasks.Task<string[]> GetPortNamesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Connect", ReplyAction="http://tempuri.org/IOGService/ConnectResponse")]
+        string Connect(string port, bool right);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Connect", ReplyAction="http://tempuri.org/IOGService/ConnectResponse")]
+        System.Threading.Tasks.Task<string> ConnectAsync(string port, bool right);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Disconnect", ReplyAction="http://tempuri.org/IOGService/DisconnectResponse")]
+        void Disconnect(string gloveName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Disconnect", ReplyAction="http://tempuri.org/IOGService/DisconnectResponse")]
+        System.Threading.Tasks.Task DisconnectAsync(string gloveName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/StartTest", ReplyAction="http://tempuri.org/IOGService/StartTestResponse")]
+        void StartTest(string gloveName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/StartTest", ReplyAction="http://tempuri.org/IOGService/StartTestResponse")]
+        System.Threading.Tasks.Task StartTestAsync(string gloveName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/StopTest", ReplyAction="http://tempuri.org/IOGService/StopTestResponse")]
+        void StopTest(string gloveName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/StopTest", ReplyAction="http://tempuri.org/IOGService/StopTestResponse")]
+        System.Threading.Tasks.Task StopTestAsync(string gloveName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -237,6 +273,54 @@ namespace OpenGlovePrototype2.ServiceReference1 {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, string>> GetMappingsDictionaryAsync() {
             return base.Channel.GetMappingsDictionaryAsync();
+        }
+        
+        public System.Collections.Generic.Dictionary<string, string> getGloves() {
+            return base.Channel.getGloves();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, string>> getGlovesAsync() {
+            return base.Channel.getGlovesAsync();
+        }
+        
+        public string[] GetPortNames() {
+            return base.Channel.GetPortNames();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetPortNamesAsync() {
+            return base.Channel.GetPortNamesAsync();
+        }
+        
+        public string Connect(string port, bool right) {
+            return base.Channel.Connect(port, right);
+        }
+        
+        public System.Threading.Tasks.Task<string> ConnectAsync(string port, bool right) {
+            return base.Channel.ConnectAsync(port, right);
+        }
+        
+        public void Disconnect(string gloveName) {
+            base.Channel.Disconnect(gloveName);
+        }
+        
+        public System.Threading.Tasks.Task DisconnectAsync(string gloveName) {
+            return base.Channel.DisconnectAsync(gloveName);
+        }
+        
+        public void StartTest(string gloveName) {
+            base.Channel.StartTest(gloveName);
+        }
+        
+        public System.Threading.Tasks.Task StartTestAsync(string gloveName) {
+            return base.Channel.StartTestAsync(gloveName);
+        }
+        
+        public void StopTest(string gloveName) {
+            base.Channel.StopTest(gloveName);
+        }
+        
+        public System.Threading.Tasks.Task StopTestAsync(string gloveName) {
+            return base.Channel.StopTestAsync(gloveName);
         }
     }
 }

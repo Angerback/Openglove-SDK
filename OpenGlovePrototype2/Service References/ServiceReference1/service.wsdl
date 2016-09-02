@@ -121,6 +121,42 @@
   <wsdl:message name="IOGService_GetMappingsDictionary_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetMappingsDictionaryResponse" />
   </wsdl:message>
+  <wsdl:message name="IOGService_getGloves_InputMessage">
+    <wsdl:part name="parameters" element="tns:getGloves" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_getGloves_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getGlovesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetPortNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPortNames" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetPortNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPortNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_Connect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Connect" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_Connect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_Disconnect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Disconnect" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_Disconnect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisconnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_StartTest_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartTest" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_StartTest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_StopTest_InputMessage">
+    <wsdl:part name="parameters" element="tns:StopTest" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_StopTest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StopTestResponse" />
+  </wsdl:message>
   <wsdl:portType name="IOGService">
     <wsdl:operation name="GetMappingsArray">
       <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetMappingsArray" message="tns:IOGService_GetMappingsArray_InputMessage" />
@@ -177,6 +213,30 @@
     <wsdl:operation name="GetMappingsDictionary">
       <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetMappingsDictionary" message="tns:IOGService_GetMappingsDictionary_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetMappingsDictionaryResponse" message="tns:IOGService_GetMappingsDictionary_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getGloves">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/getGloves" message="tns:IOGService_getGloves_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/getGlovesResponse" message="tns:IOGService_getGloves_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPortNames">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetPortNames" message="tns:IOGService_GetPortNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetPortNamesResponse" message="tns:IOGService_GetPortNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Connect">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/Connect" message="tns:IOGService_Connect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/ConnectResponse" message="tns:IOGService_Connect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/Disconnect" message="tns:IOGService_Disconnect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/DisconnectResponse" message="tns:IOGService_Disconnect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartTest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/StartTest" message="tns:IOGService_StartTest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/StartTestResponse" message="tns:IOGService_StartTest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StopTest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/StopTest" message="tns:IOGService_StopTest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/StopTestResponse" message="tns:IOGService_StopTest_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOGService" type="tns:IOGService">
@@ -300,6 +360,60 @@
     </wsdl:operation>
     <wsdl:operation name="GetMappingsDictionary">
       <soap:operation soapAction="http://tempuri.org/IOGService/GetMappingsDictionary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGloves">
+      <soap:operation soapAction="http://tempuri.org/IOGService/getGloves" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPortNames">
+      <soap:operation soapAction="http://tempuri.org/IOGService/GetPortNames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Connect">
+      <soap:operation soapAction="http://tempuri.org/IOGService/Connect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <soap:operation soapAction="http://tempuri.org/IOGService/Disconnect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartTest">
+      <soap:operation soapAction="http://tempuri.org/IOGService/StartTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopTest">
+      <soap:operation soapAction="http://tempuri.org/IOGService/StopTest" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -437,6 +551,60 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getGloves">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/getGloves" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPortNames">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/GetPortNames" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Connect">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/Connect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/Disconnect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartTest">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/StartTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopTest">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/StopTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="OGService">
     <wsdl:port name="BasicHttpBinding_IOGService" binding="tns:BasicHttpBinding_IOGService">
@@ -447,7 +615,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:9002/OGService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Spn>host/DESKTOP-7MC8J0E</Spn>
+          <Spn>host/DESKTOP-78HC5HD</Spn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

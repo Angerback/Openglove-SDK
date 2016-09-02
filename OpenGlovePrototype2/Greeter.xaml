@@ -25,5 +25,6 @@
             <Separator HorizontalAlignment="Left" Height="100" Width="8" Background="Black" BorderBrush="Black"/>
             <MenuItem Header="Hide Window" Height="37" Width="86" HorizontalAlignment="Center" Click="MenuItem_Click" Foreground="White" Background="Black" BorderBrush="Black"/>
         </Menu>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="459,42,0,0" VerticalAlignment="Top" Width="84" Height="42" Click="button_Click"/>
     </Grid>
 </Window>
