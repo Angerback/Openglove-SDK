@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using OpenGlove;
 using OpenGloveSDKConfigurationPrototype2;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace OpenGlovePrototype2
 {
@@ -32,16 +33,59 @@ namespace OpenGlovePrototype2
             }
         }
 
+        public class Board {
+            public string name { get; set; }
+            public List<int> pinNumbers { get; set; }
+
+            public override string ToString()
+            {
+                return this.name;
+            }
+        }
+
         public List<PinRow> pins;
-        //LilyPad. Desconozco aun todos los posibles pines.
-        List<int> pinNumbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+
         List<String> Polarities;
+
+        private List<Board> boards;
+
+        private List<Board> openBoards() {
+            List<Board> result = new List<Board>();
+
+            XDocument xml = XDocument.Load("Boards.xml");
+            List<XElement> xBoards = xml.Root.Elements("board").ToList();
+
+            foreach (XElement xBoard in xBoards)
+            {
+                string name = xBoard.Element("name").Value;
+                int pins = Int32.Parse(xBoard.Element("pins").Value);
+                Board b = new Board();
+                b.name = name;
+                List<int> possiblePins = new List<int>();
+                for (int i = 1; i <= pins; i++)
+                {
+                    possiblePins.Add(i);
+                }
+                b.pinNumbers = possiblePins;
+                result.Add(b);
+            }
+
+            return result;
+        }
+
+        private void initializeBoards() {
+            this.boards = openBoards();
+        }
 
         public PinsConfiguration()
         {
+            
             InitializeComponent();
+
+            initializeBoards();
+
             this.pins = new List<PinRow>();
-            foreach (int pin in pinNumbers)
+            foreach (int pin in this.boards[0].pinNumbers)
             {
                 this.pins.Add(new PinRow(pin));
             }
@@ -52,6 +96,7 @@ namespace OpenGlovePrototype2
             Polarity.ItemsSource = Polarities;
 
             this.comboBoxBaudRate.ItemsSource = OGCore.GetCore().gloveCfg.allowedBaudRates;
+            this.comboBoxBoard.ItemsSource = this.boards;
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)

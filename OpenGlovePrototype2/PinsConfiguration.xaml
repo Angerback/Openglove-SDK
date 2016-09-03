@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OpenGlovePrototype2"
         mc:Ignorable="d"
-        Title="PinsConfiguration" Height="420.884" Width="788.266" WindowStartupLocation="CenterScreen">
+        Title="PinsConfiguration" Height="452.884" Width="788.266" WindowStartupLocation="CenterScreen">
     <Grid Height="389" VerticalAlignment="Top">
-        <GridSplitter x:Name="gridSplitter" HorizontalAlignment="Left" Height="340" Margin="305,49,0,0" VerticalAlignment="Top" Width="9"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="340" Margin="314,49,0,0" VerticalAlignment="Top" Width="466" Source="A000011_featured.jpg" Stretch="UniformToFill"/>
+        <GridSplitter x:Name="gridSplitter" HorizontalAlignment="Left" Height="365" Margin="305,56,0,-32" VerticalAlignment="Top" Width="9"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="340" Margin="314,81,0,-32" VerticalAlignment="Top" Width="466" Source="A000011_featured.jpg" Stretch="UniformToFill"/>
         <Rectangle Fill="#FF00B47F" HorizontalAlignment="Left" Height="49" Stroke="Black" VerticalAlignment="Top" Width="780"/>
         <Label x:Name="labelHeader" Content="Pins Configuration" HorizontalAlignment="Left" Height="51" VerticalAlignment="Top" Width="780" Foreground="White" FontFamily="Helvetica" FontSize="36"/>
-        <Grid x:Name="pinsGrid" HorizontalAlignment="Left" Height="333" Margin="10,56,0,0" VerticalAlignment="Top" Width="290" ScrollViewer.CanContentScroll="True">
+        <Grid x:Name="pinsGrid" HorizontalAlignment="Left" Height="333" Margin="10,88,0,-32" VerticalAlignment="Top" Width="290" ScrollViewer.CanContentScroll="True">
             <DataGrid AutoGenerateColumns="False" x:Name="dataGridPins" HorizontalAlignment="Left" VerticalAlignment="Top" Height="257" Width="290" ScrollViewer.CanContentScroll="True" Margin="0,36,0,0">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=Pin}" />
@@ -25,6 +25,9 @@
             <Label x:Name="labelBaud" Content="Baud Rate" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <ComboBox x:Name="comboBoxBaudRate" HorizontalAlignment="Left" Margin="69,4,0,0" VerticalAlignment="Top" Width="221"/>
         </Grid>
+        <Label x:Name="labelBoard" Content="Board" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxBoard" HorizontalAlignment="Left" Margin="78,61,0,0" VerticalAlignment="Top" Width="192"/>
+        <Button x:Name="buttonAddBoard" Content="+" HorizontalAlignment="Left" Margin="275,61,0,0" VerticalAlignment="Top" Width="25" Height="22" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}"/>
 
     </Grid>
 </Window>
