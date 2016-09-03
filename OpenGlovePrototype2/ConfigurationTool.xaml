@@ -35,6 +35,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="0" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" Visibility="Hidden" DropDownClosed="selectorClosed"/>
+                            <Label x:Name="label" Content="0" HorizontalAlignment="Left" Margin="10,-3,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="156,73,418,386" RenderTransformOrigin="0.5,0.5">
                             <Grid.RenderTransform>
@@ -56,6 +57,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox2" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="1" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" Visibility="Hidden" DropDownClosed="selectorClosed"/>
+                            <Label x:Name="label_Copy" Content="1" HorizontalAlignment="Left" Margin="10,-3,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="211,30,345,406" RenderTransformOrigin="0.5,0.5">
                             <Grid.RenderTransform>
@@ -77,6 +79,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox3" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="2" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" Visibility="Hidden" DropDownClosed="selectorClosed"/>
+                            <Label x:Name="label_Copy1" Content="2" HorizontalAlignment="Left" Margin="24,22,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="319,68,255,390" RenderTransformOrigin="0.5,0.5">
                             <Grid.RenderTransform>
@@ -98,6 +101,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox4" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="3" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" Visibility="Hidden" DropDownClosed="selectorClosed"/>
+                            <Label x:Name="label_Copy2" Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="-4,0,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="87,180,479,279" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -123,6 +127,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox5" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="4" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" Visibility="Hidden" DropDownClosed="selectorClosed" Grid.ColumnSpan="2"/>
+                            <Label x:Name="label_Copy3" Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="4,0,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="159,132,408,323" RenderTransformOrigin="0.5,0.5">
                             <Grid.RenderTransform>
@@ -144,6 +149,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox6" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="5" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" Visibility="Hidden" DropDownClosed="selectorClosed"/>
+                            <Label x:Name="label_Copy4" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="10,10,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="222,101,345,354" RenderTransformOrigin="0.5,0.5">
                             <Grid.RenderTransform>
@@ -165,6 +171,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox7" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="6" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" Visibility="Hidden" DropDownClosed="selectorClosed"/>
+                            <Label x:Name="label_Copy5" Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="15,17,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="309,125,258,353" RenderTransformOrigin="0.5,0.5">
                             <Grid.RenderTransform>
@@ -186,6 +193,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox8" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="7" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" Visibility="Hidden" DropDownClosed="selectorClosed"/>
+                            <Label x:Name="label_Copy6" Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="4,4,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="99,218,468,235" RenderTransformOrigin="0.5,0.5">
                             <Grid.RenderTransform>
@@ -207,6 +215,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox9" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="8" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" Visibility="Hidden" DropDownClosed="selectorClosed"/>
+                            <Label x:Name="label_Copy7" Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="14,10,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="166,191,401,265" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -232,6 +241,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox10" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="9" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" Visibility="Hidden" DropDownClosed="selectorClosed"/>
+                            <Label x:Name="label_Copy8" Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="14,10,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="217,165,345,275" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -257,6 +267,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox11" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="10" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" Visibility="Hidden" DropDownClosed="selectorClosed"/>
+                            <Label x:Name="label_Copy9" Content="10" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="18,22,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="307,171,252,271" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -282,6 +293,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox12" HorizontalAlignment="Left" Margin="0,17,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="11" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" Visibility="Hidden" DropDownClosed="selectorClosed"/>
+                            <Label x:Name="label_Copy10" Content="11" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="0,23,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="84,263,418,153" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -307,6 +319,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox13" HorizontalAlignment="Left" Margin="34,30,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="12" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy11" Content="12" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="49,23,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="137,250,365,166" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -332,6 +345,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox14" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="13" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy12" Content="13" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="49,28,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="192,237,310,179" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -357,6 +371,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox15" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="14" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy13" Content="14" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="48,28,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="250,236,253,180" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -382,6 +397,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox16" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="15" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy14" Content="15" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="48,24,0,0" Height="34" Width="28" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="89,302,413,114" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -407,6 +423,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox17" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="16" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy15" Content="16" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="52,24,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="142,292,360,124" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -432,6 +449,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox18" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="17" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy16" Content="17" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="49,23,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="194,285,307,131" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -458,6 +476,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox19" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="18" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy17" Content="18" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="51,23,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="250,281,253,135" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -483,6 +502,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox20" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="19" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy18" Content="19" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="47,23,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="99,343,403,73" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -508,6 +528,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox21" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="20" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy19" Content="20" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="53,23,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="150,334,353,82" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -533,6 +554,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox22" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="21" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy20" Content="21" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="51,23,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="201,327,301,89" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -558,6 +580,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox23" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="22" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy21" Content="22" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="48,23,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="253,323,250,93" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -583,6 +606,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox24" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="23" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy22" Content="23" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="47,22,0,0" Height="30" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="343,289,158,126" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -608,6 +632,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox25" HorizontalAlignment="Left" Margin="35,35,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="24" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy23" Content="24" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="40,43,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="394,221,109,193" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -633,6 +658,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox26" HorizontalAlignment="Left" Margin="32,50,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="25" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy24" Content="25" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="40,50,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="135,356,368,58" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -658,6 +684,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox27" HorizontalAlignment="Left" Margin="37,46,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="26" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy25" Content="26" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="48,43,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="235,343,268,71" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -683,6 +710,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox28" HorizontalAlignment="Left" Margin="38,59,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="27" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy26" Content="27" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="49,56,0,0" IsHitTestVisible="False"/>
                         </Grid>
                         <Grid Margin="140,394,363,20" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -708,6 +736,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                             <ComboBox x:Name="comboBox29" HorizontalAlignment="Left" Margin="39,40,0,0" VerticalAlignment="Top" Width="44" Height="21" TabIndex="28" IsTabStop="False" SelectionChanged="selectorsSelectionChanged" DropDownClosed="selectorClosed" Visibility="Hidden"/>
+                            <Label x:Name="label_Copy27" Content="28" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="47,37,0,0" IsHitTestVisible="False"/>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -745,6 +774,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy28" Content="29" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="17,5,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="151,36,409,412" RenderTransformOrigin="0.5,0.5">
                             <Grid.RenderTransform>
@@ -775,6 +814,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy29" Content="30" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="25,28,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="229,26,327,410" RenderTransformOrigin="0.5,0.5">
                             <Grid.RenderTransform>
@@ -805,6 +854,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy30" Content="31" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="21,23,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="310,12,232,427" RenderTransformOrigin="0.5,0.5">
                             <Grid.RenderTransform>
@@ -835,6 +894,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy31" Content="32" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="33,33,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="67,166,481,284" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -869,6 +938,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy32" Content="33" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="22,10,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False" Grid.ColumnSpan="2">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="145,113,408,331" RenderTransformOrigin="0.5,0.5">
                             <Grid.RenderTransform>
@@ -899,6 +978,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy33" Content="34" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="26,18,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="240,97,327,358" RenderTransformOrigin="0.5,0.5">
                             <Grid.RenderTransform>
@@ -929,6 +1018,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy34" Content="35" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="11,17,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="318,85,239,381" RenderTransformOrigin="0.5,0.5">
                             <Grid.RenderTransform>
@@ -959,6 +1058,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy35" Content="36" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="21,19,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="92,215,475,238" RenderTransformOrigin="0.5,0.5">
                             <Grid.RenderTransform>
@@ -989,6 +1098,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy36" Content="37" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="12,12,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="166,191,401,265" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1023,6 +1142,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy37" Content="38" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="9,9,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="235,161,327,279" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1057,6 +1186,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy38" Content="39" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="16,22,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="310,145,249,297" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1091,6 +1230,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy39" Content="40" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="24,31,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="84,263,418,153" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1125,6 +1274,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy40" Content="41" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="44,22,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="134,238,369,178" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1159,6 +1318,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy41" Content="42" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="46,22,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="192,237,310,179" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1193,6 +1362,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy42" Content="43" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="47,21,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="250,236,253,180" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1227,6 +1406,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy43" Content="44" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="59,20,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="89,302,413,114" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1261,6 +1450,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy44" Content="45" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="48,23,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="142,292,360,124" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1295,6 +1494,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy45" Content="46" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="47,22,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="194,285,307,131" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1330,6 +1539,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy46" Content="47" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="48,22,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="250,281,253,135" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1364,6 +1583,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy47" Content="48" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="43,23,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="99,343,403,73" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1398,6 +1627,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy48" Content="49" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="49,22,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="150,334,353,82" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1432,6 +1671,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy49" Content="50" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="47,20,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="201,327,301,89" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1466,6 +1715,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy50" Content="51" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="44,21,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="253,323,250,93" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1500,6 +1759,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy51" Content="52" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="42,21,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="343,289,158,126" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1534,6 +1803,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy52" Content="53" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="33,39,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="394,221,109,193" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1568,6 +1847,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy53" Content="54" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="35,50,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="135,356,368,58" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1602,6 +1891,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy54" Content="55" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="49,41,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="235,343,268,71" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1636,6 +1935,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy55" Content="56" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="46,56,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                         <Grid Margin="140,394,363,20" RenderTransformOrigin="0.5,0.5">
                             <Grid.ColumnDefinitions>
@@ -1670,6 +1979,16 @@
                                     </TransformGroup>
                                 </ComboBox.RenderTransform>
                             </ComboBox>
+                            <Label x:Name="label_Copy56" Content="57" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="18" Margin="50,35,0,0" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -1679,7 +1998,7 @@
             <StatusBarItem x:Name="statusBarItemProfileLabel" Content="Profile:" Height="24" VerticalAlignment="Top" Background="#FF00B47F" Foreground="White" Width="52" HorizontalAlignment="Left" Margin="12,0,0,0"/>
             <StatusBarItem x:Name="statusBarItemProfile" Content="None" Height="24" VerticalAlignment="Top" Width="910" HorizontalAlignment="Left" Foreground="White"/>
         </StatusBar>
-        <ListView x:Name="mappingsList" HorizontalAlignment="Left" Height="272" Margin="10,110,0,0" VerticalAlignment="Top" Width="354" IsSynchronizedWithCurrentItem="True" Grid.ColumnSpan="2">
+        <ListView x:Name="mappingsList" HorizontalAlignment="Left" Height="540" Margin="10,110,0,0" VerticalAlignment="Top" Width="354" IsSynchronizedWithCurrentItem="True" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Actuator" Width="120" DisplayMemberBinding="{Binding Actuator}" />
