@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <boards>
   <board>
-    <name>"LilyPad"</name>
+    <name>LilyPad</name>
     <pins>15</pins>
   </board>
 </boards>

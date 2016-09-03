@@ -27,7 +27,7 @@
         </Grid>
         <Label x:Name="labelBoard" Content="Board" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBoxBoard" HorizontalAlignment="Left" Margin="78,61,0,0" VerticalAlignment="Top" Width="192"/>
-        <Button x:Name="buttonAddBoard" Content="+" HorizontalAlignment="Left" Margin="275,61,0,0" VerticalAlignment="Top" Width="25" Height="22" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}"/>
+        <Button x:Name="buttonAddBoard" Content="+" HorizontalAlignment="Left" Margin="275,61,0,0" VerticalAlignment="Top" Width="25" Height="22" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" Click="buttonAddBoard_Click"/>
 
     </Grid>
 </Window>

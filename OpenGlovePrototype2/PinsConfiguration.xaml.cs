@@ -73,8 +73,31 @@ namespace OpenGlovePrototype2
             return result;
         }
 
+        private void saveBoard(Board board) {
+            XDocument xml = XDocument.Load("Boards.xml");
+
+            XElement xboard = new XElement("board");
+            XElement xname = new XElement("name");
+            XElement xpins = new XElement("pins");
+
+            xname.Value = board.name;
+            xpins.Value = board.pinNumbers.Count.ToString();
+
+            xboard.Add(xname);
+            xboard.Add(xpins);
+
+            xml.Root.Add(xboard);
+
+            xml.Save("Boards.xml");
+
+            this.boards.Add(board);
+        }
+
         private void initializeBoards() {
             this.boards = openBoards();
+            this.comboBoxBoard.SelectedIndex = 0;
+            this.initializePinsList(0);
+            this.comboBoxBoard.SelectionChanged += this.comboBoxBoard_SelectionChanged;
         }
 
         public PinsConfiguration()
@@ -84,14 +107,18 @@ namespace OpenGlovePrototype2
 
             initializeBoards();
 
+            
+        }
+
+        private void initializePinsList(int boardIndex) {
             this.pins = new List<PinRow>();
-            foreach (int pin in this.boards[0].pinNumbers)
+            foreach (int pin in this.boards[boardIndex].pinNumbers)
             {
                 this.pins.Add(new PinRow(pin));
             }
             this.dataGridPins.ItemsSource = this.pins;
 
-            Polarities  = new List<string>() { "Positive", "Negative" };
+            Polarities = new List<string>() { "Positive", "Negative" };
 
             Polarity.ItemsSource = Polarities;
 
@@ -146,6 +173,33 @@ namespace OpenGlovePrototype2
                 }
             }
  
+        }
+
+        private void buttonAddBoard_Click(object sender, RoutedEventArgs e)
+        {
+            AddBoard addBoard = new AddBoard();
+            addBoard.ShowDialog();
+
+            List<int> pins = new List<int>();
+
+            if (addBoard.BoardName != null) {
+                if (! addBoard.BoardName.Equals("")) {
+                    Board b = new Board();
+                    b.name = addBoard.BoardName;
+                    for (int i = 1; i <= addBoard.Pins; i++)
+                    {
+                        pins.Add(i);
+                    }
+                    b.pinNumbers = pins;
+
+                    this.saveBoard(b);
+                }
+            }
+        }
+
+        private void comboBoxBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           this.initializePinsList(((System.Windows.Controls.ComboBox) sender).SelectedIndex);
         }
     }
 }
