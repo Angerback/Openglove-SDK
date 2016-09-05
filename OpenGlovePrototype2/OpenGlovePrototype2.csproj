@@ -161,6 +161,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\OpenGlove.OGCore.datasource" />
     <None Include="Properties\DataSources\OpenGlove.OpenGloveSDKCore.datasource" />
+    <None Include="Properties\DataSources\OpenGloveSDK.OGCore.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -170,6 +171,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference1\OpenGlove.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\OpenGloveSDK.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference1\service.wsdl" />

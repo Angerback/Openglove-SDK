@@ -9,7 +9,86 @@
 //------------------------------------------------------------------------------
 
 namespace OpenGlovePrototype2.ServiceReference1 {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OpenGlove", Namespace="http://schemas.datacontract.org/2004/07/OpenGlove")]
+    [System.SerializableAttribute()]
+    public partial class OpenGlove : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsRightHandField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Address {
+            get {
+                return this.AddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AddressField, value) != true)) {
+                    this.AddressField = value;
+                    this.RaisePropertyChanged("Address");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsRightHand {
+            get {
+                return this.IsRightHandField;
+            }
+            set {
+                if ((this.IsRightHandField.Equals(value) != true)) {
+                    this.IsRightHandField = value;
+                    this.RaisePropertyChanged("IsRightHand");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IOGService")]
@@ -22,10 +101,10 @@ namespace OpenGlovePrototype2.ServiceReference1 {
         System.Threading.Tasks.Task<int[]> GetMappingsArrayAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetCore", ReplyAction="http://tempuri.org/IOGService/GetCoreResponse")]
-        OpenGlove.OGCore GetCore();
+        OpenGloveSDK.OGCore GetCore();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetCore", ReplyAction="http://tempuri.org/IOGService/GetCoreResponse")]
-        System.Threading.Tasks.Task<OpenGlove.OGCore> GetCoreAsync();
+        System.Threading.Tasks.Task<OpenGloveSDK.OGCore> GetCoreAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/SetConfiguration", ReplyAction="http://tempuri.org/IOGService/SetConfigurationResponse")]
         void SetConfiguration(int BaudRate, int[] positivePins, int[] negativePins, string[] positiveInit, string[] negativeInit, string gloveHash, string gloveName);
@@ -134,6 +213,18 @@ namespace OpenGlovePrototype2.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/StopTest", ReplyAction="http://tempuri.org/IOGService/StopTestResponse")]
         System.Threading.Tasks.Task StopTestAsync(string gloveName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Activate", ReplyAction="http://tempuri.org/IOGService/ActivateResponse")]
+        void Activate(string glove, int region, int intensity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Activate", ReplyAction="http://tempuri.org/IOGService/ActivateResponse")]
+        System.Threading.Tasks.Task ActivateAsync(string glove, int region, int intensity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetGlovePorts", ReplyAction="http://tempuri.org/IOGService/GetGlovePortsResponse")]
+        string[] GetGlovePorts();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetGlovePorts", ReplyAction="http://tempuri.org/IOGService/GetGlovePortsResponse")]
+        System.Threading.Tasks.Task<string[]> GetGlovePortsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -171,11 +262,11 @@ namespace OpenGlovePrototype2.ServiceReference1 {
             return base.Channel.GetMappingsArrayAsync();
         }
         
-        public OpenGlove.OGCore GetCore() {
+        public OpenGloveSDK.OGCore GetCore() {
             return base.Channel.GetCore();
         }
         
-        public System.Threading.Tasks.Task<OpenGlove.OGCore> GetCoreAsync() {
+        public System.Threading.Tasks.Task<OpenGloveSDK.OGCore> GetCoreAsync() {
             return base.Channel.GetCoreAsync();
         }
         
@@ -321,6 +412,22 @@ namespace OpenGlovePrototype2.ServiceReference1 {
         
         public System.Threading.Tasks.Task StopTestAsync(string gloveName) {
             return base.Channel.StopTestAsync(gloveName);
+        }
+        
+        public void Activate(string glove, int region, int intensity) {
+            base.Channel.Activate(glove, region, intensity);
+        }
+        
+        public System.Threading.Tasks.Task ActivateAsync(string glove, int region, int intensity) {
+            return base.Channel.ActivateAsync(glove, region, intensity);
+        }
+        
+        public string[] GetGlovePorts() {
+            return base.Channel.GetGlovePorts();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetGlovePortsAsync() {
+            return base.Channel.GetGlovePortsAsync();
         }
     }
 }

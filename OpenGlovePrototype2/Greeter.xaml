@@ -8,7 +8,7 @@
         Title="Greeter" Height="377.889" Width="562.558" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,4,5">
         <Rectangle Fill="#FF00B47F" HorizontalAlignment="Left" Height="77" Stroke="#FF00B47F" StrokeThickness="3" VerticalAlignment="Top" Width="553" Margin="0,32,0,0"/>
-        <Button x:Name="buttonOpenProfile" Content="Open Profile" HorizontalAlignment="Left" Margin="295,207,0,0" VerticalAlignment="Top" Width="237" Height="57" FontSize="20" Click="buttonOpenProfile_Click"/>
+        <Button x:Name="buttonOpenProfile" Content="Load Profile Configuration" HorizontalAlignment="Left" Margin="295,207,0,0" VerticalAlignment="Top" Width="237" Height="57" FontSize="20" Click="buttonOpenProfile_Click"/>
         <Label x:Name="label" Content="Current Glove Configuration:&#xA;" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Height="25" Foreground="White" FontSize="13"/>
         <Label x:Name="labelGloveConfig" Content="Glove name&#xA;" HorizontalAlignment="Left" Margin="185,42,0,0" VerticalAlignment="Top" Width="366" Foreground="White" FontSize="13" Height="25"/>
         <Label x:Name="label1" Content="Current Profile:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="162" Foreground="White" FontSize="13"/>
@@ -22,9 +22,10 @@
         <Button x:Name="buttonLoadConfiguration" Content="Load Glove Configuration" HorizontalAlignment="Left" Height="57" Margin="19,207,0,0" VerticalAlignment="Top" Width="253" FontSize="20" Click="buttonLoadConfiguration_Click"/>
         <Button x:Name="buttonConnectGlove" Content="Connect Glove" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top" Width="533" Height="41" FontSize="16" Click="buttonConnectGlove_Click"/>
         <Menu x:Name="menu" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="553" Background="Black">
-            <Separator HorizontalAlignment="Left" Height="100" Width="8" Background="Black" BorderBrush="Black"/>
+            <Separator HorizontalAlignment="Left" Height="35" Width="12" Background="Black" BorderBrush="Black"/>
             <MenuItem Header="Hide Window" Height="37" Width="86" HorizontalAlignment="Center" Click="MenuItem_Click" Foreground="White" Background="Black" BorderBrush="Black"/>
+            <Separator Width="11"/>
+            <MenuItem Header="Current Profile" Foreground="White" Click="MenuItem_Click_1"/>
         </Menu>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="459,42,0,0" VerticalAlignment="Top" Width="84" Height="42" Click="button_Click"/>
     </Grid>
 </Window>

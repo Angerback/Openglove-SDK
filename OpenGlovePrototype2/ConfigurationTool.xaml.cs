@@ -7,8 +7,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using OpenGlove;
 using OpenGlovePrototype2.ServiceReference1;
+using OpenGloveSDK;
+using System.Diagnostics;
 
 namespace OpenGloveSDKConfigurationPrototype2
 {
@@ -28,12 +29,14 @@ namespace OpenGloveSDKConfigurationPrototype2
 
         private IEnumerable<int> actuators;
 
+        OGServiceClient sdkClient;
+
         public ConfigurationTool(bool creatingProfile)
         {
             InitializeComponent();
 
             bool serviceAvailabe = this.connectToService();
-            OGServiceClient sdkClient = new OGServiceClient("BasicHttpBinding_IOGService");
+            sdkClient = new OGServiceClient("BasicHttpBinding_IOGService");
             if (serviceAvailabe)
             {
                 this.sdkCore = OGCore.GetCore();
@@ -44,6 +47,13 @@ namespace OpenGloveSDKConfigurationPrototype2
                 sdkCore.gloveCfg.negativePins = sdkClient.GetNegativePins().ToList();
                 sdkCore.gloveCfg.positiveInit = sdkClient.GetPositiveInit().ToList();
                 sdkCore.gloveCfg.negativeInit = sdkClient.GetNegativeInit().ToList();
+
+                var glovesPorts = sdkClient.GetGlovePorts();
+
+                if (glovesPorts != null)
+                {
+                    this.comboBoxComPorts.ItemsSource = glovesPorts;
+                }
 
                 this.initializeSelectors();
                 if (!creatingProfile)
@@ -383,6 +393,47 @@ namespace OpenGloveSDKConfigurationPrototype2
         private void selectorClosed(object sender, EventArgs e)
         {
             ((ComboBox) sender).Visibility = Visibility.Hidden;
+        }
+
+        private void mappingsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.buttonTestIntensity.IsEnabled = true;
+            this.intensityUpDown.IsEnabled = true;
+            this.comboBoxComPorts.IsEnabled = true;
+        }
+
+        private bool testing;
+
+        Stopwatch sw = new Stopwatch();
+
+        private void buttonTestIntensity_Click(object sender, RoutedEventArgs e)
+        {
+            sw = new Stopwatch();
+            sw.Start();
+            Mapping mapping = (Mapping)this.mappingsList.SelectedItem;
+            if (testing)
+            {
+                this.sdkClient.Activate(this.comboBoxComPorts.SelectedItem.ToString(), Int32.Parse(mapping.Actuator), 0);
+                testing = false;
+                buttonTestIntensity.Content = "Test";
+                this.mappingsList.IsEnabled = true;
+                this.comboBoxComPorts.IsEnabled = true;
+                
+            }
+            else if (this.mappingsList.SelectedItem != null)
+            {
+                this.sdkClient.Activate(this.comboBoxComPorts.SelectedItem.ToString(), Int32.Parse(mapping.Actuator), ((int)this.intensityUpDown.Value));
+
+                sw.Stop();
+
+                Console.WriteLine("Elapsed={0}", sw.Elapsed);
+
+                testing = true;
+                buttonTestIntensity.Content = "Stop";
+                this.mappingsList.IsEnabled = false;
+                this.comboBoxComPorts.IsEnabled = false;
+                
+            }
         }
     }
 }

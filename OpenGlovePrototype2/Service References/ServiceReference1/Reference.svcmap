@@ -26,6 +26,7 @@
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="26023061-6db9-49ea-b958-d635ca57d300" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="0c3423d2-ff4a-434a-bd6b-772acea83606" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
     <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="2c213495-4612-40a7-9fa6-4a6111cb3b4f" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
+    <MetadataFile FileName="OpenGloveSDK.xsd" MetadataType="Schema" ID="f1a69120-a30b-4d2c-9b2b-ea1c529b7d12" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
     <MetadataFile FileName="OpenGlove.xsd" MetadataType="Schema" ID="71573480-7f8f-44dc-889e-cf5055dac897" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
   </Metadata>
   <Extensions>

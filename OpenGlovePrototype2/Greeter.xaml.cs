@@ -15,7 +15,7 @@ using OpenGloveSDKConfigurationPrototype2;
 using Microsoft.Win32;
 using Hardcodet.Wpf.TaskbarNotification;
 using OpenGlovePrototype2.ServiceReference1;
-using OpenGlove;
+using OpenGloveSDK;
 
 namespace OpenGlovePrototype2
 {
@@ -162,6 +162,7 @@ namespace OpenGlovePrototype2
 
                         ConfigurationTool config = new ConfigurationTool(false);
                         config.Show();
+                        this.updateControls();
                         //this.Visibility = Visibility.Hidden;
                     }
                 }
@@ -232,5 +233,18 @@ namespace OpenGlovePrototype2
             }
         }
 
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (sdkCore.profileCfg.Mappings.Count != 0)
+            {
+                ConfigurationTool config = new ConfigurationTool(false);
+                config.Show();
+            }
+            else
+            {
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("No profile loaded.", "No profile", System.Windows.MessageBoxButton.OK);
+
+            }
+        }
     }
 }

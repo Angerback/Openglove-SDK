@@ -34,6 +34,7 @@
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/OpenGloveSDK" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/OpenGlove" />
     </xsd:schema>
   </wsdl:types>
@@ -157,6 +158,18 @@
   <wsdl:message name="IOGService_StopTest_OutputMessage">
     <wsdl:part name="parameters" element="tns:StopTestResponse" />
   </wsdl:message>
+  <wsdl:message name="IOGService_Activate_InputMessage">
+    <wsdl:part name="parameters" element="tns:Activate" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_Activate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActivateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetGlovePorts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGlovePorts" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_GetGlovePorts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGlovePortsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IOGService">
     <wsdl:operation name="GetMappingsArray">
       <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetMappingsArray" message="tns:IOGService_GetMappingsArray_InputMessage" />
@@ -237,6 +250,14 @@
     <wsdl:operation name="StopTest">
       <wsdl:input wsaw:Action="http://tempuri.org/IOGService/StopTest" message="tns:IOGService_StopTest_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOGService/StopTestResponse" message="tns:IOGService_StopTest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Activate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/Activate" message="tns:IOGService_Activate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/ActivateResponse" message="tns:IOGService_Activate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGlovePorts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetGlovePorts" message="tns:IOGService_GetGlovePorts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetGlovePortsResponse" message="tns:IOGService_GetGlovePorts_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOGService" type="tns:IOGService">
@@ -421,6 +442,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Activate">
+      <soap:operation soapAction="http://tempuri.org/IOGService/Activate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlovePorts">
+      <soap:operation soapAction="http://tempuri.org/IOGService/GetGlovePorts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IOGService" type="tns:IOGService">
     <wsp:PolicyReference URI="#NetTcpBinding_IOGService_policy" />
@@ -598,6 +637,24 @@
     </wsdl:operation>
     <wsdl:operation name="StopTest">
       <soap12:operation soapAction="http://tempuri.org/IOGService/StopTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Activate">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/Activate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlovePorts">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/GetGlovePorts" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

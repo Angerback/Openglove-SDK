@@ -1,5 +1,5 @@
-﻿using OpenGlove;
-using OpenGlovePrototype2.ServiceReference1;
+﻿using OpenGlovePrototype2.ServiceReference1;
+using OpenGloveSDK;
 using System.Windows;
 
 namespace OpenGlovePrototype2

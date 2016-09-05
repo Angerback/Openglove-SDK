@@ -14,6 +14,7 @@ using System.Threading;
 using System.ServiceModel.Description;
 using OpenGlove;
 using InTheHand.Net.Sockets;
+using OpenGloveSDK;
 
 namespace OpenGloveService
 {
@@ -132,6 +133,12 @@ namespace OpenGloveService
 
         [OperationContract]
         void StopTest(string gloveName);
+
+        [OperationContract]
+        void Activate(string glove, int region, int intensity);
+
+        [OperationContract]
+        List<string> GetGlovePorts();
     }
 
     public class OGService : IOGService
@@ -145,6 +152,11 @@ namespace OpenGloveService
         public int[] GetMappingsArray()
         {
             int[] mappingsList = new int[core.profileCfg.AreaCount];
+
+            for (int i = 0; i < core.profileCfg.AreaCount; i++)
+            {
+                mappingsList[i] = -1;
+            }
 
             foreach (KeyValuePair<string,string> mapping in core.profileCfg.Mappings.ToList())
             {
@@ -231,6 +243,7 @@ namespace OpenGloveService
 
         public Dictionary<string, string> getGloves()
         {
+
             Dictionary<string, string> gloves = new Dictionary<string, string>();
 
             var bluetoothClient = new BluetoothClient();
@@ -312,5 +325,31 @@ namespace OpenGloveService
             }
 
         }
+
+        public void Activate(string glove, int region, int intensity) {
+            if (glove != null) {
+                if (intensity < 0)
+                {
+                    intensity = 0;
+                }
+                else if (intensity > 255) {
+                    intensity = 255;
+                }
+
+                if (region < 0)
+                {
+                    return;
+                } else if (region >= core.profileCfg.AreaCount) {
+                    return;
+                }
+
+                core.gloves[glove].ActivateMotor(new List<int> { region }, new List<string> { intensity.ToString() });
+            }
+        }
+
+        public List<string> GetGlovePorts() {
+            return this.core.gloves.Keys.ToList();
+        }
+
     }
 }

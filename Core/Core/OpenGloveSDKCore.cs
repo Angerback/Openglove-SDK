@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace OpenGlove
+namespace OpenGloveSDK
 {
     public class OGCore
     {
@@ -164,15 +164,15 @@ namespace OpenGlove
 
         public GloveConfiguration gloveCfg { get; set; }
 
-        private OpenGlove openGlove;
+        private OpenGlove.OpenGlove openGlove;
 
-        public Dictionary<string, OpenGlove> gloves { get; set; }
+        public Dictionary<string, OpenGlove.OpenGlove> gloves { get; set; }
 
         public OGCore() {
-            this.openGlove = new OpenGlove();
+            this.openGlove = new OpenGlove.OpenGlove();
             this.profileCfg = new ProfileConfiguration();
             this.gloveCfg = new GloveConfiguration();
-            this.gloves = new Dictionary<string, OpenGlove>();
+            this.gloves = new Dictionary<string, OpenGlove.OpenGlove>();
         }
 
         public void resetProfile()
