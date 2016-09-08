@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="x6m52o6AQlGOdqB1zUpAJGkHmCI=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="EfBoXFPjwVL88qNjKnKkdqyBFa8=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IOGService">
       <properties>
@@ -230,7 +230,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IOGService" contract="ServiceReference1.IOGService" bindingType="basicHttpBinding" address="http://localhost:9001/OGService" bindingConfiguration="BasicHttpBinding_IOGService">
+    <endpoint name="BasicHttpBinding_IOGService" contract="OpenGloveService.IOGService" bindingType="basicHttpBinding" address="http://localhost:9001/OGService" bindingConfiguration="BasicHttpBinding_IOGService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:9001/OGService</serializedValue>
@@ -245,7 +245,7 @@
           <serializedValue>BasicHttpBinding_IOGService</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServiceReference1.IOGService</serializedValue>
+          <serializedValue>OpenGloveService.IOGService</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -315,7 +315,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IOGService" contract="ServiceReference1.IOGService" bindingType="netTcpBinding" address="net.tcp://localhost:9002/OGService" bindingConfiguration="NetTcpBinding_IOGService">
+    <endpoint name="NetTcpBinding_IOGService" contract="OpenGloveService.IOGService" bindingType="netTcpBinding" address="net.tcp://localhost:9002/OGService" bindingConfiguration="NetTcpBinding_IOGService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:9002/OGService</serializedValue>
@@ -330,7 +330,7 @@
           <serializedValue>NetTcpBinding_IOGService</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServiceReference1.IOGService</serializedValue>
+          <serializedValue>OpenGloveService.IOGService</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>

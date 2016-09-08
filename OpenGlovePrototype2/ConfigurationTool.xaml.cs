@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using OpenGlovePrototype2.ServiceReference1;
 using OpenGloveSDK;
 using System.Diagnostics;
 
@@ -15,7 +14,7 @@ namespace OpenGloveSDKConfigurationPrototype2
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    /// </summary
     public partial class ConfigurationTool : Window
     {
         public class Mapping {
@@ -28,13 +27,12 @@ namespace OpenGloveSDKConfigurationPrototype2
         private List<ComboBox> selectors;
 
         private IEnumerable<int> actuators;
-
-        OGServiceClient sdkClient;
+        
 
         public ConfigurationTool(bool creatingProfile)
         {
             InitializeComponent();
-
+            /*
             bool serviceAvailabe = this.connectToService();
             sdkClient = new OGServiceClient("BasicHttpBinding_IOGService");
             if (serviceAvailabe)
@@ -73,7 +71,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             {
                 this.Close();
             }
-
+            */
         }
 
         /// <summary>
@@ -81,7 +79,7 @@ namespace OpenGloveSDKConfigurationPrototype2
         /// </summary>
         /// <returns></returns>
         private bool connectToService()
-        {
+        {/*
             OGServiceClient sdkClient = new OGServiceClient("BasicHttpBinding_IOGService");
             int[] mappings = null;
             try
@@ -97,15 +95,15 @@ namespace OpenGloveSDKConfigurationPrototype2
 
                 MessageBox.Show(message, caption, button, MessageBoxImage.Information);
                 return false;
-            }
-            
+            }*/
+            return false;
         }
 
         /// <summary>
         /// Instantiates and populates all view's comboboxes with the available amount of actuators.
         /// </summary>
         private void initializeSelectors()
-        {
+        {/*
             selectors = new List<ComboBox>();
 
             foreach (var region in selectorsGrid.Children.OfType<Grid>())
@@ -118,7 +116,7 @@ namespace OpenGloveSDKConfigurationPrototype2
                 selectors.Add(region.Children.OfType<ComboBox>().First());
             }
 
-            actuators = new List<int>();
+            actuators = new List<int>();*/
         }
 
         /// <summary>
@@ -127,7 +125,7 @@ namespace OpenGloveSDKConfigurationPrototype2
         /// <param name="actuator"></param>
         /// <param name="owner"></param>
         private void removeActuator(String actuator, object owner)
-        {
+        {/*
             Console.WriteLine("Removiendo actuador.");
             foreach (ComboBox selector in this.selectors)
             {
@@ -135,7 +133,7 @@ namespace OpenGloveSDKConfigurationPrototype2
                 {
                     selector.Items.Remove(Int32.Parse(actuator));
                 }
-            }
+            }*/
         }
 
         /// <summary>
@@ -144,13 +142,13 @@ namespace OpenGloveSDKConfigurationPrototype2
         /// <param name="liberatedActuator"></param>
         /// <param name="preowner"></param>
         private void liberateActuator(String liberatedActuator, Object preowner)
-        {
+        {/*
             foreach (ComboBox selector in this.selectors)
             {
                 if ( ! selector.Equals(preowner) ) {
                     selector.Items.Add(Int32.Parse(liberatedActuator));
                 }
-            }
+            }*/
         }
 
         /// <summary>
@@ -158,7 +156,7 @@ namespace OpenGloveSDKConfigurationPrototype2
         /// </summary>
         private void resetSelectors()
         {
-
+            /*
             foreach (ComboBox selector in this.selectors)
             {
                 selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
@@ -184,7 +182,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             foreach (ComboBox selector in selectors)
             {
                 selector.SelectionChanged += new SelectionChangedEventHandler(selectorsSelectionChanged);
-            }
+            }*/
         }
 
         /// <summary>
@@ -194,13 +192,13 @@ namespace OpenGloveSDKConfigurationPrototype2
         /// </summary>
         /// <param name="mappings"></param>
         private void refreshMappingsList(Dictionary<string, string> mappings)
-        {
+        {/*
             this.mappingsList.Items.Clear();
             foreach (KeyValuePair<string, string> mapping in mappings.ToList())
             {
                 //Console.WriteLine("MAPPING: "+ mapping.Key + ", " + mapping.Value);
                 this.mappingsList.Items.Add(new Mapping() { Actuator = mapping.Value, Region = mapping.Key});
-            }
+            }*/
         }
 
         /// <summary>
@@ -209,7 +207,7 @@ namespace OpenGloveSDKConfigurationPrototype2
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void saveButton_Click(object sender, RoutedEventArgs e)
-        {
+        {/*
             SaveFileDialog saveConfigurationDialog = new SaveFileDialog();
             saveConfigurationDialog.Filter = "XML-File | *.xml";
             saveConfigurationDialog.Title = "Save your configuration file";
@@ -227,7 +225,7 @@ namespace OpenGloveSDKConfigurationPrototype2
 
                 MessageBox.Show(message, caption, button, MessageBoxImage.Information);
 
-            }
+            }*/
         }
 
         /// <summary>
@@ -236,14 +234,14 @@ namespace OpenGloveSDKConfigurationPrototype2
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void openButton_Click(object sender, RoutedEventArgs e)
-        {
+        {/*
             OpenFileDialog openConfigurationDialog = new OpenFileDialog();
             openConfigurationDialog.Filter = "XML-File | *.xml";
             openConfigurationDialog.Title = "Open a configuration file";
             openConfigurationDialog.ShowDialog();
 
             this.open(openConfigurationDialog);
-
+            */
         }
 
 
@@ -252,19 +250,21 @@ namespace OpenGloveSDKConfigurationPrototype2
         /// </summary>
         /// <param name="openConfigurationDialog"></param>
         private void open(OpenFileDialog openConfigurationDialog) {
+            /*
             if (openConfigurationDialog.FileName != "")
             {
                 this.sdkCore.profileCfg.openProfileConfiguration(openConfigurationDialog.FileName, this.sdkCore.gloveCfg.gloveHash);
 
                 this.updateView();
             }
+            */
         }
 
         /// <summary>
         /// Sets the selectors and MappingsList to an updated state, meaningful for the user.
         /// </summary>
         private void updateView() {
-            
+            /*
             foreach (ComboBox selector in selectors)
             {
                 selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
@@ -297,6 +297,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             {
                 selector.SelectionChanged += new SelectionChangedEventHandler(selectorsSelectionChanged);
             }
+            */
         }
 
         /// <summary>
@@ -306,6 +307,7 @@ namespace OpenGloveSDKConfigurationPrototype2
         /// <param name="e"></param>
         private void selectorsSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            /*
             if (((ComboBox)sender).SelectedItem != null) {
                 String selection = ((ComboBox)sender).SelectedItem.ToString();
                 //String region = (String)((ComboBox)sender).AccessibleName;
@@ -346,6 +348,7 @@ namespace OpenGloveSDKConfigurationPrototype2
                 refreshMappingsList(this.sdkCore.profileCfg.Mappings);
                 ((ComboBox)sender).Visibility = Visibility.Hidden;
             }
+            */
         }
 
         /*
@@ -407,7 +410,7 @@ namespace OpenGloveSDKConfigurationPrototype2
         Stopwatch sw = new Stopwatch();
 
         private void buttonTestIntensity_Click(object sender, RoutedEventArgs e)
-        {
+        {/*
             sw = new Stopwatch();
             sw.Start();
             Mapping mapping = (Mapping)this.mappingsList.SelectedItem;
@@ -433,7 +436,7 @@ namespace OpenGloveSDKConfigurationPrototype2
                 this.mappingsList.IsEnabled = false;
                 this.comboBoxComPorts.IsEnabled = false;
                 
-            }
+            }*/
         }
     }
 }

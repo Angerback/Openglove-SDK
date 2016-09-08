@@ -14,11 +14,12 @@ using System.Windows.Shapes;
 using OpenGloveSDKConfigurationPrototype2;
 using Microsoft.Win32;
 using Hardcodet.Wpf.TaskbarNotification;
-using OpenGlovePrototype2.ServiceReference1;
 using OpenGloveSDK;
+using System.ComponentModel;
 
 namespace OpenGlovePrototype2
 {
+
     /// <summary>
     /// Interaction logic for Greeter.xaml
     /// </summary>
@@ -26,44 +27,41 @@ namespace OpenGlovePrototype2
     {
         private TaskbarIcon tbi;
 
+        //Destruir
         private OGCore sdkCore;
 
-        private OGServiceClient sdkClient;
+        private Core.Gloves gloves = Core.Gloves.GetInstance();
+
+        private BackgroundWorker bgw;
+
+        void bgw_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //Your time taking work. Here it's your data query method.
+            e.Result = gloves.Devices;
+        }
+
+        void bgw_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            //Progress bar.
+        }
+
+        void bgw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            //After completing the job.
+            this.bar.Close();
+            this.listViewGloves.ItemsSource = (List<Core.OpenGloveService.Glove>) e.Result;
+        }
 
         public Greeter()
         {
             InitializeComponent();
-            sdkClient = new OGServiceClient("BasicHttpBinding_IOGService");
 
-            sdkCore = OGCore.GetCore();
-            sdkCore.gloveCfg.BaudRate = sdkClient.GetBaudRate();
-            sdkCore.gloveCfg.gloveHash = sdkClient.GetGloveHash();
-            sdkCore.gloveCfg.gloveName = sdkClient.GetGloveName();
-            try
-            {
-                sdkCore.gloveCfg.positivePins = sdkClient.GetPositivePins().ToList();
-                sdkCore.gloveCfg.negativePins = sdkClient.GetNegativePins().ToList();
-                sdkCore.gloveCfg.positiveInit = sdkClient.GetPositiveInit().ToList();
-                sdkCore.gloveCfg.negativeInit = sdkClient.GetNegativeInit().ToList();
-            }
-            catch (Exception)
-            {
-                sdkCore.gloveCfg.positivePins = null;
-                sdkCore.gloveCfg.negativePins = null;
-                sdkCore.gloveCfg.positiveInit = null;
-                sdkCore.gloveCfg.negativeInit = null;
-            }
+            bgw = new BackgroundWorker();
+            bgw.WorkerReportsProgress = true;
+            bgw.ProgressChanged += new ProgressChangedEventHandler(bgw_ProgressChanged);
+            bgw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgw_RunWorkerCompleted);
+            bgw.DoWork += new DoWorkEventHandler(bgw_DoWork);
             
-            try
-            {
-                sdkCore.profileCfg.Mappings = sdkClient.GetMappingsDictionary();
-                sdkCore.profileCfg.profileName = sdkClient.GetProfileName();
-                sdkCore.profileCfg.gloveHash = sdkClient.GetProfileGloveHash();
-            }
-            catch (Exception)
-            {
-
-            }
 
             updateControls();
 
@@ -83,9 +81,21 @@ namespace OpenGlovePrototype2
 
         }
 
+        private List<Core.OpenGloveService.Glove> updateGloves() {
+            return gloves.Devices;
+        }
+
+        LoadingBar bar;
         private void updateControls() {
-            var config = sdkCore.gloveCfg;
+            //var config = sdkCore.gloveCfg;
+            /*
             this.buttonConnectGlove.IsEnabled = false;
+            */
+            bgw.RunWorkerAsync();
+            bar = new LoadingBar(); 
+            bar.ShowDialog();
+            
+            /*
             if (config.positivePins == null)
             {
                 Console.WriteLine("No config");
@@ -109,7 +119,7 @@ namespace OpenGlovePrototype2
             else {
                 this.buttonConnectGlove.IsEnabled = true;
                 this.labelProfile.Content = profile.profileName;
-            }
+            }*/
 
         }
        
@@ -129,121 +139,11 @@ namespace OpenGlovePrototype2
             }
         }
 
-        private void buttonCreateConfiguration_Click(object sender, RoutedEventArgs e)
+        private void sysTrayItemClicked(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("This will close the current profile. Are you sure?", "New configuration confirmation", System.Windows.MessageBoxButton.YesNo);
-
-            if (messageBoxResult == MessageBoxResult.Yes) {
-                PinsConfiguration pinsConfig = new PinsConfiguration();
-                pinsConfig.Show();
-                sdkCore.resetProfile();
-                sdkClient.SetProfile(sdkCore.profileCfg.profileName, sdkCore.profileCfg.gloveHash, sdkCore.profileCfg.Mappings);
-                //this.Visibility = Visibility.Hidden;
-            }
-              
-        }
-
-        private void buttonOpenProfile_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("This will close the current profile. Are you sure?", "New configuration confirmation", System.Windows.MessageBoxButton.YesNo);
-
-            if (messageBoxResult == MessageBoxResult.Yes) {
-                OpenFileDialog openConfigurationDialog = new OpenFileDialog();
-                openConfigurationDialog.Filter = "XML-File | *.xml";
-                openConfigurationDialog.Title = "Open a configuration file";
-                openConfigurationDialog.ShowDialog();
-
-                if (openConfigurationDialog.FileName != null)
-                {
-                    if (openConfigurationDialog.FileName != "")
-                    {
-                        sdkCore.profileCfg.openProfileConfiguration(openConfigurationDialog.FileName, sdkCore.gloveCfg.gloveHash);
-                        sdkClient.SetProfile(sdkCore.profileCfg.profileName, sdkCore.profileCfg.gloveHash, sdkCore.profileCfg.Mappings);
-
-                        ConfigurationTool config = new ConfigurationTool(false);
-                        config.Show();
-                        this.updateControls();
-                        //this.Visibility = Visibility.Hidden;
-                    }
-                }
-            }
-            
-        }
-
-        private void createProfile_OnClick(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("This will close the current profile. Are you sure?", "New configuration confirmation", System.Windows.MessageBoxButton.YesNo);
-
-            if (messageBoxResult == MessageBoxResult.Yes) {
-                ConfigurationTool config = new ConfigurationTool(true);
-                config.Show();
-                //this.Visibility = Visibility.Hidden;
-                this.updateControls();
-            }
-            
-        }
-
-        private void buttonLoadConfiguration_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("This will close the current profile. Are you sure?", "New configuration confirmation", System.Windows.MessageBoxButton.YesNo);
-
-            if (messageBoxResult == MessageBoxResult.Yes) {
-                OpenFileDialog openConfigurationDialog = new OpenFileDialog();
-                openConfigurationDialog.Filter = "XML-File | *.xml";
-                openConfigurationDialog.Title = "Open a glove configuration file";
-                openConfigurationDialog.ShowDialog();
-
-                if (openConfigurationDialog.FileName != null)
-                {
-                    if (openConfigurationDialog.FileName != "")
-                    {
-                        sdkCore.gloveCfg.openGloveConfiguration(openConfigurationDialog.FileName);
-                        sdkClient.SetConfiguration(sdkCore.gloveCfg.BaudRate, sdkCore.gloveCfg.positivePins.ToArray(), sdkCore.gloveCfg.negativePins.ToArray(), sdkCore.gloveCfg.positiveInit.ToArray(), sdkCore.gloveCfg.negativeInit.ToArray(), sdkCore.gloveCfg.gloveHash, sdkCore.gloveCfg.gloveName);
-                        sdkCore.resetProfile();
-                        sdkClient.SetProfile(sdkCore.profileCfg.profileName, sdkCore.profileCfg.gloveHash, sdkCore.profileCfg.Mappings);
-                    }
-                }
-                updateControls();
-            }
-        }
-
-        private void buttonConnectGlove_Click(object sender, RoutedEventArgs e)
-        {
-            TestWindow test = new TestWindow(sdkClient);
-            test.Show();
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            this.toggleVisibility();
-        }
-
-        private void sysTrayItemClicked(object sender, RoutedEventArgs e) {
-            if (((MenuItem)sender).Header.Equals("Exit")) {
+            if (((MenuItem)sender).Header.Equals("Exit"))
+            {
                 this.Close();
-            }
-        }
-
-        private async void button_Click(object sender, RoutedEventArgs e)
-        {
-            Dictionary<string, string> test = await sdkClient.getGlovesAsync();
-            foreach (var item in test)
-            {
-                Console.WriteLine(item.Key + ": " + item.Value);
-            }
-        }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            if (sdkCore.profileCfg.Mappings.Count != 0)
-            {
-                ConfigurationTool config = new ConfigurationTool(false);
-                config.Show();
-            }
-            else
-            {
-                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("No profile loaded.", "No profile", System.Windows.MessageBoxButton.OK);
-
             }
         }
     }

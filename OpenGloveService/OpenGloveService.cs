@@ -14,7 +14,8 @@ using System.Threading;
 using System.ServiceModel.Description;
 using OpenGlove;
 using InTheHand.Net.Sockets;
-using OpenGloveSDK;
+using System.Runtime.Serialization;
+using System.Management;
 
 namespace OpenGloveService
 {
@@ -68,183 +69,31 @@ namespace OpenGloveService
         }
     }
 
-
-    [ServiceContract]
-    public interface IOGService
+    [DataContract]
+    public class Glove
     {
-        [OperationContract]
-        int[] GetMappingsArray();
+        /// <summary>
+        /// Private singleton field containing all active gloves, connected or disconnected in the system.
+        /// </summary>
+        private static List<Glove> gloves;
 
-        [OperationContract]
-        OGCore GetCore();
-
-        [OperationContract]
-        void SetConfiguration(int BaudRate, int[] positivePins, int[] negativePins, string[] positiveInit, string[] negativeInit, string gloveHash, string gloveName);
-
-        [OperationContract]
-        int GetBaudRate();
-
-        [OperationContract]
-        int[] GetPositivePins();
-
-        [OperationContract]
-        int[] GetNegativePins();
-
-        [OperationContract]
-        string[] GetPositiveInit();
-
-        [OperationContract]
-        string[] GetNegativeInit();
-
-        [OperationContract]
-        string GetGloveHash();
-
-        [OperationContract]
-        string GetGloveName();
-
-        [OperationContract]
-        void SetProfile(string profileName, string gloveHash, Dictionary<string, string> mappings);
-
-        [OperationContract]
-        string GetProfileName();
-
-        [OperationContract]
-        string GetProfileGloveHash();
-
-        [OperationContract]
-        Dictionary<string, string> GetMappingsDictionary();
-
-
-
-        [OperationContract]
-        Dictionary<string, string> getGloves();
-
-        [OperationContract]
-        string[] GetPortNames();
-
-        [OperationContract]
-        string Connect(string port, bool right);
-
-        [OperationContract]
-        void Disconnect(string gloveName);
-
-        [OperationContract]
-        void StartTest(string gloveName);
-
-        [OperationContract]
-        void StopTest(string gloveName);
-
-        [OperationContract]
-        void Activate(string glove, int region, int intensity);
-
-        [OperationContract]
-        List<string> GetGlovePorts();
-    }
-
-    public class OGService : IOGService
-    {
-        private OGCore core;
-
-        public OGService() {
-            core = OGCore.GetCore();
-        }
-
-        public int[] GetMappingsArray()
+        public static List<Glove> Gloves
         {
-            int[] mappingsList = new int[core.profileCfg.AreaCount];
-
-            for (int i = 0; i < core.profileCfg.AreaCount; i++)
+            get
             {
-                mappingsList[i] = -1;
+                gloves = ScanGloves();
+                return gloves;
             }
-
-            foreach (KeyValuePair<string,string> mapping in core.profileCfg.Mappings.ToList())
-            {
-                mappingsList[Int32.Parse(mapping.Key)] = Int32.Parse(mapping.Value);
-            }
-
-            return mappingsList;
         }
 
-        public OGCore GetCore() {
-            if (this.core == null) {
-                this.core = OGCore.GetCore();
-            }
-            return this.core;
-        }
+        /// <summary>
+        /// Scans the system using 32Feet.NET for OpenGlove devices. Currently it only filters by the bluetooth device Name, so
+        /// any device containing "OpenGlove" on their name would be picked. Hardware limitation.
+        /// </summary>
+        /// <returns></returns>
+        private static List<Glove> ScanGloves() {
 
-        public void SetConfiguration(int BaudRate, int[] positivePins, int[] negativePins, string[] positiveInit, string[] negativeInit, string gloveHash, string gloveName) {
-            
-            this.core.gloveCfg.BaudRate = BaudRate;
-            this.core.gloveCfg.positivePins = positivePins.ToList();
-            this.core.gloveCfg.negativePins = negativePins.ToList();
-            this.core.gloveCfg.positiveInit = positiveInit.ToList();
-            this.core.gloveCfg.negativeInit = negativeInit.ToList();
-            this.core.gloveCfg.gloveHash = gloveHash;
-            this.core.gloveCfg.gloveName = gloveName;
-        }
-
-        public void SetProfile(string profileName, string gloveHash, Dictionary<string,string> mappings) {
-            Debugger.Launch();
-            this.core.profileCfg.profileName = profileName;
-            this.core.profileCfg.gloveHash = gloveHash;
-            this.core.profileCfg.Mappings = mappings;
-        }
-
-        public int GetBaudRate()
-        {
-            return this.core.gloveCfg.BaudRate;
-        }
-
-        public int[] GetPositivePins()
-        {
-            return this.core.gloveCfg.positivePins.ToArray();
-        }
-
-        public int[] GetNegativePins()
-        {
-            return this.core.gloveCfg.negativePins.ToArray();
-        }
-
-        public string[] GetPositiveInit()
-        {
-            return this.core.gloveCfg.positiveInit.ToArray();
-        }
-
-        public string[] GetNegativeInit()
-        {
-            return this.core.gloveCfg.negativeInit.ToArray();
-        }
-
-        public string GetGloveHash()
-        {
-            return this.core.gloveCfg.gloveHash;
-        }
-
-        public string GetGloveName()
-        {
-            return this.core.gloveCfg.gloveName;
-        }
-
-        public string GetProfileName()
-        {
-            return this.core.profileCfg.profileName;
-        }
-
-        public string GetProfileGloveHash()
-        {
-            return this.core.profileCfg.gloveHash;
-        }
-
-        public Dictionary<string, string> GetMappingsDictionary()
-        {
-            return this.core.profileCfg.Mappings;
-        }
-
-        public Dictionary<string, string> getGloves()
-        {
-
-            Dictionary<string, string> gloves = new Dictionary<string, string>();
+            List<Glove> scannedGloves = new List<Glove>();
 
             var bluetoothClient = new BluetoothClient();
 
@@ -253,102 +102,148 @@ namespace OpenGloveService
             foreach (var device in devices)
 
             {
-                if (device.DeviceName.Contains("OpenGlove")) {
+                if (device.DeviceName.Contains("OpenGlove"))
+                {
+                    string deviceAddress = device.DeviceAddress.ToString();
+                    string comPort = GetBluetoothPort(deviceAddress);
                     string address = device.DeviceAddress.ToString();
                     string name = device.DeviceName;
-                    gloves.Add(address,name);
+                    
+                    Glove foundGlove = new Glove();
+                    foundGlove.BluetoothAddress = deviceAddress;
+                    foundGlove.Port = comPort;
+                    foundGlove.Name = name;
+                    foundGlove.Connected = false;
+                    foundGlove.legacyGlove = new OpenGlove.OpenGlove();
+
+                    scannedGloves.Add(foundGlove);
                 }
             }
-            
-            return gloves;
+            return scannedGloves;
         }
 
-        public string[] GetPortNames()
+        /// <summary>
+        /// Gets the outgoing COM Serial Port of a bluetooth device.
+        /// </summary>
+        /// <param name="deviceAddress"></param>
+        /// <returns></returns>
+        private static string GetBluetoothPort(string deviceAddress)
         {
-            throw new NotImplementedException();
-        }
-
-        public string Connect(string port, bool right)
-        {
-            Debugger.Launch();
-            string result = "ERROR";
-            //Establecer comunicacion
-            OpenGlove.OpenGlove glove = null;
-            core.gloves.TryGetValue(port, out glove);
-            if (glove == null)
+            const string Win32_SerialPort = "Win32_SerialPort";
+            SelectQuery q = new SelectQuery(Win32_SerialPort);
+            ManagementObjectSearcher s = new ManagementObjectSearcher(q);
+            foreach (object cur in s.Get())
             {
-                core.gloves[port] = new OpenGlove.OpenGlove();
-                core.gloves[port].OpenPort(port, core.gloveCfg.BaudRate);
-                core.gloves[port].InitializeMotor(core.gloveCfg.positivePins); //Positive pins deberian definirse
-                core.gloves[port].InitializeMotor(core.gloveCfg.negativePins); //Negative pins deberian definirse
-                core.gloves[port].ActivateMotor(core.gloveCfg.negativePins, core.gloveCfg.negativeInit);
-                core.gloves[port].Name = port;
-                core.gloves[port].IsRightHand = right;
-                result = port;
-            }
-            return result;
-        }
+                ManagementObject mo = (ManagementObject)cur;
+                string pnpId = mo.GetPropertyValue("PNPDeviceID").ToString();
 
-        public void Disconnect(string gloveName)
-        {
-            Debugger.Launch();
-            OpenGlove.OpenGlove glove = null;
-            core.gloves.TryGetValue(gloveName, out glove);
-            if (glove != null) {
-                core.gloves[gloveName].ClosePort();
-            }
-                
-
-        }
-
-        public void StartTest(string gloveName)
-        {
-            Debugger.Launch();
-            OpenGlove.OpenGlove glove = null;
-            core.gloves.TryGetValue(gloveName, out glove);
-            if (glove != null)
-            {
-                core.gloves[gloveName].ActivateMotor(core.gloveCfg.positivePins, core.gloveCfg.positiveInit);
-            }
-
-
-        }
-
-        public void StopTest(string gloveName)
-        {
-            Debugger.Launch();
-            OpenGlove.OpenGlove glove = null;
-            core.gloves.TryGetValue(gloveName, out glove);
-            if (glove != null)
-            {
-                core.gloves[gloveName].ActivateMotor(core.gloveCfg.positivePins, core.gloveCfg.negativeInit);
-            }
-
-        }
-
-        public void Activate(string glove, int region, int intensity) {
-            if (glove != null) {
-                if (intensity < 0)
+                if (pnpId.Contains(deviceAddress))
                 {
-                    intensity = 0;
+                    object captionObject = mo.GetPropertyValue("Caption");
+                    string caption = captionObject.ToString();
+                    int index = caption.LastIndexOf("(COM");
+                    if (index > 0)
+                    {
+                        string portString = caption.Substring(index);
+                        string comPort = portString.
+                                      Replace("(", string.Empty).Replace(")", string.Empty);
+                        return comPort;
+                    }
                 }
-                else if (intensity > 255) {
-                    intensity = 255;
-                }
-
-                if (region < 0)
-                {
-                    return;
-                } else if (region >= core.profileCfg.AreaCount) {
-                    return;
-                }
-
-                core.gloves[glove].ActivateMotor(new List<int> { region }, new List<string> { intensity.ToString() });
             }
+            return null;
         }
 
-        public List<string> GetGlovePorts() {
-            return this.core.gloves.Keys.ToList();
+        [DataMember]
+        public string Name;
+
+        [DataMember]
+        public string Port;
+
+        [DataMember]
+        public Sides Side;
+
+        [DataMember]
+        public string BluetoothAddress;
+
+        [DataMember]
+        public bool Connected;
+
+        [DataMember]
+        public Profile Profile;
+
+        private OpenGlove.OpenGlove legacyGlove;
+    }
+
+    [DataContract(Name = "Side")]
+    public enum Sides
+    {
+        [EnumMember]
+        Right,
+        [EnumMember]
+        Left
+    }
+
+    [DataContract]
+    public class Profile
+    {
+        [DataMember]
+        public String ProfileName;
+
+        [DataMember]
+        public String GloveHash;
+
+        [DataMember]
+        public int AreaCount = 58;
+
+        [DataMember]
+        public Dictionary<string, string> Mappings = new Dictionary<string, string>();
+
+        [DataMember]
+        public Configuration Configuration;
+    }
+
+    [DataContract]
+    public class Configuration {
+
+        [DataMember]
+        public int BaudRate;
+
+        [DataMember]
+        public List<int> AllowedBaudRates = new List<int> { 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200 };
+
+        [DataMember]
+        public List<int> PositivePins;
+
+        [DataMember]
+        public List<int> NegativePins;
+
+        [DataMember]
+        public List<string> NegativeInit;
+
+        [DataMember]
+        public List<string> PositiveInit;
+
+        [DataMember]
+        public String GloveHash;
+
+        [DataMember]
+        public String GloveName;
+    }
+
+    [ServiceContract]
+    public interface IOGService
+    {
+        [OperationContract]
+        List<Glove> GetGloves();
+    }
+
+    public class OGService : IOGService
+    {
+        public List<Glove> GetGloves()
+        {
+            Debugger.Launch();
+            return Glove.Gloves;
         }
 
     }
