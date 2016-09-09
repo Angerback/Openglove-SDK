@@ -86,11 +86,9 @@ namespace OpenGlovePrototype2
 
         LoadingBar bar;
         private void ReloadGloves() {
-
             bgw.RunWorkerAsync();
             bar = new LoadingBar(); 
             bar.ShowDialog();
-
         }
        
         private void onTrayClick(object sender, RoutedEventArgs e)
@@ -138,18 +136,19 @@ namespace OpenGlovePrototype2
             else
             {
                 this.labelGloveConfig.Content = this.selectedGlove.GloveConfiguration.GloveName;
+                this.buttonCreateGloveConfig.IsEnabled = true;
+                this.buttonOpenGloveConfig.IsEnabled = true;
+                this.buttonCreateProfileConfig.IsEnabled = true;
+                this.buttonOpenProfileConfig.IsEnabled = true;
 
                 if (this.selectedGlove.GloveConfiguration.GloveProfile == null)
                 {
                     this.labelProfile.Content = "None";
-                    this.buttonCreateGloveConfig.IsEnabled = true;
-                    this.buttonOpenGloveConfig.IsEnabled = true;
-                    this.buttonCreateProfileConfig.IsEnabled = false;
-                    this.buttonOpenProfileConfig.IsEnabled = false;
+                    
                 }
                 else
                 {
-                    this.labelGloveConfig.Content = this.selectedGlove.GloveConfiguration.GloveName;
+                    this.labelProfile.Content = this.selectedGlove.GloveConfiguration.GloveProfile.ProfileName;
                 }
             }
 
@@ -185,13 +184,29 @@ namespace OpenGlovePrototype2
                 {
                     if (openConfigurationDialog.FileName != "")
                     {
-                        /*
-                        sdkCore.gloveCfg.openGloveConfiguration(openConfigurationDialog.FileName);
-                        sdkClient.SetConfiguration(sdkCore.gloveCfg.BaudRate, sdkCore.gloveCfg.positivePins.ToArray(), sdkCore.gloveCfg.negativePins.ToArray(), sdkCore.gloveCfg.positiveInit.ToArray(), sdkCore.gloveCfg.negativeInit.ToArray(), sdkCore.gloveCfg.gloveHash, sdkCore.gloveCfg.gloveName);
-                        sdkCore.resetProfile();
-                        sdkClient.SetProfile(sdkCore.profileCfg.profileName, sdkCore.profileCfg.gloveHash, sdkCore.profileCfg.Mappings);
-                        */
                         gloves.OpenGloveConfiguration(openConfigurationDialog.FileName, selectedGlove);
+                        refreshControls();
+                    }
+                }
+            }
+        }
+
+        private void buttonOpenProfileConfig_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show("This will close the current profile. Are you sure?", "New configuration confirmation", MessageBoxButton.YesNo);
+
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                OpenFileDialog openConfigurationDialog = new OpenFileDialog();
+                openConfigurationDialog.Filter = "XML-File | *.xml";
+                openConfigurationDialog.Title = "Open a glove profile file";
+                openConfigurationDialog.ShowDialog();
+
+                if (openConfigurationDialog.FileName != null)
+                {
+                    if (openConfigurationDialog.FileName != "")
+                    {
+                        gloves.OpenProfileConfiguration(openConfigurationDialog.FileName, selectedGlove);
                         refreshControls();
                     }
                 }

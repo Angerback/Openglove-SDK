@@ -114,6 +114,30 @@ namespace Core
             //Tell the service to update the glove configuration
             serviceClient.SaveGlove(selectedGlove);
         }
+
+        public void OpenProfileConfiguration(string fileName, Glove selectedGlove)
+        {
+            selectedGlove.GloveConfiguration.GloveProfile = new Glove.Configuration.Profile();
+
+            Dictionary<String, String> openedConfiguration;
+
+            XDocument xml = XDocument.Load(fileName);
+
+            if (!xml.Root.Attribute("gloveHash").Equals(selectedGlove.GloveConfiguration.GloveHash))
+            {
+                //avisar
+            }
+
+            openedConfiguration = xml.Root.Element("mappings").Elements("mapping")
+                               .ToDictionary(c => (string)c.Element("region"),
+                                             c => (string)c.Element("actuator"));
+            selectedGlove.GloveConfiguration.GloveProfile.Mappings = openedConfiguration;
+
+            //Aqui deberia comprobarse que sean todos valores validos
+            selectedGlove.GloveConfiguration.GloveProfile.ProfileName = fileName;
+            selectedGlove.GloveConfiguration.GloveProfile.GloveHash = selectedGlove.GloveConfiguration.GloveHash;
+            serviceClient.SaveGlove(selectedGlove);
+        }
     }
 
         
