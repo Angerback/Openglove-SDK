@@ -17,7 +17,6 @@
         <Label x:Name="labelHeader" Grid.ColumnSpan="2" Content="OpenGlove Profile Tool" HorizontalAlignment="Left" Height="51" Margin="10,10,0,0" VerticalAlignment="Top" Width="1000" Foreground="White" FontFamily="Helvetica" FontSize="36"/>
         <Menu x:Name="menu" HorizontalAlignment="Left" Height="35" Margin="-6,70,0,0" VerticalAlignment="Top" Width="1028" Grid.ColumnSpan="2" Background="#FF001912" FontSize="16">
             <MenuItem x:Name="saveButton" Header="   Save" Foreground="White" Height="32" Width="78" Click="saveButton_Click"/>
-            <MenuItem x:Name="openButton" Header="   Open" Foreground="White" Click="openButton_Click" Width="83" HorizontalAlignment="Left"/>
         </Menu>
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="540" VerticalAlignment="Top" Width="639" Margin="10,110,0,0" Grid.Column="1">
             <TabItem x:Name="palmTab" Header="Palm">
@@ -2010,8 +2009,7 @@
         </ListView>
         <Button x:Name="buttonTestIntensity" Content="Test" HorizontalAlignment="Left" Margin="10,616,0,0" VerticalAlignment="Top" Width="75" Height="34" IsEnabled="False" Click="buttonTestIntensity_Click"/>
 
-        <xctk:IntegerUpDown x:Name="intensityUpDown" HorizontalAlignment="Left" Margin="90,616,0,0" VerticalAlignment="Top" Height="34" Width="69" IsEnabled="False"/>
-        <ComboBox x:Name="comboBoxComPorts" HorizontalAlignment="Left" Margin="164,616,0,0" VerticalAlignment="Top" Width="199" Height="34" IsEnabled="False"/>
+        <xctk:IntegerUpDown x:Name="intensityUpDown" Margin="90,616,0,0" VerticalAlignment="Top" Height="34" IsEnabled="False"/>
 
     </Grid>
 </Window>

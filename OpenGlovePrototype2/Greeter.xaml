@@ -18,9 +18,11 @@
         <Label x:Name="labelProfile" Content="Profile name&#xA;" HorizontalAlignment="Left" Margin="185,72,0,0" VerticalAlignment="Top" Foreground="White" FontSize="13" Width="366" Height="27"/>
         <Menu x:Name="menu" Height="37" VerticalAlignment="Top" Background="Black">
             <Separator HorizontalAlignment="Left" Height="35" Width="12" Background="Black" BorderBrush="Black"/>
-            <MenuItem Header="Hide Window" Height="37" Width="86" HorizontalAlignment="Center"  Foreground="White" Background="Black" BorderBrush="Black"/>
+            <MenuItem x:Name="HideWindowMenuItem" Header="Hide Window" Height="37" Width="86" HorizontalAlignment="Center"  Foreground="White" Background="Black" BorderBrush="Black"/>
             <Separator Width="11"/>
-            <MenuItem Header="Current Profile" Foreground="White"/>
+            <MenuItem x:Name="ConnectMenuItem" Header="Connect" Foreground="White" IsEnabled="False" Click="ConnectMenuItem_Click"/>
+            <Separator Width="11"/>
+            <MenuItem x:Name="CurrentProfileMenuItem" Header="Current Profile" Foreground="White" Click="CurrentProfileMenuItem_Click" IsEnabled="False"/>
         </Menu>
         <ListView x:Name="listViewGloves" Margin="10,121,0,51" SelectionChanged="listViewGloves_SelectionChanged" HorizontalAlignment="Left" Width="266">
             <ListView.View>

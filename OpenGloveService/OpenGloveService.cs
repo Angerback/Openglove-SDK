@@ -72,6 +72,7 @@ namespace OpenGloveService
     [DataContract]
     public class Glove
     {
+
         /// <summary>
         /// Private singleton field containing all active gloves, connected or disconnected in the system.
         /// </summary>
@@ -117,7 +118,7 @@ namespace OpenGloveService
                     foundGlove.Port = comPort;
                     foundGlove.Name = name;
                     foundGlove.Connected = false;
-                    foundGlove.legacyGlove = new OpenGlove.OpenGlove();
+                    foundGlove.LegacyGlove = new LegacyOpenGlove();
 
                     scannedGloves.Add(foundGlove);
                 }
@@ -175,7 +176,7 @@ namespace OpenGloveService
         [DataMember]
         public Configuration GloveConfiguration;
 
-        private OpenGlove.OpenGlove legacyGlove;
+        public LegacyOpenGlove LegacyGlove { get; set; }
 
         
         [DataContract]
@@ -246,10 +247,65 @@ namespace OpenGloveService
 
         [OperationContract]
         void SaveGlove(Glove glove);
+
+        [OperationContract]
+        int Activate(Glove glove, int region, int intensity);
+
+        [OperationContract]
+        int Connect(Glove glove);
     }
 
     public class OGService : IOGService
     {
+        private const int AREACOUNT = 58;
+
+        public int Activate(Glove glove, int region, int intensity)
+        {
+            if (glove != null)
+            {
+                if (intensity < 0)
+                {
+                    intensity = 0;
+                }
+                else if (intensity > 255)
+                {
+                    intensity = 255;
+                }
+
+                if (region < 0)
+                {
+                    return 1;
+                }
+                else if (region >= AREACOUNT)
+                {
+                    return 1;
+                }
+
+                if (glove.Connected)
+                {
+                    foreach (Glove g in Glove.Gloves)
+                    {
+                        if (g.BluetoothAddress.Equals(glove.BluetoothAddress))
+                        {
+                            try
+                            {
+                                g.LegacyGlove.ActivateMotor(new List<int> { region }, new List<string> { intensity.ToString() });
+                                return 0;
+                            }
+                            catch (Exception)
+                            {
+                                g.Connected = false;
+                                glove.LegacyGlove = new LegacyOpenGlove();
+                                return 1;// CANT ACTIVATE
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            return 0; //OK
+        }
+
         public List<Glove> GetGloves()
         {
             Debugger.Launch();
@@ -266,6 +322,45 @@ namespace OpenGloveService
                     break;
                 }
             }
+        }
+
+        public int Connect(Glove glove)
+        {
+            Debugger.Launch();
+            foreach (Glove g in Glove.Gloves)
+            {
+                if (g.BluetoothAddress.Equals(glove.BluetoothAddress))
+                {
+                    if (g.GloveConfiguration != null)
+                    {
+                        g.LegacyGlove = new LegacyOpenGlove();
+                        g.LegacyGlove.OpenPort(g.Port, g.GloveConfiguration.BaudRate);
+                        g.LegacyGlove.InitializeMotor(g.GloveConfiguration.PositivePins);
+                        g.LegacyGlove.InitializeMotor(g.GloveConfiguration.NegativePins);
+                        g.LegacyGlove.ActivateMotor(g.GloveConfiguration.NegativePins, g.GloveConfiguration.NegativeInit);
+                        g.Connected = true;
+                    }
+                    else {
+                        return 1; // NO CONFIG
+                    }
+                    return 0;
+                }
+            }
+            return 0; //OK
+        }
+
+        public int Disconnect(Glove glove) {
+            Debugger.Launch();
+            foreach (Glove g in Glove.Gloves)
+            {
+                if (g.BluetoothAddress.Equals(glove.BluetoothAddress))
+                {
+                    g.LegacyGlove.ClosePort();
+                    g.Connected = false;
+                    return 0;
+                }
+            }
+            return 0;
         }
     }
 }

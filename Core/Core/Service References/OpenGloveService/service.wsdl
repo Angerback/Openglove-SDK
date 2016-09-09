@@ -49,6 +49,18 @@
   <wsdl:message name="IOGService_SaveGlove_OutputMessage">
     <wsdl:part name="parameters" element="tns:SaveGloveResponse" />
   </wsdl:message>
+  <wsdl:message name="IOGService_Activate_InputMessage">
+    <wsdl:part name="parameters" element="tns:Activate" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_Activate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActivateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_Connect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Connect" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_Connect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectResponse" />
+  </wsdl:message>
   <wsdl:portType name="IOGService">
     <wsdl:operation name="GetGloves">
       <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetGloves" message="tns:IOGService_GetGloves_InputMessage" />
@@ -57,6 +69,14 @@
     <wsdl:operation name="SaveGlove">
       <wsdl:input wsaw:Action="http://tempuri.org/IOGService/SaveGlove" message="tns:IOGService_SaveGlove_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOGService/SaveGloveResponse" message="tns:IOGService_SaveGlove_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Activate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/Activate" message="tns:IOGService_Activate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/ActivateResponse" message="tns:IOGService_Activate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Connect">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/Connect" message="tns:IOGService_Connect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/ConnectResponse" message="tns:IOGService_Connect_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOGService" type="tns:IOGService">
@@ -79,6 +99,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Activate">
+      <soap:operation soapAction="http://tempuri.org/IOGService/Activate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Connect">
+      <soap:operation soapAction="http://tempuri.org/IOGService/Connect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IOGService" type="tns:IOGService">
     <wsp:PolicyReference URI="#NetTcpBinding_IOGService_policy" />
@@ -94,6 +132,24 @@
     </wsdl:operation>
     <wsdl:operation name="SaveGlove">
       <soap12:operation soapAction="http://tempuri.org/IOGService/SaveGlove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Activate">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/Activate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Connect">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/Connect" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -138,6 +138,22 @@ namespace Core
             selectedGlove.GloveConfiguration.GloveProfile.GloveHash = selectedGlove.GloveConfiguration.GloveHash;
             serviceClient.SaveGlove(selectedGlove);
         }
+
+        public int Activate(Glove selectedGlove, int region, int intensity) { 
+            return this.serviceClient.Activate(selectedGlove, region, intensity);
+        }
+
+        public int Connect(Glove selectedGlove) {
+            try
+            {
+                return this.serviceClient.Connect(selectedGlove);
+            }
+            catch (Exception)
+            {
+
+                return -1;
+            }
+        }
     }
 
         

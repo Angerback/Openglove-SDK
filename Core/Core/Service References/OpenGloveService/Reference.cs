@@ -428,6 +428,18 @@ namespace Core.OpenGloveService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/SaveGlove", ReplyAction="http://tempuri.org/IOGService/SaveGloveResponse")]
         System.Threading.Tasks.Task SaveGloveAsync(Core.OpenGloveService.Glove glove);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Activate", ReplyAction="http://tempuri.org/IOGService/ActivateResponse")]
+        int Activate(Core.OpenGloveService.Glove glove, int region, int intensity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Activate", ReplyAction="http://tempuri.org/IOGService/ActivateResponse")]
+        System.Threading.Tasks.Task<int> ActivateAsync(Core.OpenGloveService.Glove glove, int region, int intensity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Connect", ReplyAction="http://tempuri.org/IOGService/ConnectResponse")]
+        int Connect(Core.OpenGloveService.Glove glove);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Connect", ReplyAction="http://tempuri.org/IOGService/ConnectResponse")]
+        System.Threading.Tasks.Task<int> ConnectAsync(Core.OpenGloveService.Glove glove);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -471,6 +483,22 @@ namespace Core.OpenGloveService {
         
         public System.Threading.Tasks.Task SaveGloveAsync(Core.OpenGloveService.Glove glove) {
             return base.Channel.SaveGloveAsync(glove);
+        }
+        
+        public int Activate(Core.OpenGloveService.Glove glove, int region, int intensity) {
+            return base.Channel.Activate(glove, region, intensity);
+        }
+        
+        public System.Threading.Tasks.Task<int> ActivateAsync(Core.OpenGloveService.Glove glove, int region, int intensity) {
+            return base.Channel.ActivateAsync(glove, region, intensity);
+        }
+        
+        public int Connect(Core.OpenGloveService.Glove glove) {
+            return base.Channel.Connect(glove);
+        }
+        
+        public System.Threading.Tasks.Task<int> ConnectAsync(Core.OpenGloveService.Glove glove) {
+            return base.Channel.ConnectAsync(glove);
         }
     }
 }

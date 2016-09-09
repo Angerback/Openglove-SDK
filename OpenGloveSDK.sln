@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core\Core.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COMTEST", "COMTEST\COMTEST.csproj", "{A1463E99-119C-48EC-AC62-67E1C2B38569}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGlove API C Sharp HL", "OpenGlove API C Sharp HL\OpenGlove API C Sharp HL.csproj", "{5198FC08-00BF-4101-A6B5-0E5F9E41130A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{A1463E99-119C-48EC-AC62-67E1C2B38569}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1463E99-119C-48EC-AC62-67E1C2B38569}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1463E99-119C-48EC-AC62-67E1C2B38569}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5198FC08-00BF-4101-A6B5-0E5F9E41130A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5198FC08-00BF-4101-A6B5-0E5F9E41130A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5198FC08-00BF-4101-A6B5-0E5F9E41130A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5198FC08-00BF-4101-A6B5-0E5F9E41130A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

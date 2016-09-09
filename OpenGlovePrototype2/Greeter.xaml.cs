@@ -132,6 +132,8 @@ namespace OpenGlovePrototype2
                 this.buttonOpenGloveConfig.IsEnabled = true;
                 this.buttonCreateProfileConfig.IsEnabled = false;
                 this.buttonOpenProfileConfig.IsEnabled = false;
+                this.ConnectMenuItem.IsEnabled = false;
+                this.CurrentProfileMenuItem.IsEnabled = false;
             }
             else
             {
@@ -140,6 +142,7 @@ namespace OpenGlovePrototype2
                 this.buttonOpenGloveConfig.IsEnabled = true;
                 this.buttonCreateProfileConfig.IsEnabled = true;
                 this.buttonOpenProfileConfig.IsEnabled = true;
+                this.ConnectMenuItem.IsEnabled = true;
 
                 if (this.selectedGlove.GloveConfiguration.GloveProfile == null)
                 {
@@ -148,6 +151,7 @@ namespace OpenGlovePrototype2
                 }
                 else
                 {
+                    this.CurrentProfileMenuItem.IsEnabled = true;
                     this.labelProfile.Content = this.selectedGlove.GloveConfiguration.GloveProfile.ProfileName;
                 }
             }
@@ -210,6 +214,40 @@ namespace OpenGlovePrototype2
                         refreshControls();
                     }
                 }
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CurrentProfileMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (selectedGlove.GloveConfiguration.GloveProfile.Mappings.Count != 0)
+            {
+                ConfigurationTool config = new ConfigurationTool(selectedGlove);
+                config.Show();
+            }
+            else
+            {
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("No profile loaded.", "No profile", System.Windows.MessageBoxButton.OK);
+
+            }
+        }
+
+        private void ConnectMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            int result = gloves.Connect(selectedGlove);
+            if (result == 0)
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show("Glove " + selectedGlove.Name +" successfully connected.", "Connection", MessageBoxButton.OK);
+                selectedGlove.Connected = true;
+            }
+            else
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show("Can't connect to" + selectedGlove.Name + ". Try repairing it.", "Connection", MessageBoxButton.OK);
             }
         }
     }

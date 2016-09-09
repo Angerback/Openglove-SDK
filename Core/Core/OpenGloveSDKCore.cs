@@ -164,15 +164,15 @@ namespace OpenGloveSDK
 
         public GloveConfiguration gloveCfg { get; set; }
 
-        private OpenGlove.OpenGlove openGlove;
+        private OpenGlove.LegacyOpenGlove openGlove;
 
-        public Dictionary<string, OpenGlove.OpenGlove> gloves { get; set; }
+        public Dictionary<string, OpenGlove.LegacyOpenGlove> gloves { get; set; }
 
         public OGCore() {
-            this.openGlove = new OpenGlove.OpenGlove();
+            this.openGlove = new OpenGlove.LegacyOpenGlove();
             this.profileCfg = new ProfileConfiguration();
             this.gloveCfg = new GloveConfiguration();
-            this.gloves = new Dictionary<string, OpenGlove.OpenGlove>();
+            this.gloves = new Dictionary<string, OpenGlove.LegacyOpenGlove>();
         }
 
         public void resetProfile()

@@ -7,7 +7,7 @@ namespace OpenGlove
     /// <summary>
     /// Represents an OpenGlove device instance. Provide methods for communication with the device, initialize and activate vibration motors, besides others actuators and sensors
     /// </summary>
-    public class OpenGlove
+    public class LegacyOpenGlove
     {
         public string Address { get; set; }
 
