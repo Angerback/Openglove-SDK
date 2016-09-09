@@ -320,8 +320,7 @@ namespace OpenGloveSDKConfigurationPrototype2
                 MessageBox.Show(message, caption, button, MessageBoxImage.Error);
                 return;
             }
-            sw = new Stopwatch();
-            sw.Start();
+            sw.Restart();
             Mapping mapping = (Mapping)this.mappingsList.SelectedItem;
             if (testing)
             {

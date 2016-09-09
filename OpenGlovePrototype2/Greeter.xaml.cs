@@ -154,6 +154,14 @@ namespace OpenGlovePrototype2
                     this.CurrentProfileMenuItem.IsEnabled = true;
                     this.labelProfile.Content = this.selectedGlove.GloveConfiguration.GloveProfile.ProfileName;
                 }
+
+                if (selectedGlove.Connected)
+                {
+                    this.ConnectMenuItem.Header = "Disconnect";
+                }
+                else {
+                    this.ConnectMenuItem.Header = "Connect";
+                }
             }
 
         }
@@ -239,16 +247,30 @@ namespace OpenGlovePrototype2
 
         private void ConnectMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            int result = gloves.Connect(selectedGlove);
-            if (result == 0)
+            if (selectedGlove.Connected)
             {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Glove " + selectedGlove.Name +" successfully connected.", "Connection", MessageBoxButton.OK);
-                selectedGlove.Connected = true;
+                int result = gloves.Disconnect(selectedGlove);
+                
+                if (result == 0)
+                {
+                    MessageBoxResult messageBoxResult = MessageBox.Show("Glove " + selectedGlove.Name + " successfully disconnected.", "Connection", MessageBoxButton.OK);
+                    selectedGlove.Connected = false;
+                }
             }
             else
             {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Can't connect to" + selectedGlove.Name + ". Try repairing it.", "Connection", MessageBoxButton.OK);
+                int result = gloves.Connect(selectedGlove);
+                if (result == 0)
+                {
+                    MessageBoxResult messageBoxResult = MessageBox.Show("Glove " + selectedGlove.Name + " successfully connected.", "Connection", MessageBoxButton.OK);
+                    selectedGlove.Connected = true;
+                }
+                else
+                {
+                    MessageBoxResult messageBoxResult = MessageBox.Show("Can't connect to" + selectedGlove.Name + ". Try repairing it.", "Connection", MessageBoxButton.OK);
+                }
             }
+            refreshControls();
         }
     }
 }

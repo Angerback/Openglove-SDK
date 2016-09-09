@@ -440,6 +440,12 @@ namespace Core.OpenGloveService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Connect", ReplyAction="http://tempuri.org/IOGService/ConnectResponse")]
         System.Threading.Tasks.Task<int> ConnectAsync(Core.OpenGloveService.Glove glove);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Disconnect", ReplyAction="http://tempuri.org/IOGService/DisconnectResponse")]
+        int Disconnect(Core.OpenGloveService.Glove glove);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Disconnect", ReplyAction="http://tempuri.org/IOGService/DisconnectResponse")]
+        System.Threading.Tasks.Task<int> DisconnectAsync(Core.OpenGloveService.Glove glove);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -499,6 +505,14 @@ namespace Core.OpenGloveService {
         
         public System.Threading.Tasks.Task<int> ConnectAsync(Core.OpenGloveService.Glove glove) {
             return base.Channel.ConnectAsync(glove);
+        }
+        
+        public int Disconnect(Core.OpenGloveService.Glove glove) {
+            return base.Channel.Disconnect(glove);
+        }
+        
+        public System.Threading.Tasks.Task<int> DisconnectAsync(Core.OpenGloveService.Glove glove) {
+            return base.Channel.DisconnectAsync(glove);
         }
     }
 }

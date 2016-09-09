@@ -33,8 +33,6 @@ namespace OpenGloveService
         // Start the Windows service.
         protected override void OnStart(string[] args)
         {
-            
-
             if (m_svcHost != null) m_svcHost.Close();
 
             string strAdrHTTP = "http://localhost:9001/OGService";
@@ -253,6 +251,9 @@ namespace OpenGloveService
 
         [OperationContract]
         int Connect(Glove glove);
+
+        [OperationContract]
+        int Disconnect(Glove glove);
     }
 
     public class OGService : IOGService
@@ -355,7 +356,14 @@ namespace OpenGloveService
             {
                 if (g.BluetoothAddress.Equals(glove.BluetoothAddress))
                 {
-                    g.LegacyGlove.ClosePort();
+                    try
+                    {
+                        g.LegacyGlove.ClosePort();
+                    }
+                    catch (Exception)
+                    {
+                        
+                    }
                     g.Connected = false;
                     return 0;
                 }

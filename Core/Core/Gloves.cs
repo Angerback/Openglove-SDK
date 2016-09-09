@@ -139,14 +139,27 @@ namespace Core
             serviceClient.SaveGlove(selectedGlove);
         }
 
-        public int Activate(Glove selectedGlove, int region, int intensity) { 
-            return this.serviceClient.Activate(selectedGlove, region, intensity);
+        public void Activate(Glove selectedGlove, int region, int intensity) { 
+            this.serviceClient.ActivateAsync(selectedGlove, region, intensity);
         }
 
         public int Connect(Glove selectedGlove) {
             try
             {
                 return this.serviceClient.Connect(selectedGlove);
+            }
+            catch (Exception)
+            {
+
+                return -1;
+            }
+        }
+
+        public int Disconnect(Glove selectedGlove)
+        {
+            try
+            {
+                return this.serviceClient.Disconnect(selectedGlove);
             }
             catch (Exception)
             {
