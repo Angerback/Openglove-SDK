@@ -13,4 +13,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SaveGlove">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/OpenGloveService" minOccurs="0" name="glove" nillable="true" type="q2:Glove" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveGloveResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

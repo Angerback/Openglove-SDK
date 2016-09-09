@@ -34,6 +34,7 @@
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/OpenGloveService" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IOGService_GetGloves_InputMessage">
@@ -42,10 +43,20 @@
   <wsdl:message name="IOGService_GetGloves_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetGlovesResponse" />
   </wsdl:message>
+  <wsdl:message name="IOGService_SaveGlove_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveGlove" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_SaveGlove_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveGloveResponse" />
+  </wsdl:message>
   <wsdl:portType name="IOGService">
     <wsdl:operation name="GetGloves">
       <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetGloves" message="tns:IOGService_GetGloves_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetGlovesResponse" message="tns:IOGService_GetGloves_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveGlove">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/SaveGlove" message="tns:IOGService_SaveGlove_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/SaveGloveResponse" message="tns:IOGService_SaveGlove_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOGService" type="tns:IOGService">
@@ -59,12 +70,30 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SaveGlove">
+      <soap:operation soapAction="http://tempuri.org/IOGService/SaveGlove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IOGService" type="tns:IOGService">
     <wsp:PolicyReference URI="#NetTcpBinding_IOGService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="GetGloves">
       <soap12:operation soapAction="http://tempuri.org/IOGService/GetGloves" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveGlove">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/SaveGlove" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

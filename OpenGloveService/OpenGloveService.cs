@@ -81,7 +81,10 @@ namespace OpenGloveService
         {
             get
             {
-                gloves = ScanGloves();
+                if (gloves == null) {
+                    gloves = ScanGloves();
+                    
+                }
                 return gloves;
             }
         }
@@ -170,9 +173,60 @@ namespace OpenGloveService
         public bool Connected;
 
         [DataMember]
-        public Profile Profile;
+        public Configuration GloveConfiguration;
 
         private OpenGlove.OpenGlove legacyGlove;
+
+        
+        [DataContract]
+        public class Configuration
+        {
+
+            [DataMember]
+            public int BaudRate;
+
+            [DataMember]
+            public List<int> AllowedBaudRates = new List<int> { 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200 };
+
+            [DataMember]
+            public List<int> PositivePins;
+
+            [DataMember]
+            public List<int> NegativePins;
+
+            [DataMember]
+            public List<string> NegativeInit;
+
+            [DataMember]
+            public List<string> PositiveInit;
+
+            [DataMember]
+            public String GloveHash;
+
+            [DataMember]
+            public String GloveName;
+
+            [DataMember]
+            public Profile GloveProfile;
+
+            [DataContract]
+            public class Profile
+            {
+                [DataMember]
+                public String ProfileName;
+
+                [DataMember]
+                public String GloveHash;
+
+                [DataMember]
+                public int AreaCount = 58;
+
+                [DataMember]
+                public Dictionary<string, string> Mappings = new Dictionary<string, string>();
+            }
+        }
+
+
     }
 
     [DataContract(Name = "Side")]
@@ -184,58 +238,14 @@ namespace OpenGloveService
         Left
     }
 
-    [DataContract]
-    public class Profile
-    {
-        [DataMember]
-        public String ProfileName;
-
-        [DataMember]
-        public String GloveHash;
-
-        [DataMember]
-        public int AreaCount = 58;
-
-        [DataMember]
-        public Dictionary<string, string> Mappings = new Dictionary<string, string>();
-
-        [DataMember]
-        public Configuration Configuration;
-    }
-
-    [DataContract]
-    public class Configuration {
-
-        [DataMember]
-        public int BaudRate;
-
-        [DataMember]
-        public List<int> AllowedBaudRates = new List<int> { 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200 };
-
-        [DataMember]
-        public List<int> PositivePins;
-
-        [DataMember]
-        public List<int> NegativePins;
-
-        [DataMember]
-        public List<string> NegativeInit;
-
-        [DataMember]
-        public List<string> PositiveInit;
-
-        [DataMember]
-        public String GloveHash;
-
-        [DataMember]
-        public String GloveName;
-    }
-
     [ServiceContract]
     public interface IOGService
     {
         [OperationContract]
         List<Glove> GetGloves();
+
+        [OperationContract]
+        void SaveGlove(Glove glove);
     }
 
     public class OGService : IOGService
@@ -246,5 +256,16 @@ namespace OpenGloveService
             return Glove.Gloves;
         }
 
+        public void SaveGlove(Glove glove) {
+            foreach (Glove g in Glove.Gloves)
+            {
+                if (g.BluetoothAddress.Equals(glove.BluetoothAddress))
+                {
+                    Glove.Gloves.Remove(g);
+                    Glove.Gloves.Add(glove);
+                    break;
+                }
+            }
+        }
     }
 }

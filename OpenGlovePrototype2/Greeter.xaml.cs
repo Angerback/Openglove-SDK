@@ -32,6 +32,8 @@ namespace OpenGlovePrototype2
 
         private Core.Gloves gloves = Core.Gloves.GetInstance();
 
+        private Core.OpenGloveService.Glove selectedGlove;
+
         private BackgroundWorker bgw;
 
         void bgw_DoWork(object sender, DoWorkEventArgs e)
@@ -63,7 +65,7 @@ namespace OpenGlovePrototype2
             bgw.DoWork += new DoWorkEventHandler(bgw_DoWork);
             
 
-            updateControls();
+            ReloadGloves();
 
             tbi = new TaskbarIcon();
             tbi.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Reflection.Assembly.GetExecutingAssembly().Location); ;
@@ -86,47 +88,18 @@ namespace OpenGlovePrototype2
         }
 
         LoadingBar bar;
-        private void updateControls() {
-            //var config = sdkCore.gloveCfg;
-            /*
-            this.buttonConnectGlove.IsEnabled = false;
-            */
+        private void ReloadGloves() {
+
             bgw.RunWorkerAsync();
             bar = new LoadingBar(); 
             bar.ShowDialog();
-            
-            /*
-            if (config.positivePins == null)
-            {
-                Console.WriteLine("No config");
-                this.buttonOpenProfile.IsEnabled = false;
-                this.buttonNewProfile.IsEnabled = false;
-                this.buttonConnectGlove.IsEnabled = false;
-                this.labelGloveConfig.Content = "None. Please select or create a new glove configuration.";
-            }
-            else {
-                this.buttonOpenProfile.IsEnabled = true;
-                this.buttonNewProfile.IsEnabled = true;
-
-                this.labelGloveConfig.Content = config.gloveName;
-            }
-
-            var profile = sdkCore.profileCfg;
-            if (profile.Mappings.Count == 0)
-            {
-                this.labelProfile.Content = "None.";
-            }
-            else {
-                this.buttonConnectGlove.IsEnabled = true;
-                this.labelProfile.Content = profile.profileName;
-            }*/
 
         }
        
         private void onTrayClick(object sender, RoutedEventArgs e)
         {
             toggleVisibility();
-            updateControls();
+            ReloadGloves();
         }
 
         private void toggleVisibility() {
@@ -145,6 +118,52 @@ namespace OpenGlovePrototype2
             {
                 this.Close();
             }
+        }
+
+        private void listViewGloves_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.selectedGlove = (Core.OpenGloveService.Glove) ((ListView)sender).SelectedItem;
+
+            if (selectedGlove.GloveConfiguration == null)
+            {
+                this.labelProfile.Content = "None";
+                this.labelGloveConfig.Content = "None";
+                this.buttonCreateGloveConfig.IsEnabled = true;
+                this.buttonOpenGloveConfig.IsEnabled = true;
+                this.buttonCreateProfileConfig.IsEnabled = false;
+                this.buttonOpenProfileConfig.IsEnabled = false;
+            }
+            else {
+                this.labelGloveConfig.Content = this.selectedGlove.GloveConfiguration.GloveName;
+
+                if (this.selectedGlove.GloveConfiguration.GloveProfile == null)
+                {
+                    this.labelProfile.Content = "None";
+                    this.buttonCreateGloveConfig.IsEnabled = true;
+                    this.buttonOpenGloveConfig.IsEnabled = true;
+                    this.buttonCreateProfileConfig.IsEnabled = false;
+                    this.buttonOpenProfileConfig.IsEnabled = false;
+                }
+                else
+                {
+                    this.labelGloveConfig.Content = this.selectedGlove.GloveConfiguration.GloveName;
+                }
+            }
+        }
+
+        private void buttonCreateGloveConfig_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.selectedGlove.GloveConfiguration == null) {
+                this.selectedGlove.GloveConfiguration = new Core.OpenGloveService.Glove.Configuration();
+            }
+
+            PinsConfiguration pins = new PinsConfiguration(this.selectedGlove);
+            pins.ShowDialog();
+        }
+
+        private void buttonRefreshGloves_Click(object sender, RoutedEventArgs e)
+        {
+            this.ReloadGloves();
         }
     }
 }

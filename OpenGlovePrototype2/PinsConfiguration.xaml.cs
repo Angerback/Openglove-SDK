@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using OpenGloveSDKConfigurationPrototype2;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using OpenGloveSDK;
+using Core;
 
 namespace OpenGlovePrototype2
 {
@@ -100,14 +100,17 @@ namespace OpenGlovePrototype2
             this.comboBoxBoard.SelectionChanged += this.comboBoxBoard_SelectionChanged;
         }
 
-        public PinsConfiguration()
+        private Core.OpenGloveService.Glove selectedGlove;
+
+        public PinsConfiguration(Core.OpenGloveService.Glove selectedGlove)
         {
             
             InitializeComponent();
 
+            this.selectedGlove = selectedGlove;
+
             initializeBoards();
 
-            
         }
 
         private void initializePinsList(int boardIndex) {
@@ -122,14 +125,12 @@ namespace OpenGlovePrototype2
 
             Polarity.ItemsSource = Polarities;
 
-            this.comboBoxBaudRate.ItemsSource = OGCore.GetCore().gloveCfg.allowedBaudRates;
+            this.comboBoxBaudRate.ItemsSource = new List<int> { 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200 };
             this.comboBoxBoard.ItemsSource = this.boards;
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            OGCore core = OGCore.GetCore();
-
             SaveFileDialog saveConfigurationDialog = new SaveFileDialog();
             saveConfigurationDialog.Filter = "XML-File | *.xml";
             saveConfigurationDialog.Title = "Save your configuration file";
@@ -138,9 +139,10 @@ namespace OpenGlovePrototype2
             if (saveConfigurationDialog.FileName != "") {
                 if (this.comboBoxBaudRate.SelectedItem != null)
                 {
-                    core.gloveCfg.BaudRate = Int32.Parse(this.comboBoxBaudRate.SelectedItem.ToString());
-                    core.gloveCfg.positivePins = new List<int>();
-                    core.gloveCfg.negativePins = new List<int>();
+                    selectedGlove.GloveConfiguration.BaudRate = Int32.Parse(this.comboBoxBaudRate.SelectedItem.ToString());
+
+                    List<int> positivePins = new List<int>();
+                    List<int> negativePins = new List<int>();
 
                     foreach (PinRow pin in pins)
                     {
@@ -148,21 +150,37 @@ namespace OpenGlovePrototype2
                         {
                             if (pin.Polarity.Equals("Positive"))
                             {
-                                core.gloveCfg.positivePins.Add(pin.Pin);
+                                positivePins.Add(pin.Pin);
                             }
                             else
                             {
-                                core.gloveCfg.negativePins.Add(pin.Pin);
+                                negativePins.Add(pin.Pin);
                             }
                         }
                     }
+
+                    selectedGlove.GloveConfiguration.PositivePins = positivePins.ToArray();
+                    selectedGlove.GloveConfiguration.NegativePins = negativePins.ToArray();
                     /*
                     ConfigurationTool mw = new ConfigurationTool();
 
                     mw.Show();
 
                     this.Close();*/
-                    core.gloveCfg.saveGloveConfiguration(saveConfigurationDialog.FileName);
+
+                    List<string> positiveInit = new List<string>();
+                    List<string> negativeInit = new List<string>();
+
+                    for (int i = 0; i < positivePins.Count; i++)
+                    {
+                        positiveInit.Add("HIGH");
+                        negativeInit.Add("LOW");
+                    }
+
+                    selectedGlove.GloveConfiguration.PositiveInit = positiveInit.ToArray();
+                    selectedGlove.GloveConfiguration.NegativeInit = negativeInit.ToArray();
+
+                    Gloves.GetInstance().saveGloveConfiguration(saveConfigurationDialog.FileName, selectedGlove);
                 }
                 else
                 {

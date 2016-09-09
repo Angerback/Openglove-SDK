@@ -59,6 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Service References\OpenGloveService\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\OpenGloveService\Core.OpenGloveService.Glove.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
