@@ -27,9 +27,6 @@ namespace OpenGlovePrototype2
     {
         private TaskbarIcon tbi;
 
-        //Destruir
-        private OGCore sdkCore;
-
         private Core.Gloves gloves = Core.Gloves.GetInstance();
 
         private Core.OpenGloveService.Glove selectedGlove;
@@ -122,8 +119,13 @@ namespace OpenGlovePrototype2
 
         private void listViewGloves_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.selectedGlove = (Core.OpenGloveService.Glove) ((ListView)sender).SelectedItem;
 
+            selectedGlove = (Core.OpenGloveService.Glove)((ListView)sender).SelectedItem;
+            refreshControls();
+        }
+
+        private void refreshControls()
+        {          
             if (selectedGlove.GloveConfiguration == null)
             {
                 this.labelProfile.Content = "None";
@@ -133,7 +135,8 @@ namespace OpenGlovePrototype2
                 this.buttonCreateProfileConfig.IsEnabled = false;
                 this.buttonOpenProfileConfig.IsEnabled = false;
             }
-            else {
+            else
+            {
                 this.labelGloveConfig.Content = this.selectedGlove.GloveConfiguration.GloveName;
 
                 if (this.selectedGlove.GloveConfiguration.GloveProfile == null)
@@ -149,6 +152,7 @@ namespace OpenGlovePrototype2
                     this.labelGloveConfig.Content = this.selectedGlove.GloveConfiguration.GloveName;
                 }
             }
+
         }
 
         private void buttonCreateGloveConfig_Click(object sender, RoutedEventArgs e)
@@ -164,6 +168,34 @@ namespace OpenGlovePrototype2
         private void buttonRefreshGloves_Click(object sender, RoutedEventArgs e)
         {
             this.ReloadGloves();
+        }
+
+        private void buttonOpenGloveConfig_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show("This will close the current profile. Are you sure?", "New configuration confirmation", MessageBoxButton.YesNo);
+
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                OpenFileDialog openConfigurationDialog = new OpenFileDialog();
+                openConfigurationDialog.Filter = "XML-File | *.xml";
+                openConfigurationDialog.Title = "Open a glove configuration file";
+                openConfigurationDialog.ShowDialog();
+
+                if (openConfigurationDialog.FileName != null)
+                {
+                    if (openConfigurationDialog.FileName != "")
+                    {
+                        /*
+                        sdkCore.gloveCfg.openGloveConfiguration(openConfigurationDialog.FileName);
+                        sdkClient.SetConfiguration(sdkCore.gloveCfg.BaudRate, sdkCore.gloveCfg.positivePins.ToArray(), sdkCore.gloveCfg.negativePins.ToArray(), sdkCore.gloveCfg.positiveInit.ToArray(), sdkCore.gloveCfg.negativeInit.ToArray(), sdkCore.gloveCfg.gloveHash, sdkCore.gloveCfg.gloveName);
+                        sdkCore.resetProfile();
+                        sdkClient.SetProfile(sdkCore.profileCfg.profileName, sdkCore.profileCfg.gloveHash, sdkCore.profileCfg.Mappings);
+                        */
+                        gloves.OpenGloveConfiguration(openConfigurationDialog.FileName, selectedGlove);
+                        refreshControls();
+                    }
+                }
+            }
         }
     }
 }

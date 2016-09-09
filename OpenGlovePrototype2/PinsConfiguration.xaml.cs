@@ -161,12 +161,6 @@ namespace OpenGlovePrototype2
 
                     selectedGlove.GloveConfiguration.PositivePins = positivePins.ToArray();
                     selectedGlove.GloveConfiguration.NegativePins = negativePins.ToArray();
-                    /*
-                    ConfigurationTool mw = new ConfigurationTool();
-
-                    mw.Show();
-
-                    this.Close();*/
 
                     List<string> positiveInit = new List<string>();
                     List<string> negativeInit = new List<string>();

@@ -70,6 +70,50 @@ namespace Core
 
             serviceClient.SaveGlove(selectedGlove);
         }
+
+        public void OpenGloveConfiguration(string fileName, Glove selectedGlove)
+        {
+            selectedGlove.GloveConfiguration = new Glove.Configuration();
+
+            XDocument xml = XDocument.Load(fileName);
+            List<XElement> Xpins = xml.Root.Element("boardPins").Elements("positivePin").ToList();
+            List<int> positivePins = new List<int>();
+            foreach (XElement xpin in Xpins)
+            {
+                int pinNumber = Int32.Parse(xpin.Attribute("pin").Value);
+                positivePins.Add(pinNumber);
+            }
+
+            Xpins = xml.Root.Element("boardPins").Elements("negativePin").ToList();
+            List<int> negativePins = new List<int>();
+            foreach (XElement xpin in Xpins)
+            {
+                int pinNumber = Int32.Parse(xpin.Attribute("pin").Value);
+                negativePins.Add(pinNumber);
+            }
+
+            int baudRate = Int32.Parse(xml.Root.Attribute("baudRate").Value);
+            selectedGlove.GloveConfiguration.PositivePins = positivePins.ToArray();
+            selectedGlove.GloveConfiguration.NegativePins = negativePins.ToArray();
+            selectedGlove.GloveConfiguration.BaudRate = baudRate;
+            selectedGlove.GloveConfiguration.GloveHash = (string) xml.Root.Attribute("gloveHash");
+            selectedGlove.GloveConfiguration.GloveName = (string) xml.Root.Attribute("gloveName");
+
+            List<string> positiveInit = new List<string>();
+            List<string> negativeInit = new List<string>();
+
+            for (int i = 0; i < positivePins.Count; i++)
+            {
+                positiveInit.Add("HIGH");
+                negativeInit.Add("LOW");
+            }
+
+            selectedGlove.GloveConfiguration.PositiveInit = positiveInit.ToArray();
+            selectedGlove.GloveConfiguration.NegativeInit = negativeInit.ToArray();
+
+            //Tell the service to update the glove configuration
+            serviceClient.SaveGlove(selectedGlove);
+        }
     }
 
         

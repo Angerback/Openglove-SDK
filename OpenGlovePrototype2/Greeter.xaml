@@ -33,7 +33,7 @@
         </ListView>
         <Button x:Name="buttonRefreshGloves" Content="Refresh Gloves" Margin="10,0,10,10" FontSize="20" Height="36" VerticalAlignment="Bottom" Click="buttonRefreshGloves_Click"/>
         <Button x:Name="buttonCreateGloveConfig" Content="Create Glove Configuration" Margin="281,122,10,0" VerticalAlignment="Top" Height="48" FontSize="18" Click="buttonCreateGloveConfig_Click" IsEnabled="False"/>
-        <Button x:Name="buttonOpenGloveConfig" Content="Open Glove Configuration" Margin="281,176,10,0" VerticalAlignment="Top" Height="49" FontSize="18" IsEnabled="False"/>
+        <Button x:Name="buttonOpenGloveConfig" Content="Open Glove Configuration" Margin="281,176,10,0" VerticalAlignment="Top" Height="49" FontSize="18" IsEnabled="False" Click="buttonOpenGloveConfig_Click"/>
         <Button x:Name="buttonCreateProfileConfig" Content="Create Profile Configuration" Margin="281,231,10,0" VerticalAlignment="Top" Height="48" FontSize="18" IsEnabled="False"/>
         <Button x:Name="buttonOpenProfileConfig" Content="Open Profile Configuration" Margin="281,285,10,51" FontSize="18" IsEnabled="False"/>
     </Grid>
