@@ -42,8 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Gloves.cs" />
-    <Compile Include="OpenGloveSDKCore.cs" />
+    <Compile Include="OpenGloveAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\OpenGloveService\Reference.cs">
       <AutoGen>True</AutoGen>

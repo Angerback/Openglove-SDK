@@ -23,6 +23,8 @@ namespace OpenGloveService
     {
         private ServiceHost m_svcHost = null;
 
+        private const bool DEBUGGING = false;
+
         public OpenGloveService()
         {
             InitializeComponent();
@@ -33,6 +35,8 @@ namespace OpenGloveService
         // Start the Windows service.
         protected override void OnStart(string[] args)
         {
+            if (DEBUGGING) Debugger.Launch();
+
             if (m_svcHost != null) m_svcHost.Close();
 
             string strAdrHTTP = "http://localhost:9001/OGService";
@@ -48,12 +52,12 @@ namespace OpenGloveService
             m_svcHost.AddServiceEndpoint(typeof(IOGService), httpb, strAdrHTTP);
             m_svcHost.AddServiceEndpoint(typeof(IMetadataExchange),
             MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
-
+            
             NetTcpBinding tcpb = new NetTcpBinding();
             m_svcHost.AddServiceEndpoint(typeof(IOGService), tcpb, strAdrTCP);
             m_svcHost.AddServiceEndpoint(typeof(IMetadataExchange),
             MetadataExchangeBindings.CreateMexTcpBinding(), "mex");
-
+            
             m_svcHost.Open();
         }
 
@@ -237,6 +241,77 @@ namespace OpenGloveService
         Left
     }
 
+    [DataContract(Name = "PalmRegion")]
+    public enum PalmRegions
+    {
+        [EnumMember]
+        FingerSmallDistal,
+        [EnumMember]
+        FingerRingDistal,
+        [EnumMember]
+        FingerMiddleDistal,
+        [EnumMember]
+        FingerIndexDistal,
+
+        [EnumMember]
+        FingerSmallMiddle,
+        [EnumMember]
+        FingerRingMiddle,
+        [EnumMember]
+        FingerMiddleMiddle,
+        [EnumMember]
+        FingerIndexMiddle,
+
+        [EnumMember]
+        FingerSmallProximal,
+        [EnumMember]
+        FingerRingProximal,
+        [EnumMember]
+        FingerMiddleProximal,
+        [EnumMember]
+        FingerIndexProximal,
+
+        [EnumMember]
+        PalmSmallDistal,
+        [EnumMember]
+        PalmRingDistal,
+        [EnumMember]
+        PalmMiddleDistal,
+        [EnumMember]
+        PalmIndexDistal,
+
+        [EnumMember]
+        PalmSmallProximal,
+        [EnumMember]
+        PalmRingProximal,
+        [EnumMember]
+        PalmMiddleProximal,
+        [EnumMember]
+        PalmIndexProximal,
+
+        [EnumMember]
+        HypoThenarSmall,
+        [EnumMember]
+        HypoThenarRing,
+        [EnumMember]
+        ThenarMiddle,
+        [EnumMember]
+        ThenarIndex,
+
+        [EnumMember]
+        FingerThumbProximal,
+        [EnumMember]
+        FingerThumbDistal,
+
+        [EnumMember]
+        HypoThenarMiddle,
+        [EnumMember]
+        Thenar,
+
+        [EnumMember]
+        HypoThenarProximal
+    }
+
     [ServiceContract]
     public interface IOGService
     {
@@ -250,6 +325,9 @@ namespace OpenGloveService
         int Activate(Glove glove, int region, int intensity);
 
         [OperationContract]
+        int ActivateTimed(Glove glove, int region, int intensity, int time);
+
+        [OperationContract]
         int Connect(Glove glove);
 
         [OperationContract]
@@ -258,6 +336,8 @@ namespace OpenGloveService
 
     public class OGService : IOGService
     {
+        private const bool DEBUGGING = false;
+
         private const int AREACOUNT = 58;
 
         public int Activate(Glove glove, int region, int intensity)
@@ -307,9 +387,58 @@ namespace OpenGloveService
             return 0; //OK
         }
 
+        public int ActivateTimed(Glove glove, int region, int intensity, int time)
+        {
+            if (glove != null)
+            {
+                if (intensity < 0)
+                {
+                    intensity = 0;
+                }
+                else if (intensity > 255)
+                {
+                    intensity = 255;
+                }
+
+                if (region < 0)
+                {
+                    return 1;
+                }
+                else if (region >= AREACOUNT)
+                {
+                    return 1;
+                }
+
+                if (glove.Connected)
+                {
+                    foreach (Glove g in Glove.Gloves)
+                    {
+                        if (g.BluetoothAddress.Equals(glove.BluetoothAddress))
+                        {
+                            try
+                            {
+                                g.LegacyGlove.ActivateMotor(new List<int> { region }, new List<string> { intensity.ToString() });
+                                Thread.Sleep(time);
+                                g.LegacyGlove.ActivateMotor(new List<int> { region }, new List<string> { "0" });
+                                return 0;
+                            }
+                            catch (Exception)
+                            {
+                                g.Connected = false;
+                                glove.LegacyGlove = new LegacyOpenGlove();
+                                return 1;// CANT ACTIVATE
+                            }
+                        }
+                    }
+
+                }
+            }
+            return 0; //OK
+        }
+
         public List<Glove> GetGloves()
         {
-            Debugger.Launch();
+            if (DEBUGGING) Debugger.Launch();
             return Glove.Gloves;
         }
 
@@ -327,7 +456,7 @@ namespace OpenGloveService
 
         public int Connect(Glove glove)
         {
-            Debugger.Launch();
+            if (DEBUGGING) Debugger.Launch();
             foreach (Glove g in Glove.Gloves)
             {
                 if (g.BluetoothAddress.Equals(glove.BluetoothAddress))
@@ -351,7 +480,7 @@ namespace OpenGloveService
         }
 
         public int Disconnect(Glove glove) {
-            Debugger.Launch();
+            if (DEBUGGING) Debugger.Launch();
             foreach (Glove g in Glove.Gloves)
             {
                 if (g.BluetoothAddress.Equals(glove.BluetoothAddress))

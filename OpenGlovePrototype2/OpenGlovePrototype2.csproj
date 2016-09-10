@@ -176,12 +176,6 @@
     <Resource Include="dorso.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core\Core.csproj">
-      <Project>{db720216-65ad-4a2d-b5eb-9a67a20d8636}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="hand.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -193,6 +187,12 @@
     <Content Include="Boards.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenGlove API C Sharp HL\OpenGlove API C Sharp HL.csproj">
+      <Project>{5198fc08-00bf-4101-a6b5-0e5f9e41130a}</Project>
+      <Name>OpenGlove API C Sharp HL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,30 +2,25 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Core
+namespace OpenGloveCore
 {
-    public class Gloves
+    public class OpenGloveAPI
     {
-        private static Gloves instance;
+        private static OpenGloveAPI instance;
 
         private OGServiceClient serviceClient;
 
-        private Gloves() {
+        OpenGloveAPI() {
 
-            BasicHttpBinding binding = new BasicHttpBinding();
-            EndpointAddress address = new EndpointAddress("http://localhost:9001/OGService");
-            serviceClient = new OGServiceClient(binding, address);
+            serviceClient = new OGServiceClient();
         }
 
-        public static Gloves GetInstance() {
+        public static OpenGloveAPI GetInstance() {
             if (instance == null)
             {
-                instance = new Gloves();
+                instance = new OpenGloveAPI();
             }
             return instance;
         }
@@ -166,6 +161,11 @@ namespace Core
 
                 return -1;
             }
+        }
+
+        public void Activate(Glove selectedGlove, int region, int intensity, int time)
+        {
+            this.serviceClient.ActivateTimedAsync(selectedGlove, region, intensity, time);
         }
     }
 

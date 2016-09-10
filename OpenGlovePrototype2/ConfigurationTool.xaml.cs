@@ -7,8 +7,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using Core.OpenGloveService;
 using System.Diagnostics;
+using OpenGlove_API_C_Sharp_HL;
+using OpenGlove_API_C_Sharp_HL.ServiceReference1;
 
 namespace OpenGloveSDKConfigurationPrototype2
 {
@@ -26,7 +27,7 @@ namespace OpenGloveSDKConfigurationPrototype2
 
         private IEnumerable<int> actuators;
 
-        private Core.Gloves gloves = Core.Gloves.GetInstance();
+        private OpenGloveAPI gloves = OpenGloveAPI.GetInstance();
 
         private Glove selectedGlove;
 
@@ -332,7 +333,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             }
             else if (this.mappingsList.SelectedItem != null)
             {
-                this.gloves.Activate(selectedGlove, Int32.Parse(mapping.Actuator), ((int)this.intensityUpDown.Value));
+                this.gloves.Activate(selectedGlove, Int32.Parse(mapping.Actuator), ((int)this.intensityUpDown.Value), 100);
 
                 sw.Stop();
 

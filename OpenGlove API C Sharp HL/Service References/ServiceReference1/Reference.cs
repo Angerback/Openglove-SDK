@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Core.OpenGloveService {
+namespace OpenGlove_API_C_Sharp_HL.ServiceReference1 {
     using System.Runtime.Serialization;
     using System;
     
@@ -29,7 +29,7 @@ namespace Core.OpenGloveService {
         private bool ConnectedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Core.OpenGloveService.Glove.Configuration GloveConfigurationField;
+        private OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove.Configuration GloveConfigurationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
@@ -38,7 +38,7 @@ namespace Core.OpenGloveService {
         private string PortField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Core.OpenGloveService.Side SideField;
+        private OpenGlove_API_C_Sharp_HL.ServiceReference1.Side SideField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -77,7 +77,7 @@ namespace Core.OpenGloveService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Core.OpenGloveService.Glove.Configuration GloveConfiguration {
+        public OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove.Configuration GloveConfiguration {
             get {
                 return this.GloveConfigurationField;
             }
@@ -116,7 +116,7 @@ namespace Core.OpenGloveService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Core.OpenGloveService.Side Side {
+        public OpenGlove_API_C_Sharp_HL.ServiceReference1.Side Side {
             get {
                 return this.SideField;
             }
@@ -159,7 +159,7 @@ namespace Core.OpenGloveService {
             private string GloveNameField;
             
             [System.Runtime.Serialization.OptionalFieldAttribute()]
-            private Core.OpenGloveService.Glove.Configuration.Profile GloveProfileField;
+            private OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove.Configuration.Profile GloveProfileField;
             
             [System.Runtime.Serialization.OptionalFieldAttribute()]
             private string[] NegativeInitField;
@@ -235,7 +235,7 @@ namespace Core.OpenGloveService {
             }
             
             [System.Runtime.Serialization.DataMemberAttribute()]
-            public Core.OpenGloveService.Glove.Configuration.Profile GloveProfile {
+            public OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove.Configuration.Profile GloveProfile {
                 get {
                     return this.GloveProfileField;
                 }
@@ -414,53 +414,53 @@ namespace Core.OpenGloveService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="OpenGloveService.IOGService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IOGService")]
     public interface IOGService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetGloves", ReplyAction="http://tempuri.org/IOGService/GetGlovesResponse")]
-        Core.OpenGloveService.Glove[] GetGloves();
+        OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove[] GetGloves();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/GetGloves", ReplyAction="http://tempuri.org/IOGService/GetGlovesResponse")]
-        System.Threading.Tasks.Task<Core.OpenGloveService.Glove[]> GetGlovesAsync();
+        System.Threading.Tasks.Task<OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove[]> GetGlovesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/SaveGlove", ReplyAction="http://tempuri.org/IOGService/SaveGloveResponse")]
-        void SaveGlove(Core.OpenGloveService.Glove glove);
+        void SaveGlove(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/SaveGlove", ReplyAction="http://tempuri.org/IOGService/SaveGloveResponse")]
-        System.Threading.Tasks.Task SaveGloveAsync(Core.OpenGloveService.Glove glove);
+        System.Threading.Tasks.Task SaveGloveAsync(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Activate", ReplyAction="http://tempuri.org/IOGService/ActivateResponse")]
-        int Activate(Core.OpenGloveService.Glove glove, int region, int intensity);
+        int Activate(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove, int region, int intensity);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Activate", ReplyAction="http://tempuri.org/IOGService/ActivateResponse")]
-        System.Threading.Tasks.Task<int> ActivateAsync(Core.OpenGloveService.Glove glove, int region, int intensity);
+        System.Threading.Tasks.Task<int> ActivateAsync(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove, int region, int intensity);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/ActivateTimed", ReplyAction="http://tempuri.org/IOGService/ActivateTimedResponse")]
-        int ActivateTimed(Core.OpenGloveService.Glove glove, int region, int intensity, int time);
+        int ActivateTimed(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove, int region, int intensity, int time);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/ActivateTimed", ReplyAction="http://tempuri.org/IOGService/ActivateTimedResponse")]
-        System.Threading.Tasks.Task<int> ActivateTimedAsync(Core.OpenGloveService.Glove glove, int region, int intensity, int time);
+        System.Threading.Tasks.Task<int> ActivateTimedAsync(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove, int region, int intensity, int time);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Connect", ReplyAction="http://tempuri.org/IOGService/ConnectResponse")]
-        int Connect(Core.OpenGloveService.Glove glove);
+        int Connect(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Connect", ReplyAction="http://tempuri.org/IOGService/ConnectResponse")]
-        System.Threading.Tasks.Task<int> ConnectAsync(Core.OpenGloveService.Glove glove);
+        System.Threading.Tasks.Task<int> ConnectAsync(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Disconnect", ReplyAction="http://tempuri.org/IOGService/DisconnectResponse")]
-        int Disconnect(Core.OpenGloveService.Glove glove);
+        int Disconnect(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Disconnect", ReplyAction="http://tempuri.org/IOGService/DisconnectResponse")]
-        System.Threading.Tasks.Task<int> DisconnectAsync(Core.OpenGloveService.Glove glove);
+        System.Threading.Tasks.Task<int> DisconnectAsync(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IOGServiceChannel : Core.OpenGloveService.IOGService, System.ServiceModel.IClientChannel {
+    public interface IOGServiceChannel : OpenGlove_API_C_Sharp_HL.ServiceReference1.IOGService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class OGServiceClient : System.ServiceModel.ClientBase<Core.OpenGloveService.IOGService>, Core.OpenGloveService.IOGService {
+    public partial class OGServiceClient : System.ServiceModel.ClientBase<OpenGlove_API_C_Sharp_HL.ServiceReference1.IOGService>, OpenGlove_API_C_Sharp_HL.ServiceReference1.IOGService {
         
         public OGServiceClient() {
         }
@@ -481,51 +481,51 @@ namespace Core.OpenGloveService {
                 base(binding, remoteAddress) {
         }
         
-        public Core.OpenGloveService.Glove[] GetGloves() {
+        public OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove[] GetGloves() {
             return base.Channel.GetGloves();
         }
         
-        public System.Threading.Tasks.Task<Core.OpenGloveService.Glove[]> GetGlovesAsync() {
+        public System.Threading.Tasks.Task<OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove[]> GetGlovesAsync() {
             return base.Channel.GetGlovesAsync();
         }
         
-        public void SaveGlove(Core.OpenGloveService.Glove glove) {
+        public void SaveGlove(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove) {
             base.Channel.SaveGlove(glove);
         }
         
-        public System.Threading.Tasks.Task SaveGloveAsync(Core.OpenGloveService.Glove glove) {
+        public System.Threading.Tasks.Task SaveGloveAsync(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove) {
             return base.Channel.SaveGloveAsync(glove);
         }
         
-        public int Activate(Core.OpenGloveService.Glove glove, int region, int intensity) {
+        public int Activate(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove, int region, int intensity) {
             return base.Channel.Activate(glove, region, intensity);
         }
         
-        public System.Threading.Tasks.Task<int> ActivateAsync(Core.OpenGloveService.Glove glove, int region, int intensity) {
+        public System.Threading.Tasks.Task<int> ActivateAsync(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove, int region, int intensity) {
             return base.Channel.ActivateAsync(glove, region, intensity);
         }
         
-        public int ActivateTimed(Core.OpenGloveService.Glove glove, int region, int intensity, int time) {
+        public int ActivateTimed(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove, int region, int intensity, int time) {
             return base.Channel.ActivateTimed(glove, region, intensity, time);
         }
         
-        public System.Threading.Tasks.Task<int> ActivateTimedAsync(Core.OpenGloveService.Glove glove, int region, int intensity, int time) {
+        public System.Threading.Tasks.Task<int> ActivateTimedAsync(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove, int region, int intensity, int time) {
             return base.Channel.ActivateTimedAsync(glove, region, intensity, time);
         }
         
-        public int Connect(Core.OpenGloveService.Glove glove) {
+        public int Connect(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove) {
             return base.Channel.Connect(glove);
         }
         
-        public System.Threading.Tasks.Task<int> ConnectAsync(Core.OpenGloveService.Glove glove) {
+        public System.Threading.Tasks.Task<int> ConnectAsync(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove) {
             return base.Channel.ConnectAsync(glove);
         }
         
-        public int Disconnect(Core.OpenGloveService.Glove glove) {
+        public int Disconnect(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove) {
             return base.Channel.Disconnect(glove);
         }
         
-        public System.Threading.Tasks.Task<int> DisconnectAsync(Core.OpenGloveService.Glove glove) {
+        public System.Threading.Tasks.Task<int> DisconnectAsync(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove) {
             return base.Channel.DisconnectAsync(glove);
         }
     }

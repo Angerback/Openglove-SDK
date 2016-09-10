@@ -14,8 +14,9 @@ using System.Windows.Shapes;
 using OpenGloveSDKConfigurationPrototype2;
 using Microsoft.Win32;
 using Hardcodet.Wpf.TaskbarNotification;
-using OpenGloveSDK;
 using System.ComponentModel;
+using OpenGlove_API_C_Sharp_HL;
+using OpenGlove_API_C_Sharp_HL.ServiceReference1;
 
 namespace OpenGlovePrototype2
 {
@@ -27,9 +28,9 @@ namespace OpenGlovePrototype2
     {
         private TaskbarIcon tbi;
 
-        private Core.Gloves gloves = Core.Gloves.GetInstance();
+        private OpenGloveAPI gloves;
 
-        private Core.OpenGloveService.Glove selectedGlove;
+        private Glove selectedGlove;
 
         private BackgroundWorker bgw;
 
@@ -48,13 +49,13 @@ namespace OpenGlovePrototype2
         {
             //After completing the job.
             this.bar.Close();
-            this.listViewGloves.ItemsSource = (List<Core.OpenGloveService.Glove>) e.Result;
+            this.listViewGloves.ItemsSource = (List<Glove>) e.Result;
         }
 
         public Greeter()
         {
             InitializeComponent();
-
+            gloves = OpenGloveAPI.GetInstance();
             bgw = new BackgroundWorker();
             bgw.WorkerReportsProgress = true;
             bgw.ProgressChanged += new ProgressChangedEventHandler(bgw_ProgressChanged);
@@ -80,7 +81,7 @@ namespace OpenGlovePrototype2
 
         }
 
-        private List<Core.OpenGloveService.Glove> updateGloves() {
+        private List<Glove> updateGloves() {
             return gloves.Devices;
         }
 
@@ -118,7 +119,7 @@ namespace OpenGlovePrototype2
         private void listViewGloves_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            selectedGlove = (Core.OpenGloveService.Glove)((ListView)sender).SelectedItem;
+            selectedGlove = (Glove)((ListView)sender).SelectedItem;
             refreshControls();
         }
 
@@ -169,7 +170,7 @@ namespace OpenGlovePrototype2
         private void buttonCreateGloveConfig_Click(object sender, RoutedEventArgs e)
         {
             if (this.selectedGlove.GloveConfiguration == null) {
-                this.selectedGlove.GloveConfiguration = new Core.OpenGloveService.Glove.Configuration();
+                this.selectedGlove.GloveConfiguration = new Glove.Configuration();
             }
 
             PinsConfiguration pins = new PinsConfiguration(this.selectedGlove);

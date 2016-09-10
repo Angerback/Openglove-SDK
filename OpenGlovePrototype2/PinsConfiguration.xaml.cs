@@ -14,7 +14,8 @@ using System.Windows.Shapes;
 using OpenGloveSDKConfigurationPrototype2;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using Core;
+using OpenGlove_API_C_Sharp_HL;
+using OpenGlove_API_C_Sharp_HL.ServiceReference1;
 
 namespace OpenGlovePrototype2
 {
@@ -100,9 +101,9 @@ namespace OpenGlovePrototype2
             this.comboBoxBoard.SelectionChanged += this.comboBoxBoard_SelectionChanged;
         }
 
-        private Core.OpenGloveService.Glove selectedGlove;
+        private Glove selectedGlove;
 
-        public PinsConfiguration(Core.OpenGloveService.Glove selectedGlove)
+        public PinsConfiguration(Glove selectedGlove)
         {
             
             InitializeComponent();
@@ -174,7 +175,7 @@ namespace OpenGlovePrototype2
                     selectedGlove.GloveConfiguration.PositiveInit = positiveInit.ToArray();
                     selectedGlove.GloveConfiguration.NegativeInit = negativeInit.ToArray();
 
-                    Gloves.GetInstance().saveGloveConfiguration(saveConfigurationDialog.FileName, selectedGlove);
+                    OpenGloveAPI.GetInstance().saveGloveConfiguration(saveConfigurationDialog.FileName, selectedGlove);
                 }
                 else
                 {
