@@ -18,6 +18,7 @@ namespace OpenGlove_API_C_Sharp_HL
             BasicHttpBinding binding = new BasicHttpBinding();
             EndpointAddress address = new EndpointAddress("http://localhost:9001/OGService");
             serviceClient = new OGServiceClient(binding, address);
+            
         }
 
         public static OpenGloveAPI GetInstance()
@@ -27,7 +28,6 @@ namespace OpenGlove_API_C_Sharp_HL
                 instance = new OpenGloveAPI();
             }
             return instance;
-            
         }
 
         private List<Glove> devices;
@@ -119,7 +119,7 @@ namespace OpenGlove_API_C_Sharp_HL
         {
             selectedGlove.GloveConfiguration.GloveProfile = new Glove.Configuration.Profile();
 
-            Dictionary<String, String> openedConfiguration;
+            Dictionary<String, String> openedConfiguration = new Dictionary<string, string>() ;
 
             XDocument xml = XDocument.Load(fileName);
 
@@ -147,13 +147,31 @@ namespace OpenGlove_API_C_Sharp_HL
                 if (item.Key.Equals(region.ToString()))
                 {
                     actuator = Int32.Parse(item.Value);
+                    Console.WriteLine("REGION: " + item.Key + ", ACTUATOR: " + item.Value);
                     break;
                 }
             }
             if ( actuator == -1) {
                 return;
             }
-            this.serviceClient.Activate(selectedGlove, region, intensity);
+            this.serviceClient.Activate(selectedGlove, actuator, intensity);
+
+        }
+
+        public void saveGloveProfile(string fileName, Glove selectedGlove)
+        {
+            XElement rootXML = new XElement("hand");
+            rootXML.SetAttributeValue("gloveHash", selectedGlove.GloveConfiguration.GloveHash);
+            XElement mappings = new XElement("mappings");
+            rootXML.Add(mappings);
+            foreach (KeyValuePair<string, string> mapping in selectedGlove.GloveConfiguration.GloveProfile.Mappings)
+            {
+                XElement mappingXML = new XElement("mapping", new XElement("region", mapping.Key), new XElement("actuator", mapping.Value));
+                mappings.Add(mappingXML);
+            }
+            rootXML.Save(fileName);
+            selectedGlove.GloveConfiguration.GloveProfile.ProfileName = fileName;
+            serviceClient.SaveGlove(selectedGlove);
         }
 
         public int Connect(Glove selectedGlove)
@@ -181,11 +199,52 @@ namespace OpenGlove_API_C_Sharp_HL
                 return -1;
             }
         }
-
+        /*
         public void Activate(Glove selectedGlove, int region, int intensity, int time)
         {
-
             this.serviceClient.ActivateTimed(selectedGlove, region, intensity, time);
         }
+        */
+    }
+
+    public enum PalmRegion
+    {
+        FingerSmallDistal,
+        FingerRingDistal,
+        FingerMiddleDistal,
+        FingerIndexDistal,
+
+        FingerSmallMiddle,
+        FingerRingMiddle,
+        FingerMiddleMiddle,
+        FingerIndexMiddle,
+
+        FingerSmallProximal,
+        FingerRingProximal,
+        FingerMiddleProximal,
+        FingerIndexProximal,
+
+        PalmSmallDistal,
+        PalmRingDistal,
+        PalmMiddleDistal,
+        PalmIndexDistal,
+
+        PalmSmallProximal,
+        PalmRingProximal,
+        PalmMiddleProximal,
+        PalmIndexProximal,
+
+        HypoThenarSmall,
+        HypoThenarRing,
+        ThenarMiddle,
+        ThenarIndex,
+
+        FingerThumbProximal,
+        FingerThumbDistal,
+
+        HypoThenarMiddle,
+        Thenar,
+
+        HypoThenarProximal
     }
 }

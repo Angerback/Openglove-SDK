@@ -74,7 +74,6 @@ namespace OpenGloveService
     [DataContract]
     public class Glove
     {
-
         /// <summary>
         /// Private singleton field containing all active gloves, connected or disconnected in the system.
         /// </summary>
@@ -241,77 +240,6 @@ namespace OpenGloveService
         Left
     }
 
-    [DataContract(Name = "PalmRegion")]
-    public enum PalmRegions
-    {
-        [EnumMember]
-        FingerSmallDistal,
-        [EnumMember]
-        FingerRingDistal,
-        [EnumMember]
-        FingerMiddleDistal,
-        [EnumMember]
-        FingerIndexDistal,
-
-        [EnumMember]
-        FingerSmallMiddle,
-        [EnumMember]
-        FingerRingMiddle,
-        [EnumMember]
-        FingerMiddleMiddle,
-        [EnumMember]
-        FingerIndexMiddle,
-
-        [EnumMember]
-        FingerSmallProximal,
-        [EnumMember]
-        FingerRingProximal,
-        [EnumMember]
-        FingerMiddleProximal,
-        [EnumMember]
-        FingerIndexProximal,
-
-        [EnumMember]
-        PalmSmallDistal,
-        [EnumMember]
-        PalmRingDistal,
-        [EnumMember]
-        PalmMiddleDistal,
-        [EnumMember]
-        PalmIndexDistal,
-
-        [EnumMember]
-        PalmSmallProximal,
-        [EnumMember]
-        PalmRingProximal,
-        [EnumMember]
-        PalmMiddleProximal,
-        [EnumMember]
-        PalmIndexProximal,
-
-        [EnumMember]
-        HypoThenarSmall,
-        [EnumMember]
-        HypoThenarRing,
-        [EnumMember]
-        ThenarMiddle,
-        [EnumMember]
-        ThenarIndex,
-
-        [EnumMember]
-        FingerThumbProximal,
-        [EnumMember]
-        FingerThumbDistal,
-
-        [EnumMember]
-        HypoThenarMiddle,
-        [EnumMember]
-        Thenar,
-
-        [EnumMember]
-        HypoThenarProximal
-    }
-
     [ServiceContract]
     public interface IOGService
     {
@@ -340,7 +268,9 @@ namespace OpenGloveService
 
         private const int AREACOUNT = 58;
 
-        public int Activate(Glove glove, int region, int intensity)
+        private BackgroundWorker bgw;
+
+        public int Activate(Glove glove, int actuator, int intensity)
         {
             if (glove != null)
             {
@@ -353,11 +283,11 @@ namespace OpenGloveService
                     intensity = 255;
                 }
 
-                if (region < 0)
+                if (actuator < 0)
                 {
                     return 1;
                 }
-                else if (region >= AREACOUNT)
+                else if (actuator >= AREACOUNT)
                 {
                     return 1;
                 }
@@ -370,7 +300,10 @@ namespace OpenGloveService
                         {
                             try
                             {
-                                g.LegacyGlove.ActivateMotor(new List<int> { region }, new List<string> { intensity.ToString() });
+                                bgw = new BackgroundWorker();
+                                bgw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgw_RunWorkerCompleted);
+                                bgw.DoWork += new DoWorkEventHandler(bgw_DoWork);
+                                bgw.RunWorkerAsync(new List<object>() { g, new List<int> { actuator }, new List<string> { intensity.ToString() } });
                                 return 0;
                             }
                             catch (Exception)
@@ -385,6 +318,20 @@ namespace OpenGloveService
                 }
             }
             return 0; //OK
+        }
+
+        void bgw_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Glove g = (Glove)(((List<object>)e.Argument)[0]);
+            IEnumerable<int> actuator = (IEnumerable<int>)(((List<object>)e.Argument)[1]);
+            IEnumerable<string> intensity = (IEnumerable<string>)(((List<object>)e.Argument)[2]);
+            //Your time taking work. Here it's your data query method.
+            g.LegacyGlove.ActivateMotor(actuator, intensity);
+        }
+
+        void bgw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            //After completing the job.
         }
 
         public int ActivateTimed(Glove glove, int region, int intensity, int time)

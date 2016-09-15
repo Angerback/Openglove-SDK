@@ -62,7 +62,6 @@ namespace OpenGlovePrototype2
             bgw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgw_RunWorkerCompleted);
             bgw.DoWork += new DoWorkEventHandler(bgw_DoWork);
             
-
             ReloadGloves();
 
             tbi = new TaskbarIcon();
@@ -271,6 +270,15 @@ namespace OpenGlovePrototype2
                     MessageBoxResult messageBoxResult = MessageBox.Show("Can't connect to" + selectedGlove.Name + ". Try repairing it.", "Connection", MessageBoxButton.OK);
                 }
             }
+            refreshControls();
+        }
+
+        private void buttonCreateProfileConfig_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show("This will close the current profile. Are you sure?", "New configuration confirmation", MessageBoxButton.YesNo);
+
+            ConfigurationTool config = new ConfigurationTool(this.selectedGlove);
+            config.ShowDialog();
             refreshControls();
         }
     }

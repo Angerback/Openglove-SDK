@@ -38,12 +38,31 @@ namespace OpenGloveSDKConfigurationPrototype2
             this.selectedGlove = selectedGlove;
 
             this.initializeSelectors();
-
-            this.updateView();
-            foreach (ComboBox selector in this.selectors)
+            if (this.selectedGlove.GloveConfiguration.GloveProfile == null)
             {
-                selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
+                this.selectedGlove.GloveConfiguration.GloveProfile = new Glove.Configuration.Profile();
+                this.selectedGlove.GloveConfiguration.GloveProfile.Mappings = new Dictionary<string, string>();
+                foreach (ComboBox selector in this.selectors)
+                {
+                    selector.Items.Add("");
+
+                    foreach (var item in selectedGlove.GloveConfiguration.PositivePins)
+                    {
+                        selector.Items.Add(item);
+                    }
+                }
+
             }
+            else {
+                
+                this.updateView();
+                foreach (ComboBox selector in this.selectors)
+                {
+                    selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
+                }
+            }
+
+            
         }
 
         /// <summary>
@@ -163,7 +182,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             if (saveConfigurationDialog.FileName != "")
             {
                 Console.WriteLine(saveConfigurationDialog.FileName);
-                gloves.saveGloveConfiguration(saveConfigurationDialog.FileName, selectedGlove);
+                gloves.saveGloveProfile(saveConfigurationDialog.FileName, selectedGlove);
                 this.statusBarItemProfile.Content = saveConfigurationDialog.FileName;
 
                 string message = "File saved.";
@@ -200,6 +219,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             }
             else
             {
+
                 string message = "File not found.";
                 string caption = "File not found";
                 MessageBoxButton button = MessageBoxButton.OK;
@@ -325,7 +345,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             Mapping mapping = (Mapping)this.mappingsList.SelectedItem;
             if (testing)
             {
-                this.gloves.Activate(selectedGlove, Int32.Parse(mapping.Actuator), 0);
+                this.gloves.Activate(selectedGlove, Int32.Parse(mapping.Region), 0);
                 testing = false;
                 buttonTestIntensity.Content = "Test";
                 this.mappingsList.IsEnabled = true;
@@ -333,7 +353,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             }
             else if (this.mappingsList.SelectedItem != null)
             {
-                this.gloves.Activate(selectedGlove, Int32.Parse(mapping.Actuator), ((int)this.intensityUpDown.Value), 100);
+                this.gloves.Activate(selectedGlove, Int32.Parse(mapping.Region), ((int)this.intensityUpDown.Value));
 
                 sw.Stop();
 
