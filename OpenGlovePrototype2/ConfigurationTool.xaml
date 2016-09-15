@@ -673,7 +673,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region27" HorizontalAlignment="Left" Height="33" Margin="16,42,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="HypoThenarMiddle">
+                            <Rectangle x:Name="region27" HorizontalAlignment="Left" Height="33" Margin="16,42,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="HypoThenarDistal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -754,7 +754,7 @@
                             </TransformGroup>
                         </Grid.RenderTransform>
                         <Grid Margin="68,116,507,333">
-                            <Rectangle x:Name="region30" HorizontalAlignment="Left" Height="48" Margin="15,1,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region30" HorizontalAlignment="Left" Height="48" Margin="15,1,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="FingerSmallDistal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -794,7 +794,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region31" HorizontalAlignment="Left" Height="62" Margin="21,14,0,0" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region31" HorizontalAlignment="Left" Height="62" Margin="21,14,0,0" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="FingerRingDistal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -834,7 +834,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region32" HorizontalAlignment="Right" Height="65" Margin="0,7,28,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region32" HorizontalAlignment="Right" Height="65" Margin="0,7,28,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="FingerMiddleDistal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -874,7 +874,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region33" HorizontalAlignment="Left" Height="59" Margin="24,19,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region33" HorizontalAlignment="Left" Height="59" Margin="24,19,0,0" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="FingerIndexDistal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -918,7 +918,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region34" HorizontalAlignment="Left" Height="43" Margin="19,6,0,0" VerticalAlignment="Top" Width="33" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" Grid.ColumnSpan="2">
+                            <Rectangle x:Name="region34" HorizontalAlignment="Left" Height="43" Margin="19,6,0,0" VerticalAlignment="Top" Width="33" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" Grid.ColumnSpan="2" ToolTip="FingerSmallMiddle">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -958,7 +958,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region35" HorizontalAlignment="Left" Height="57" Margin="22,6,0,0" VerticalAlignment="Top" Width="37" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region35" HorizontalAlignment="Left" Height="57" Margin="22,6,0,0" VerticalAlignment="Top" Width="37" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="FingerRingMiddle">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -998,7 +998,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region36" HorizontalAlignment="Left" Height="61" Margin="3,5,0,0" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region36" HorizontalAlignment="Left" Height="61" Margin="3,5,0,0" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="FingerMiddleMiddle">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1038,7 +1038,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region37" HorizontalAlignment="Left" Height="59" Margin="14,9,0,0" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region37" HorizontalAlignment="Left" Height="59" Margin="14,9,0,0" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="FingerIndexMiddle">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1078,7 +1078,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region38" HorizontalAlignment="Left" Height="53" Margin="10,5,0,0" VerticalAlignment="Top" Width="33" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region38" HorizontalAlignment="Left" Height="53" Margin="10,5,0,0" VerticalAlignment="Top" Width="33" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="FingerSmallProximal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1122,7 +1122,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region39" HorizontalAlignment="Left" Height="63" Margin="3,-3,0,0" VerticalAlignment="Top" Width="37" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region39" HorizontalAlignment="Left" Height="63" Margin="3,-3,0,0" VerticalAlignment="Top" Width="37" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="FingerRingProximal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1166,7 +1166,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region40" HorizontalAlignment="Left" Height="77" Margin="9,3,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region40" HorizontalAlignment="Left" Height="77" Margin="9,3,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="FingerMiddleProximal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1210,7 +1210,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region41" HorizontalAlignment="Left" Height="72" Margin="15,13,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region41" HorizontalAlignment="Left" Height="72" Margin="15,13,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="FingerIndexProximal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1254,7 +1254,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region42" HorizontalAlignment="Left" Height="38" Margin="38,22,0,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region42" HorizontalAlignment="Left" Height="38" Margin="38,22,0,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="PalmSmallDistal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1298,7 +1298,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region43" HorizontalAlignment="Left" Height="41" Margin="38,22,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region43" HorizontalAlignment="Left" Height="41" Margin="38,22,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="PalmRingDistal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1342,7 +1342,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region44" HorizontalAlignment="Left" Height="45" Margin="39,17,0,0" VerticalAlignment="Top" Width="46" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region44" HorizontalAlignment="Left" Height="45" Margin="39,17,0,0" VerticalAlignment="Top" Width="46" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="PalmMiddleDistal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1386,7 +1386,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region45" HorizontalAlignment="Left" Height="48" Margin="49,14,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region45" HorizontalAlignment="Left" Height="48" Margin="49,14,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="PalmIndexDistal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1430,7 +1430,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region46" HorizontalAlignment="Left" Height="41" Margin="42,21,0,0" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region46" HorizontalAlignment="Left" Height="41" Margin="42,21,0,0" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="PalmSmallProximal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1474,7 +1474,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region47" HorizontalAlignment="Left" Height="39" Margin="41,22,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region47" HorizontalAlignment="Left" Height="39" Margin="41,22,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="PalmRingProximal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1519,7 +1519,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region48" HorizontalAlignment="Left" Height="42" Margin="41,20,0,0" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region48" HorizontalAlignment="Left" Height="42" Margin="41,20,0,0" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="PalmMiddleProximal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1563,7 +1563,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region49" HorizontalAlignment="Left" Height="37" Margin="37,23,0,0" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region49" HorizontalAlignment="Left" Height="37" Margin="37,23,0,0" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="PalmIndexProximal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1607,7 +1607,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region50" HorizontalAlignment="Left" Height="35" Margin="41,23,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region50" HorizontalAlignment="Left" Height="35" Margin="41,23,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="HypoThenarSmall">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1651,7 +1651,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region51" HorizontalAlignment="Left" Height="34" Margin="40,22,0,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region51" HorizontalAlignment="Left" Height="34" Margin="40,22,0,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="HypoThenarRing">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1695,7 +1695,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region52" HorizontalAlignment="Left" Height="34" Margin="38,23,0,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region52" HorizontalAlignment="Left" Height="34" Margin="38,23,0,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="ThenarMiddle">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1739,7 +1739,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region53" HorizontalAlignment="Left" Height="33" Margin="35,23,0,0" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region53" HorizontalAlignment="Left" Height="33" Margin="35,23,0,0" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="ThenarIndex">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1783,7 +1783,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region54" HorizontalAlignment="Left" Height="55" Margin="24,32,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region54" HorizontalAlignment="Left" Height="55" Margin="24,32,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="FingerThumbProximal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1827,7 +1827,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region55" HorizontalAlignment="Left" Height="43" Margin="21,47,0,0" VerticalAlignment="Top" Width="59" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region55" HorizontalAlignment="Left" Height="43" Margin="21,47,0,0" VerticalAlignment="Top" Width="59" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="FingerThumbDistal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1871,7 +1871,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region56" HorizontalAlignment="Left" Height="33" Margin="16,42,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region56" HorizontalAlignment="Left" Height="33" Margin="16,42,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="HypoThenarDistal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1915,7 +1915,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region57" HorizontalAlignment="Left" Height="58" Margin="22,44,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region57" HorizontalAlignment="Left" Height="58" Margin="22,44,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="Thenar">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -1959,7 +1959,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Grid.RenderTransform>
-                            <Rectangle x:Name="region58" HorizontalAlignment="Left" Height="27" Margin="21,38,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0">
+                            <Rectangle x:Name="region58" HorizontalAlignment="Left" Height="27" Margin="21,38,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.5,0.5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Fill="#00000000" MouseUp="region1_MouseUp" StrokeThickness="3" Stroke="#FFF0F0F0" ToolTip="HypoThenarProximal">
                                 <Rectangle.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>

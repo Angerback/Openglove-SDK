@@ -242,7 +242,48 @@ namespace OpenGlove_API_C_Sharp_HL
         FingerThumbProximal,
         FingerThumbDistal,
 
-        HypoThenarMiddle,
+        HypoThenarDistal,
+        Thenar,
+
+        HypoThenarProximal
+    }
+
+    public enum DorsoRegion
+    {
+        FingerSmallDistal = 29,
+        FingerRingDistal,
+        FingerMiddleDistal,
+        FingerIndexDistal,
+
+        FingerSmallMiddle,
+        FingerRingMiddle,
+        FingerMiddleMiddle,
+        FingerIndexMiddle,
+
+        FingerSmallProximal,
+        FingerRingProximal,
+        FingerMiddleProximal,
+        FingerIndexProximal,
+
+        PalmSmallDistal,
+        PalmRingDistal,
+        PalmMiddleDistal,
+        PalmIndexDistal,
+
+        PalmSmallProximal,
+        PalmRingProximal,
+        PalmMiddleProximal,
+        PalmIndexProximal,
+
+        HypoThenarSmall,
+        HypoThenarRing,
+        ThenarMiddle,
+        ThenarIndex,
+
+        FingerThumbProximal,
+        FingerThumbDistal,
+
+        HypoThenarDistal,
         Thenar,
 
         HypoThenarProximal
