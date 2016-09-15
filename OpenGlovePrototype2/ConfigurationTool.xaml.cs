@@ -60,9 +60,7 @@ namespace OpenGloveSDKConfigurationPrototype2
                 {
                     selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
                 }
-            }
-
-            
+            }    
         }
 
         /// <summary>
