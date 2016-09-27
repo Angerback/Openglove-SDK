@@ -52,12 +52,12 @@ namespace OpenGloveService
             m_svcHost.AddServiceEndpoint(typeof(IOGService), httpb, strAdrHTTP);
             m_svcHost.AddServiceEndpoint(typeof(IMetadataExchange),
             MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
-            
+
             NetTcpBinding tcpb = new NetTcpBinding();
             m_svcHost.AddServiceEndpoint(typeof(IOGService), tcpb, strAdrTCP);
             m_svcHost.AddServiceEndpoint(typeof(IMetadataExchange),
             MetadataExchangeBindings.CreateMexTcpBinding(), "mex");
-            
+
             m_svcHost.Open();
         }
 
@@ -79,16 +79,31 @@ namespace OpenGloveService
         /// </summary>
         private static List<Glove> gloves;
 
+        /// <summary>
+        /// Gets the current list of gloves connected to the system. If it is the first 
+        /// execution since the service start, it will refresh the list.
+        /// </summary>
         public static List<Glove> Gloves
         {
             get
             {
-                if (gloves == null) {
+                if (gloves == null)
+                {
                     gloves = ScanGloves();
-                    
+
                 }
                 return gloves;
             }
+        }
+
+        /// <summary>
+        /// Same behaviour as Gloves, but always refreshes the glove list.
+        /// </summary>
+        /// <returns></returns>
+        public static List<Glove> RefreshGloves()
+        {
+            gloves = ScanGloves();
+            return gloves;
         }
 
         /// <summary>
@@ -96,7 +111,8 @@ namespace OpenGloveService
         /// any device containing "OpenGlove" on their name would be picked. Hardware limitation.
         /// </summary>
         /// <returns></returns>
-        private static List<Glove> ScanGloves() {
+        private static List<Glove> ScanGloves()
+        {
 
             List<Glove> scannedGloves = new List<Glove>();
 
@@ -113,7 +129,7 @@ namespace OpenGloveService
                     string comPort = GetBluetoothPort(deviceAddress);
                     string address = device.DeviceAddress.ToString();
                     string name = device.DeviceName;
-                    
+
                     Glove foundGlove = new Glove();
                     foundGlove.BluetoothAddress = deviceAddress;
                     foundGlove.Port = comPort;
@@ -179,7 +195,7 @@ namespace OpenGloveService
 
         public LegacyOpenGlove LegacyGlove { get; set; }
 
-        
+
         [DataContract]
         public class Configuration
         {
@@ -247,13 +263,18 @@ namespace OpenGloveService
         List<Glove> GetGloves();
 
         [OperationContract]
+        List<Glove> RefreshGloves();
+
+        [OperationContract]
         void SaveGlove(Glove glove);
 
         [OperationContract]
-        int Activate(Glove glove, int region, int intensity);
+        int Activate(string gloveAddress, int actuator, int intensity);
 
+        /*
         [OperationContract]
         int ActivateTimed(Glove glove, int region, int intensity, int time);
+        */
 
         [OperationContract]
         int Connect(Glove glove);
@@ -270,6 +291,7 @@ namespace OpenGloveService
 
         private BackgroundWorker bgw;
 
+        /*
         public int Activate(Glove glove, int actuator, int intensity)
         {
             if (glove != null)
@@ -314,12 +336,12 @@ namespace OpenGloveService
                             }
                         }
                     }
-                    
+
                 }
             }
             return 0; //OK
         }
-
+        */
         void bgw_DoWork(object sender, DoWorkEventArgs e)
         {
             Glove g = (Glove)(((List<object>)e.Argument)[0]);
@@ -334,50 +356,47 @@ namespace OpenGloveService
             //After completing the job.
         }
 
-        public int ActivateTimed(Glove glove, int region, int intensity, int time)
+        public int Activate(string gloveAddress, int actuator, int intensity)
         {
-            if (glove != null)
+            if (intensity < 0)
             {
-                if (intensity < 0)
-                {
-                    intensity = 0;
-                }
-                else if (intensity > 255)
-                {
-                    intensity = 255;
-                }
+                intensity = 0;
+            }
+            else if (intensity > 255)
+            {
+                intensity = 255;
+            }
 
-                if (region < 0)
-                {
-                    return 1;
-                }
-                else if (region >= AREACOUNT)
-                {
-                    return 1;
-                }
+            if (actuator < 0)
+            {
+                return 1;
+            }
+            else if (actuator >= AREACOUNT)
+            {
+                return 1;
+            }
 
-                if (glove.Connected)
+            foreach (Glove g in Glove.Gloves)
+            {
+                if (g.BluetoothAddress.Equals(gloveAddress))
                 {
-                    foreach (Glove g in Glove.Gloves)
+                    if (g.Connected)
                     {
-                        if (g.BluetoothAddress.Equals(glove.BluetoothAddress))
+                        try
                         {
-                            try
-                            {
-                                g.LegacyGlove.ActivateMotor(new List<int> { region }, new List<string> { intensity.ToString() });
-                                Thread.Sleep(time);
-                                g.LegacyGlove.ActivateMotor(new List<int> { region }, new List<string> { "0" });
-                                return 0;
-                            }
-                            catch (Exception)
-                            {
-                                g.Connected = false;
-                                glove.LegacyGlove = new LegacyOpenGlove();
-                                return 1;// CANT ACTIVATE
-                            }
+                            bgw = new BackgroundWorker();
+                            bgw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgw_RunWorkerCompleted);
+                            bgw.DoWork += new DoWorkEventHandler(bgw_DoWork);
+                            bgw.RunWorkerAsync(new List<object>() { g, new List<int> { actuator }, new List<string> { intensity.ToString() } });
+                            return 0;
+                        }
+                        catch (Exception)
+                        {
+                            g.Connected = false;
+                            g.LegacyGlove = new LegacyOpenGlove();
+                            return 1;// CANT ACTIVATE
                         }
                     }
-
                 }
             }
             return 0; //OK
@@ -389,7 +408,14 @@ namespace OpenGloveService
             return Glove.Gloves;
         }
 
-        public void SaveGlove(Glove glove) {
+        public List<Glove> RefreshGloves()
+        {
+            if (DEBUGGING) Debugger.Launch();
+            return Glove.RefreshGloves();
+        }
+
+        public void SaveGlove(Glove glove)
+        {
             foreach (Glove g in Glove.Gloves)
             {
                 if (g.BluetoothAddress.Equals(glove.BluetoothAddress))
@@ -417,7 +443,8 @@ namespace OpenGloveService
                         g.LegacyGlove.ActivateMotor(g.GloveConfiguration.NegativePins, g.GloveConfiguration.NegativeInit);
                         g.Connected = true;
                     }
-                    else {
+                    else
+                    {
                         return 1; // NO CONFIG
                     }
                     return 0;
@@ -426,7 +453,8 @@ namespace OpenGloveService
             return 0; //OK
         }
 
-        public int Disconnect(Glove glove) {
+        public int Disconnect(Glove glove)
+        {
             if (DEBUGGING) Debugger.Launch();
             foreach (Glove g in Glove.Gloves)
             {
@@ -438,7 +466,7 @@ namespace OpenGloveService
                     }
                     catch (Exception)
                     {
-                        
+
                     }
                     g.Connected = false;
                     return 0;

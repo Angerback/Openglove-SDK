@@ -43,6 +43,12 @@
   <wsdl:message name="IOGService_GetGloves_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetGlovesResponse" />
   </wsdl:message>
+  <wsdl:message name="IOGService_RefreshGloves_InputMessage">
+    <wsdl:part name="parameters" element="tns:RefreshGloves" />
+  </wsdl:message>
+  <wsdl:message name="IOGService_RefreshGloves_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RefreshGlovesResponse" />
+  </wsdl:message>
   <wsdl:message name="IOGService_SaveGlove_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveGlove" />
   </wsdl:message>
@@ -54,12 +60,6 @@
   </wsdl:message>
   <wsdl:message name="IOGService_Activate_OutputMessage">
     <wsdl:part name="parameters" element="tns:ActivateResponse" />
-  </wsdl:message>
-  <wsdl:message name="IOGService_ActivateTimed_InputMessage">
-    <wsdl:part name="parameters" element="tns:ActivateTimed" />
-  </wsdl:message>
-  <wsdl:message name="IOGService_ActivateTimed_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ActivateTimedResponse" />
   </wsdl:message>
   <wsdl:message name="IOGService_Connect_InputMessage">
     <wsdl:part name="parameters" element="tns:Connect" />
@@ -78,6 +78,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IOGService/GetGloves" message="tns:IOGService_GetGloves_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOGService/GetGlovesResponse" message="tns:IOGService_GetGloves_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RefreshGloves">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/RefreshGloves" message="tns:IOGService_RefreshGloves_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/RefreshGlovesResponse" message="tns:IOGService_RefreshGloves_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SaveGlove">
       <wsdl:input wsaw:Action="http://tempuri.org/IOGService/SaveGlove" message="tns:IOGService_SaveGlove_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOGService/SaveGloveResponse" message="tns:IOGService_SaveGlove_OutputMessage" />
@@ -85,10 +89,6 @@
     <wsdl:operation name="Activate">
       <wsdl:input wsaw:Action="http://tempuri.org/IOGService/Activate" message="tns:IOGService_Activate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOGService/ActivateResponse" message="tns:IOGService_Activate_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ActivateTimed">
-      <wsdl:input wsaw:Action="http://tempuri.org/IOGService/ActivateTimed" message="tns:IOGService_ActivateTimed_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IOGService/ActivateTimedResponse" message="tns:IOGService_ActivateTimed_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Connect">
       <wsdl:input wsaw:Action="http://tempuri.org/IOGService/Connect" message="tns:IOGService_Connect_InputMessage" />
@@ -110,6 +110,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RefreshGloves">
+      <soap:operation soapAction="http://tempuri.org/IOGService/RefreshGloves" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SaveGlove">
       <soap:operation soapAction="http://tempuri.org/IOGService/SaveGlove" style="document" />
       <wsdl:input>
@@ -121,15 +130,6 @@
     </wsdl:operation>
     <wsdl:operation name="Activate">
       <soap:operation soapAction="http://tempuri.org/IOGService/Activate" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ActivateTimed">
-      <soap:operation soapAction="http://tempuri.org/IOGService/ActivateTimed" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -168,6 +168,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RefreshGloves">
+      <soap12:operation soapAction="http://tempuri.org/IOGService/RefreshGloves" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SaveGlove">
       <soap12:operation soapAction="http://tempuri.org/IOGService/SaveGlove" style="document" />
       <wsdl:input>
@@ -179,15 +188,6 @@
     </wsdl:operation>
     <wsdl:operation name="Activate">
       <soap12:operation soapAction="http://tempuri.org/IOGService/Activate" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ActivateTimed">
-      <soap12:operation soapAction="http://tempuri.org/IOGService/ActivateTimed" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -223,7 +223,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:9002/OGService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Spn>host/DESKTOP-78HC5HD</Spn>
+          <Spn>host/DESKTOP-7MC8J0E</Spn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

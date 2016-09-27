@@ -34,6 +34,8 @@ namespace OpenGlovePrototype2
 
         private BackgroundWorker bgw;
 
+        private ConfigManager configManager;
+
         void bgw_DoWork(object sender, DoWorkEventArgs e)
         {
             //Your time taking work. Here it's your data query method.
@@ -55,6 +57,7 @@ namespace OpenGlovePrototype2
         public Greeter()
         {
             InitializeComponent();
+            configManager = new ConfigManager();
             gloves = OpenGloveAPI.GetInstance();
             bgw = new BackgroundWorker();
             bgw.WorkerReportsProgress = true;
@@ -196,7 +199,7 @@ namespace OpenGlovePrototype2
                 {
                     if (openConfigurationDialog.FileName != "")
                     {
-                        gloves.OpenGloveConfiguration(openConfigurationDialog.FileName, selectedGlove);
+                        configManager.OpenGloveConfiguration(openConfigurationDialog.FileName, selectedGlove);
                         refreshControls();
                     }
                 }
@@ -218,7 +221,7 @@ namespace OpenGlovePrototype2
                 {
                     if (openConfigurationDialog.FileName != "")
                     {
-                        gloves.OpenProfileConfiguration(openConfigurationDialog.FileName, selectedGlove);
+                        configManager.OpenProfileConfiguration(openConfigurationDialog.FileName, selectedGlove);
                         refreshControls();
                     }
                 }

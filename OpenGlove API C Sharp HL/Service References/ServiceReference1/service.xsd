@@ -13,10 +13,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RefreshGloves">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RefreshGlovesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/OpenGloveService" minOccurs="0" name="RefreshGlovesResult" nillable="true" type="q2:ArrayOfGlove" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SaveGlove">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/OpenGloveService" minOccurs="0" name="glove" nillable="true" type="q2:Glove" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/OpenGloveService" minOccurs="0" name="glove" nillable="true" type="q3:Glove" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -28,8 +40,8 @@
   <xs:element name="Activate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/OpenGloveService" minOccurs="0" name="glove" nillable="true" type="q3:Glove" />
-        <xs:element minOccurs="0" name="region" type="xs:int" />
+        <xs:element minOccurs="0" name="gloveAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="actuator" type="xs:int" />
         <xs:element minOccurs="0" name="intensity" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -41,27 +53,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ActivateTimed">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/OpenGloveService" minOccurs="0" name="glove" nillable="true" type="q4:Glove" />
-        <xs:element minOccurs="0" name="region" type="xs:int" />
-        <xs:element minOccurs="0" name="intensity" type="xs:int" />
-        <xs:element minOccurs="0" name="time" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ActivateTimedResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ActivateTimedResult" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="Connect">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/OpenGloveService" minOccurs="0" name="glove" nillable="true" type="q5:Glove" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/OpenGloveService" minOccurs="0" name="glove" nillable="true" type="q4:Glove" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -75,7 +70,7 @@
   <xs:element name="Disconnect">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/OpenGloveService" minOccurs="0" name="glove" nillable="true" type="q6:Glove" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/OpenGloveService" minOccurs="0" name="glove" nillable="true" type="q5:Glove" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

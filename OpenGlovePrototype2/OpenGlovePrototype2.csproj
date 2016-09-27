@@ -97,6 +97,7 @@
     <Compile Include="AddBoard.xaml.cs">
       <DependentUpon>AddBoard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConfigManager.cs" />
     <Compile Include="Greeter.xaml.cs">
       <DependentUpon>Greeter.xaml</DependentUpon>
     </Compile>

@@ -50,9 +50,11 @@ namespace OpenGlovePrototype2
 
         private List<Board> boards;
 
+        private ConfigManager configManager;
+
         private List<Board> openBoards() {
             List<Board> result = new List<Board>();
-
+            
             XDocument xml = XDocument.Load("Boards.xml");
             List<XElement> xBoards = xml.Root.Elements("board").ToList();
 
@@ -111,6 +113,8 @@ namespace OpenGlovePrototype2
             this.selectedGlove = selectedGlove;
 
             initializeBoards();
+
+            configManager = new ConfigManager();
 
         }
 
@@ -175,7 +179,7 @@ namespace OpenGlovePrototype2
                     selectedGlove.GloveConfiguration.PositiveInit = positiveInit.ToArray();
                     selectedGlove.GloveConfiguration.NegativeInit = negativeInit.ToArray();
 
-                    OpenGloveAPI.GetInstance().saveGloveConfiguration(saveConfigurationDialog.FileName, selectedGlove);
+                    configManager.saveGloveConfiguration(saveConfigurationDialog.FileName, selectedGlove);
                 }
                 else
                 {
