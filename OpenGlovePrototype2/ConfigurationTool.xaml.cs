@@ -31,9 +31,13 @@ namespace OpenGloveSDKConfigurationPrototype2
 
         private Glove selectedGlove;
 
+        private ConfigManager configManager;
+
         public ConfigurationTool(Glove selectedGlove)
         {
             InitializeComponent();
+
+            configManager = new ConfigManager();
 
             this.selectedGlove = selectedGlove;
 
@@ -180,7 +184,7 @@ namespace OpenGloveSDKConfigurationPrototype2
             if (saveConfigurationDialog.FileName != "")
             {
                 Console.WriteLine(saveConfigurationDialog.FileName);
-                gloves.saveGloveProfile(saveConfigurationDialog.FileName, selectedGlove);
+                configManager.saveGloveProfile(saveConfigurationDialog.FileName, selectedGlove);
                 this.statusBarItemProfile.Content = saveConfigurationDialog.FileName;
 
                 string message = "File saved.";
