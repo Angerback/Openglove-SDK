@@ -16,6 +16,8 @@ using OpenGlove;
 using InTheHand.Net.Sockets;
 using System.Runtime.Serialization;
 using System.Management;
+using System.ServiceModel.Activation;
+using System.ServiceModel.Web;
 
 namespace OpenGloveService
 {
@@ -23,7 +25,7 @@ namespace OpenGloveService
     {
         private ServiceHost m_svcHost = null;
 
-        private const bool DEBUGGING = false;
+        private const bool DEBUGGING = true;
 
         public OpenGloveService()
         {
@@ -41,23 +43,25 @@ namespace OpenGloveService
 
             string strAdrHTTP = "http://localhost:9001/OGService";
             string strAdrTCP = "net.tcp://localhost:9002/OGService";
-
+            
             Uri[] adrbase = { new Uri(strAdrHTTP), new Uri(strAdrTCP) };
             m_svcHost = new ServiceHost(typeof(OGService), adrbase);
 
             ServiceMetadataBehavior mBehave = new ServiceMetadataBehavior();
+            mBehave.HttpGetEnabled = true;
             m_svcHost.Description.Behaviors.Add(mBehave);
 
             BasicHttpBinding httpb = new BasicHttpBinding();
             m_svcHost.AddServiceEndpoint(typeof(IOGService), httpb, strAdrHTTP);
             m_svcHost.AddServiceEndpoint(typeof(IMetadataExchange),
             MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
-            
+
+
             NetTcpBinding tcpb = new NetTcpBinding();
             m_svcHost.AddServiceEndpoint(typeof(IOGService), tcpb, strAdrTCP);
             m_svcHost.AddServiceEndpoint(typeof(IMetadataExchange),
             MetadataExchangeBindings.CreateMexTcpBinding(), "mex");
-            
+
             m_svcHost.Open();
         }
 
@@ -240,10 +244,11 @@ namespace OpenGloveService
         Left
     }
 
-    [ServiceContract]
+    [ServiceContract] 
     public interface IOGService
     {
         [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
         List<Glove> GetGloves();
 
         [OperationContract]
@@ -262,6 +267,7 @@ namespace OpenGloveService
         int Disconnect(Glove glove);
     }
 
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class OGService : IOGService
     {
         private const bool DEBUGGING = false;
