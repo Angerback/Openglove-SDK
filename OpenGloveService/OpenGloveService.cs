@@ -43,7 +43,7 @@ namespace OpenGloveService
 
             string strAdrHTTP = "http://localhost:9001/OGService";
             string strAdrTCP = "net.tcp://localhost:9002/OGService";
-            
+
             Uri[] adrbase = { new Uri(strAdrHTTP), new Uri(strAdrTCP) };
             m_svcHost = new ServiceHost(typeof(OGService), adrbase);
 
@@ -52,16 +52,17 @@ namespace OpenGloveService
             m_svcHost.Description.Behaviors.Add(mBehave);
 
             BasicHttpBinding httpb = new BasicHttpBinding();
+            
             m_svcHost.AddServiceEndpoint(typeof(IOGService), httpb, strAdrHTTP);
             m_svcHost.AddServiceEndpoint(typeof(IMetadataExchange),
             MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
 
-
+            
             NetTcpBinding tcpb = new NetTcpBinding();
             m_svcHost.AddServiceEndpoint(typeof(IOGService), tcpb, strAdrTCP);
             m_svcHost.AddServiceEndpoint(typeof(IMetadataExchange),
             MetadataExchangeBindings.CreateMexTcpBinding(), "mex");
-
+            
             m_svcHost.Open();
         }
 
@@ -264,7 +265,6 @@ namespace OpenGloveService
     public interface IOGService
     {
         [OperationContract]
-        [WebGet(ResponseFormat = WebMessageFormat.Json)]
         List<Glove> GetGloves();
 
         [OperationContract]
@@ -288,7 +288,6 @@ namespace OpenGloveService
         int Disconnect(Glove glove);
     }
 
-    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class OGService : IOGService
     {
         private const bool DEBUGGING = false;
@@ -408,6 +407,9 @@ namespace OpenGloveService
             return 0; //OK
         }
 
+        [WebInvoke(Method = "GET",
+                    ResponseFormat = WebMessageFormat.Json,
+                    UriTemplate = "GetGloves")]
         public List<Glove> GetGloves()
         {
             if (DEBUGGING) Debugger.Launch();
@@ -479,6 +481,44 @@ namespace OpenGloveService
                 }
             }
             return 0;
+        }
+    }
+
+    public class Test : IOGService
+    {
+        public int Activate(string gloveAddress, int actuator, int intensity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Connect(Glove glove)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Disconnect(Glove glove)
+        {
+            throw new NotImplementedException();
+        }
+
+        [WebInvoke(Method = "GET",
+                    ResponseFormat = WebMessageFormat.Json,
+                    UriTemplate = "GetGloves")]
+        public List<Glove> GetGloves()
+        {
+            Glove g = new Glove();
+            g.Name = "TEST";
+            return new List<Glove>() { g };
+        }
+
+        public List<Glove> RefreshGloves()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveGlove(Glove glove)
+        {
+            throw new NotImplementedException();
         }
     }
 }

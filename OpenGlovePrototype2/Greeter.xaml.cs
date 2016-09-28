@@ -56,6 +56,7 @@ namespace OpenGlovePrototype2
 
         public Greeter()
         {
+
             InitializeComponent();
             configManager = new ConfigManager();
             gloves = OpenGloveAPI.GetInstance();
