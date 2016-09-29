@@ -16,7 +16,7 @@ namespace OpenGlove_API_C_Sharp_HL
         OpenGloveAPI()
         {
             BasicHttpBinding binding = new BasicHttpBinding();
-            EndpointAddress address = new EndpointAddress("http://localhost:9001/OGService");
+            EndpointAddress address = new EndpointAddress("http://localhost:8733/Design_Time_Addresses/OpenGloveWCF/OGService/");
             serviceClient = new OGServiceClient(binding, address);
             
         }
@@ -50,7 +50,7 @@ namespace OpenGlove_API_C_Sharp_HL
         {
             try
             {
-                return this.serviceClient.Connect(selectedGlove);
+                return this.serviceClient.Connect(selectedGlove.BluetoothAddress);
             }
             catch (Exception)
             {
@@ -63,7 +63,7 @@ namespace OpenGlove_API_C_Sharp_HL
         {
             try
             {
-                return this.serviceClient.Disconnect(selectedGlove);
+                return this.serviceClient.Disconnect(selectedGlove.BluetoothAddress);
             }
             catch (Exception)
             {

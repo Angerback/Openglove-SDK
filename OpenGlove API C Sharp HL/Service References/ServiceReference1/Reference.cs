@@ -15,7 +15,7 @@ namespace OpenGlove_API_C_Sharp_HL.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Glove", Namespace="http://schemas.datacontract.org/2004/07/OpenGloveService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Glove", Namespace="http://schemas.datacontract.org/2004/07/OpenGloveWCF")]
     [System.SerializableAttribute()]
     public partial class Glove : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -139,7 +139,7 @@ namespace OpenGlove_API_C_Sharp_HL.ServiceReference1 {
         
         [System.Diagnostics.DebuggerStepThroughAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="Glove.Configuration", Namespace="http://schemas.datacontract.org/2004/07/OpenGloveService")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="Glove.Configuration", Namespace="http://schemas.datacontract.org/2004/07/OpenGloveWCF")]
         [System.SerializableAttribute()]
         public partial class Configuration : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
             
@@ -310,7 +310,7 @@ namespace OpenGlove_API_C_Sharp_HL.ServiceReference1 {
             
             [System.Diagnostics.DebuggerStepThroughAttribute()]
             [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-            [System.Runtime.Serialization.DataContractAttribute(Name="Glove.Configuration.Profile", Namespace="http://schemas.datacontract.org/2004/07/OpenGloveService")]
+            [System.Runtime.Serialization.DataContractAttribute(Name="Glove.Configuration.Profile", Namespace="http://schemas.datacontract.org/2004/07/OpenGloveWCF")]
             [System.SerializableAttribute()]
             public partial class Profile : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
                 
@@ -403,7 +403,7 @@ namespace OpenGlove_API_C_Sharp_HL.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Side", Namespace="http://schemas.datacontract.org/2004/07/OpenGloveService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Side", Namespace="http://schemas.datacontract.org/2004/07/OpenGloveWCF")]
     public enum Side : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -430,10 +430,10 @@ namespace OpenGlove_API_C_Sharp_HL.ServiceReference1 {
         int Activate(string gloveAddress, int actuator, int intensity);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Connect", ReplyAction="http://tempuri.org/IOGService/ConnectResponse")]
-        int Connect(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove);
+        int Connect(string gloveAddress);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOGService/Disconnect", ReplyAction="http://tempuri.org/IOGService/DisconnectResponse")]
-        int Disconnect(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove);
+        int Disconnect(string gloveAddress);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -479,12 +479,12 @@ namespace OpenGlove_API_C_Sharp_HL.ServiceReference1 {
             return base.Channel.Activate(gloveAddress, actuator, intensity);
         }
         
-        public int Connect(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove) {
-            return base.Channel.Connect(glove);
+        public int Connect(string gloveAddress) {
+            return base.Channel.Connect(gloveAddress);
         }
         
-        public int Disconnect(OpenGlove_API_C_Sharp_HL.ServiceReference1.Glove glove) {
-            return base.Channel.Disconnect(glove);
+        public int Disconnect(string gloveAddress) {
+            return base.Channel.Disconnect(gloveAddress);
         }
     }
 }

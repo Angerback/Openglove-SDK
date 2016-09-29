@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cd324b0e-5637-4276-aa18-d3bf2f0efa9b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5078eb27-355e-49ae-86e1-3a6c2715fbe2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,14 +18,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:9001/OGService/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/OpenGloveWCF/OGService/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="3a8872e3-6657-4782-8fe6-33ed96211598" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="2c58c802-5380-4dc3-a0f2-e23125adba6f" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="48e27c3c-1d4d-44d5-b30a-e2b763891c1f" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
-    <MetadataFile FileName="OpenGloveService.xsd" MetadataType="Schema" ID="8f6c3f72-6f1a-4d17-875c-965c9d3e8739" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
-    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="6c302669-463a-40eb-bab6-67433f6be822" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="b13da503-37f1-4391-973f-60fb6c265997" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/OpenGloveWCF/OGService/?xsd=xsd1" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="a8a10b3a-b001-44a4-bd99-304e5f27657d" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/OpenGloveWCF/OGService/?xsd=xsd0" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="3befbb16-48d5-4268-bd8e-90c5de57964f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/OpenGloveWCF/OGService/?xsd=xsd2" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="4ca65458-370c-480c-85cb-84af4c5181df" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/OpenGloveWCF/OGService/?disco" />
+    <MetadataFile FileName="OGService.wsdl" MetadataType="Wsdl" ID="7f651ff3-0a1d-4d0a-9d99-e386bcfe9264" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/OpenGloveWCF/OGService/?wsdl" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="b3f56905-a50e-4925-b3ad-d5b806f9dd53" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/OpenGloveWCF/OGService/?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

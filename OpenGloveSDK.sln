@@ -12,6 +12,9 @@ EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "OpenGloveServiceSetup", "OpenGloveServiceSetup\OpenGloveServiceSetup.vdproj", "{7CE3D344-107D-46E2-9148-EA889076FD42}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGlove API C Sharp HL", "OpenGlove API C Sharp HL\OpenGlove API C Sharp HL.csproj", "{5198FC08-00BF-4101-A6B5-0E5F9E41130A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D2B43EDD-0119-4779-AAFB-B9A19D36E492} = {D2B43EDD-0119-4779-AAFB-B9A19D36E492}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGloveWCF", "OpenGloveWCF\OpenGloveWCF.csproj", "{D2B43EDD-0119-4779-AAFB-B9A19D36E492}"
 EndProject
