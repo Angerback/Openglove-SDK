@@ -2,12 +2,10 @@
 using OpenGlove;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using System.Text;
 
 namespace OpenGloveWCF
 {
@@ -23,28 +21,42 @@ namespace OpenGloveWCF
         List<Glove> GetGloves();
 
         [OperationContract]
+        [WebInvoke(Method = "GET",
+                    ResponseFormat = WebMessageFormat.Json,
+                    RequestFormat = WebMessageFormat.Json,
+                    UriTemplate = "RefreshGloves")]
         List<Glove> RefreshGloves();
 
         [OperationContract]
+        [WebInvoke(Method = "PUT",
+                    ResponseFormat = WebMessageFormat.Json,
+                    RequestFormat = WebMessageFormat.Json,
+                    UriTemplate = "SaveGlove")]
         void SaveGlove(Glove glove);
 
         [OperationContract]
         [WebInvoke(Method = "POST",
                     ResponseFormat = WebMessageFormat.Json,
                     RequestFormat = WebMessageFormat.Json,
+                    BodyStyle = WebMessageBodyStyle.Bare,
                     UriTemplate = "Activate?gloveAddress={gloveAddress}&actuator={actuator}&intensity={intensity}")]
         int Activate(string gloveAddress, int actuator, int intensity);
 
-        /*
         [OperationContract]
-        int ActivateTimed(Glove glove, int region, int intensity, int time);
-        */
+        [WebInvoke(Method = "PUT",
+                    ResponseFormat = WebMessageFormat.Json,
+                    RequestFormat = WebMessageFormat.Json,
+                    BodyStyle = WebMessageBodyStyle.Bare,
+                    UriTemplate = "Connect?gloveAddress={gloveAddress}")]
+        int Connect(string gloveAddress);
 
         [OperationContract]
-        int Connect(Glove glove);
-
-        [OperationContract]
-        int Disconnect(Glove glove);
+        [WebInvoke(Method = "PUT",
+                    ResponseFormat = WebMessageFormat.Json,
+                    RequestFormat = WebMessageFormat.Json,
+                    BodyStyle = WebMessageBodyStyle.Bare,
+                    UriTemplate = "Disconnect?gloveAddress={gloveAddress}")]
+        int Disconnect(string gloveAddress);
     }
 
     [DataContract]

@@ -90,14 +90,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ProjectInstaller.resx">
-      <DependentUpon>ProjectInstaller.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\OpenGlove API C Sharp\OpenGlove API C Sharp\OpenGlove API C Sharp.csproj">
       <Project>{cef4f9b5-732b-4af3-9963-deda08f9b0f7}</Project>
       <Name>OpenGlove API C Sharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenGloveWCF\OpenGloveWCF.csproj">
+      <Project>{d2b43edd-0119-4779-aafb-b9a19d36e492}</Project>
+      <Name>OpenGloveWCF</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +110,11 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

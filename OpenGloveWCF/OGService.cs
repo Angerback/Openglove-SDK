@@ -2,11 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
 
 namespace OpenGloveWCF
 {
@@ -152,11 +147,11 @@ namespace OpenGloveWCF
             }
         }
 
-        public int Connect(Glove glove)
+        public int Connect(string gloveAddres)
         {
             foreach (Glove g in Glove.Gloves)
             {
-                if (g.BluetoothAddress.Equals(glove.BluetoothAddress))
+                if (g.BluetoothAddress.Equals(gloveAddres))
                 {
                     if (g.GloveConfiguration != null)
                     {
@@ -177,11 +172,11 @@ namespace OpenGloveWCF
             return 0; //OK
         }
 
-        public int Disconnect(Glove glove)
+        public int Disconnect(string gloveAddres)
         {
             foreach (Glove g in Glove.Gloves)
             {
-                if (g.BluetoothAddress.Equals(glove.BluetoothAddress))
+                if (g.BluetoothAddress.Equals(gloveAddres))
                 {
                     try
                     {
