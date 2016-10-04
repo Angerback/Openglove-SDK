@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace OpenGloveWCF
 {
@@ -13,57 +14,6 @@ namespace OpenGloveWCF
 
         private BackgroundWorker bgw;
 
-        /*
-        public int Activate(Glove glove, int actuator, int intensity)
-        {
-            if (glove != null)
-            {
-                if (intensity < 0)
-                {
-                    intensity = 0;
-                }
-                else if (intensity > 255)
-                {
-                    intensity = 255;
-                }
-
-                if (actuator < 0)
-                {
-                    return 1;
-                }
-                else if (actuator >= AREACOUNT)
-                {
-                    return 1;
-                }
-
-                if (glove.Connected)
-                {
-                    foreach (Glove g in Glove.Gloves)
-                    {
-                        if (g.BluetoothAddress.Equals(glove.BluetoothAddress))
-                        {
-                            try
-                            {
-                                bgw = new BackgroundWorker();
-                                bgw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgw_RunWorkerCompleted);
-                                bgw.DoWork += new DoWorkEventHandler(bgw_DoWork);
-                                bgw.RunWorkerAsync(new List<object>() { g, new List<int> { actuator }, new List<string> { intensity.ToString() } });
-                                return 0;
-                            }
-                            catch (Exception)
-                            {
-                                g.Connected = false;
-                                glove.LegacyGlove = new LegacyOpenGlove();
-                                return 1;// CANT ACTIVATE
-                            }
-                        }
-                    }
-
-                }
-            }
-            return 0; //OK
-        }
-        */
         void bgw_DoWork(object sender, DoWorkEventArgs e)
         {
             Glove g = (Glove)(((List<object>)e.Argument)[0]);
@@ -80,6 +30,7 @@ namespace OpenGloveWCF
 
         public int Activate(string gloveAddress, int actuator, int intensity)
         {
+            Console.WriteLine("DATOS DE ENTRADA: " + gloveAddress + " / " + actuator + " / " + intensity);
             if (intensity < 0)
             {
                 intensity = 0;
