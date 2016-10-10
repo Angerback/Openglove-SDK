@@ -134,5 +134,9 @@ namespace OpenGlovePrototype2
             serviceClient.SaveGlove(selectedGlove);
         }
 
+        public void saveGlove(Glove selectedGlove) {
+            serviceClient.SaveGlove(selectedGlove);
+        }
+
     }
 }

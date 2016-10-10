@@ -65,12 +65,11 @@ namespace OpenGloveSDKConfigurationPrototype2
                     selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
                 }
             }
-            /*
+            
             // Flip controls based on hand side.
             if (this.selectedGlove.Side == Side.Left) {
                 flipControls();
-            }*/
-            flipControls();
+            }
         }
 
         /// <summary>

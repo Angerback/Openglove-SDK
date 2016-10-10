@@ -51,7 +51,7 @@ namespace OpenGlovePrototype2
         {
             //After completing the job.
             this.bar.Close();
-            this.listViewGloves.ItemsSource = (List<Glove>) e.Result;
+            this.listViewGloves.ItemsSource = (List<Glove>)e.Result;
         }
 
         public Greeter()
@@ -65,7 +65,7 @@ namespace OpenGlovePrototype2
             bgw.ProgressChanged += new ProgressChangedEventHandler(bgw_ProgressChanged);
             bgw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgw_RunWorkerCompleted);
             bgw.DoWork += new DoWorkEventHandler(bgw_DoWork);
-            
+
             ReloadGloves();
 
             tbi = new TaskbarIcon();
@@ -82,6 +82,9 @@ namespace OpenGlovePrototype2
 
             tbi.TrayLeftMouseUp += this.onTrayClick;
 
+            comboBoxSide.Items.Add(Side.Left);
+            comboBoxSide.Items.Add(Side.Right);
+
         }
 
         private List<Glove> updateGloves() {
@@ -91,10 +94,10 @@ namespace OpenGlovePrototype2
         LoadingBar bar;
         private void ReloadGloves() {
             bgw.RunWorkerAsync();
-            bar = new LoadingBar(); 
+            bar = new LoadingBar();
             bar.ShowDialog();
         }
-       
+
         private void onTrayClick(object sender, RoutedEventArgs e)
         {
             toggleVisibility();
@@ -126,7 +129,13 @@ namespace OpenGlovePrototype2
         }
 
         private void refreshControls()
-        {          
+        {
+            if (selectedGlove != null)
+            {
+                this.comboBoxSide.SelectedItem = selectedGlove.Side;
+                this.comboBoxSide.IsEnabled = true;
+            }
+
             if (selectedGlove.GloveConfiguration == null)
             {
                 this.labelProfile.Content = "None";
@@ -286,6 +295,12 @@ namespace OpenGlovePrototype2
                 refreshControls();
             }
             
+        }
+
+        private void comboBoxSide_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedGlove.Side = (Side) ((ComboBox)sender).SelectedItem;
+            new ConfigManager().saveGlove(selectedGlove);
         }
     }
 }

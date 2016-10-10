@@ -34,7 +34,7 @@
 
             </ListView.View>
         </ListView>
-        <Button x:Name="buttonRefreshGloves" Content="Refresh Gloves" Margin="10,0,10,10" FontSize="20" Height="36" VerticalAlignment="Bottom" Click="buttonRefreshGloves_Click"/>
+        <Button x:Name="buttonRefreshGloves" Content="Refresh Gloves" Margin="10,0,0,10" FontSize="20" Height="36" VerticalAlignment="Bottom" Click="buttonRefreshGloves_Click" HorizontalAlignment="Left" Width="375"/>
         <Grid Margin="390,122,10,51">
             <Grid.RowDefinitions>
                 <RowDefinition Height="7*"/>
@@ -45,5 +45,6 @@
             <Button x:Name="buttonCreateProfileConfig" Content="Create Profile Configuration" Margin="0,102,0,0" VerticalAlignment="Top" Height="48" FontSize="18" IsEnabled="False" Click="buttonCreateProfileConfig_Click" Grid.Row="1"/>
             <Button x:Name="buttonOpenProfileConfig" Content="Open Profile Configuration" Margin="0,156,0,0" FontSize="18" IsEnabled="False" Click="buttonOpenProfileConfig_Click" Grid.Row="1"/>
         </Grid>
+        <ComboBox x:Name="comboBoxSide" Margin="390,0,10,10" SelectionChanged="comboBoxSide_SelectionChanged" Height="36" VerticalAlignment="Bottom" IsEnabled="False"/>
     </Grid>
 </Window>
