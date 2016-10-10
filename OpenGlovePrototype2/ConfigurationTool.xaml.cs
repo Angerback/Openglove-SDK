@@ -65,11 +65,12 @@ namespace OpenGloveSDKConfigurationPrototype2
                     selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
                 }
             }
-
+            /*
             // Flip controls based on hand side.
             if (this.selectedGlove.Side == Side.Left) {
                 flipControls();
-            }
+            }*/
+            flipControls();
         }
 
         /// <summary>
@@ -94,6 +95,23 @@ namespace OpenGloveSDKConfigurationPrototype2
                 foreach (var label in grid.Children.OfType<Label>())
                 {
                     label.RenderTransform = st;
+                }
+            }
+
+            ScaleTransform stD = new ScaleTransform();
+            stD.ScaleX = 1;
+            stD.ScaleY = 1;
+
+            imageDorsal.RenderTransform = st;
+            selectorsGridDorso.RenderTransform = stD;
+
+            grids = selectorsGridDorso.Children.OfType<Grid>().ToList();
+
+            foreach (var grid in grids)
+            {
+                foreach (var label in grid.Children.OfType<Label>())
+                {
+                    label.RenderTransform = stD;
                 }
             }
         }
