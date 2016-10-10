@@ -17,6 +17,7 @@ using Hardcodet.Wpf.TaskbarNotification;
 using System.ComponentModel;
 using OpenGlove_API_C_Sharp_HL;
 using OpenGlove_API_C_Sharp_HL.ServiceReference1;
+using System.ServiceProcess;
 
 namespace OpenGlovePrototype2
 {
@@ -36,35 +37,64 @@ namespace OpenGlovePrototype2
 
         private ConfigManager configManager;
 
-        void bgw_DoWork(object sender, DoWorkEventArgs e)
+        void getGlovesAsync(object sender, DoWorkEventArgs e)
         {
             //Your time taking work. Here it's your data query method.
-            e.Result = gloves.Devices;
+            try
+            {
+                e.Result = gloves.Devices;
+            }
+            catch (Exception)
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show("Service Unavailable", "Error", MessageBoxButton.OK);  
+            }
         }
 
-        void bgw_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        void getGlovesAsyncUpdate(object sender, DoWorkEventArgs e) {
+            //Your time taking work. Here it's your data query method.
+            try
+            {
+                e.Result = gloves.UpdateDevices();
+            }
+            catch (Exception)
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show("Service Unavailable", "Error", MessageBoxButton.OK);
+            }
+        }
+
+        void GLovesUpdateProcess(object sender, ProgressChangedEventArgs e)
         {
             //Progress bar.
         }
 
-        void bgw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        void getGlovesCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             //After completing the job.
             this.bar.Close();
-            this.listViewGloves.ItemsSource = (List<Glove>)e.Result;
+            if (e.Result != null)
+            {
+                this.listViewGloves.ItemsSource = (List<Glove>)e.Result;
+                this.ServiceStatus.Content = "Service running";
+                this.ServiceStatusIcon.Fill = SystemColors.HighlightBrush;
+                
+            }
+            else {
+                this.listViewGloves.ItemsSource = null;
+                this.ServiceStatus.Content = "Service unavailable";
+                this.ServiceStatusIcon.Fill = SystemColors.ControlBrush;
+            }
         }
 
         public Greeter()
         {
-
             InitializeComponent();
             configManager = new ConfigManager();
             gloves = OpenGloveAPI.GetInstance();
             bgw = new BackgroundWorker();
             bgw.WorkerReportsProgress = true;
-            bgw.ProgressChanged += new ProgressChangedEventHandler(bgw_ProgressChanged);
-            bgw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgw_RunWorkerCompleted);
-            bgw.DoWork += new DoWorkEventHandler(bgw_DoWork);
+            bgw.ProgressChanged += new ProgressChangedEventHandler(GLovesUpdateProcess);
+            bgw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(getGlovesCompleted);
+            bgw.DoWork += new DoWorkEventHandler(getGlovesAsync);
 
             ReloadGloves();
 
@@ -134,6 +164,7 @@ namespace OpenGlovePrototype2
             {
                 this.comboBoxSide.SelectedItem = selectedGlove.Side;
                 this.comboBoxSide.IsEnabled = true;
+
             }
 
             if (selectedGlove.GloveConfiguration == null)
@@ -190,6 +221,12 @@ namespace OpenGlovePrototype2
 
         private void buttonRefreshGloves_Click(object sender, RoutedEventArgs e)
         {
+            bgw = new BackgroundWorker();
+            bgw.WorkerReportsProgress = true;
+            bgw.ProgressChanged += new ProgressChangedEventHandler(GLovesUpdateProcess);
+            bgw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(getGlovesCompleted);
+            bgw.DoWork += new DoWorkEventHandler(getGlovesAsyncUpdate);
+
             this.ReloadGloves();
         }
 
@@ -300,7 +337,27 @@ namespace OpenGlovePrototype2
         private void comboBoxSide_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedGlove.Side = (Side) ((ComboBox)sender).SelectedItem;
-            new ConfigManager().saveGlove(selectedGlove);
+            configManager.saveGlove(selectedGlove);
+        }
+
+        private void startService() {
+            ServiceController service = new ServiceController("OpenGloveService");
+            try
+            {
+                TimeSpan timeout = TimeSpan.FromMilliseconds(10000);
+
+                service.Start();
+                service.WaitForStatus(ServiceControllerStatus.Running, timeout);
+            }
+            catch
+            {
+                // ...
+            }
+        }
+
+        private void HideWindowMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
         }
     }
 }

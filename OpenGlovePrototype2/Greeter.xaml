@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OpenGlovePrototype2"
         mc:Ignorable="d"
-        Title="Greeter" Height="419.189" Width="727.058" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,4,5">
+        Title="Greeter" Height="479.189" Width="727.058" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,4,36">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
@@ -18,7 +18,7 @@
         <Label x:Name="labelProfile" Content="Profile name&#xA;" HorizontalAlignment="Left" Margin="185,72,0,0" VerticalAlignment="Top" Foreground="White" FontSize="13" Width="366" Height="27"/>
         <Menu x:Name="menu" Height="37" VerticalAlignment="Top" Background="Black">
             <Separator HorizontalAlignment="Left" Height="35" Width="12" Background="Black" BorderBrush="Black"/>
-            <MenuItem x:Name="HideWindowMenuItem" Header="Hide Window" Height="37" Width="86" HorizontalAlignment="Center"  Foreground="White" Background="Black" BorderBrush="Black"/>
+            <MenuItem x:Name="HideWindowMenuItem" Header="Hide Window" Height="37" Width="86" HorizontalAlignment="Center"  Foreground="White" Background="Black" BorderBrush="Black" Click="HideWindowMenuItem_Click"/>
             <Separator Width="11"/>
             <MenuItem x:Name="ConnectMenuItem" Header="Connect" Foreground="White" IsEnabled="False" Click="ConnectMenuItem_Click"/>
             <Separator Width="11"/>
@@ -46,5 +46,13 @@
             <Button x:Name="buttonOpenProfileConfig" Content="Open Profile Configuration" Margin="0,156,0,0" FontSize="18" IsEnabled="False" Click="buttonOpenProfileConfig_Click" Grid.Row="1"/>
         </Grid>
         <ComboBox x:Name="comboBoxSide" Margin="390,0,10,10" SelectionChanged="comboBoxSide_SelectionChanged" Height="36" VerticalAlignment="Bottom" IsEnabled="False"/>
+        <StatusBar HorizontalAlignment="Left" Height="40" Margin="0,409,0,-35" VerticalAlignment="Top" Width="717" Background="#FF00B47F">
+            <Ellipse x:Name="ServiceStatusIcon" Height="30" Stroke="Black" StrokeThickness="3" Width="30">
+                <Ellipse.Fill>
+                    <SolidColorBrush Color="#FFB4B4B4"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <StatusBarItem x:Name="ServiceStatus" Content="StatusBarItem" Height="40" VerticalAlignment="Top" Foreground="White"/>
+        </StatusBar>
     </Grid>
 </Window>

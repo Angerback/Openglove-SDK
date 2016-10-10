@@ -25,7 +25,7 @@ namespace OpenGloveService
     {
         private ServiceHost m_svcHost = null;
 
-        private const bool DEBUGGING = true;
+        private const bool DEBUGGING = false;
 
         public OpenGloveService()
         {
