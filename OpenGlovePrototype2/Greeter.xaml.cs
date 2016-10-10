@@ -37,9 +37,10 @@ namespace OpenGlovePrototype2
 
         private ConfigManager configManager;
 
+        private bool serviceAvailable = true;
+
         void getGlovesAsync(object sender, DoWorkEventArgs e)
         {
-            //Your time taking work. Here it's your data query method.
             try
             {
                 e.Result = gloves.Devices;
@@ -51,13 +52,13 @@ namespace OpenGlovePrototype2
         }
 
         void getGlovesAsyncUpdate(object sender, DoWorkEventArgs e) {
-            //Your time taking work. Here it's your data query method.
             try
             {
                 e.Result = gloves.UpdateDevices();
             }
             catch (Exception)
             {
+                
                 MessageBoxResult messageBoxResult = MessageBox.Show("Service Unavailable", "Error", MessageBoxButton.OK);
             }
         }
@@ -75,13 +76,17 @@ namespace OpenGlovePrototype2
             {
                 this.listViewGloves.ItemsSource = (List<Glove>)e.Result;
                 this.ServiceStatus.Content = "Service running";
+                this.serviceToggle.Header = "Stop Service";
                 this.ServiceStatusIcon.Fill = SystemColors.HighlightBrush;
+                serviceAvailable = true;
                 
             }
             else {
                 this.listViewGloves.ItemsSource = null;
                 this.ServiceStatus.Content = "Service unavailable";
+                this.serviceToggle.Header = "Start Service";
                 this.ServiceStatusIcon.Fill = SystemColors.ControlBrush;
+                serviceAvailable = false;
             }
         }
 
@@ -165,6 +170,14 @@ namespace OpenGlovePrototype2
                 this.comboBoxSide.SelectedItem = selectedGlove.Side;
                 this.comboBoxSide.IsEnabled = true;
 
+            }
+
+            if (serviceAvailable)
+            {
+                this.serviceToggle.Header = "Stop Service";
+            }
+            else {
+                this.serviceToggle.Header = "Start Service";
             }
 
             if (selectedGlove.GloveConfiguration == null)
@@ -340,7 +353,7 @@ namespace OpenGlovePrototype2
             configManager.saveGlove(selectedGlove);
         }
 
-        private void startService() {
+        private int startService() {
             ServiceController service = new ServiceController("OpenGloveService");
             try
             {
@@ -348,16 +361,59 @@ namespace OpenGlovePrototype2
 
                 service.Start();
                 service.WaitForStatus(ServiceControllerStatus.Running, timeout);
+                return 1;
             }
-            catch
+            catch(Exception ex)
             {
-                // ...
+                MessageBoxResult messageBoxResult = MessageBox.Show("You must run this program as administrator to control the service.", "Permission required", MessageBoxButton.OK);
+                return 0;
+            }
+        }
+
+        private int stopService() {
+            ServiceController service = new ServiceController("OpenGloveService");
+            try
+            {
+                TimeSpan timeout = TimeSpan.FromMilliseconds(100000);
+
+                service.Stop();
+                service.WaitForStatus(ServiceControllerStatus.Running, timeout);
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show("You must run this program as administrator to control the service.", "Permission required", MessageBoxButton.OK);
+                return 0;
             }
         }
 
         private void HideWindowMenuItem_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
+        }
+
+        private void serviceToggle_Click(object sender, RoutedEventArgs e)
+        {
+            int result = 0;
+
+            if (serviceAvailable)
+            {
+                result = stopService();
+            }
+            else {
+                result = startService();
+            }
+            if (result == 1) {
+
+                bgw = new BackgroundWorker();
+                bgw.WorkerReportsProgress = true;
+                bgw.ProgressChanged += new ProgressChangedEventHandler(GLovesUpdateProcess);
+                bgw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(getGlovesCompleted);
+                bgw.DoWork += new DoWorkEventHandler(getGlovesAsyncUpdate);
+
+                this.ReloadGloves();
+            }
+            
         }
     }
 }
