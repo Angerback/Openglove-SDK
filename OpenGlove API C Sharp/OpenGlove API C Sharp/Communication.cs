@@ -57,7 +57,6 @@ namespace OpenGlove
         /// <param name="data">String data to send</param>
         public void Write(string data)
         {
-            System.Console.WriteLine("ENVIAR POR PUERTO SERIAL: " + data);
             this.port.Write(data);
         }
         /// <summary>

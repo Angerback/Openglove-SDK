@@ -30,7 +30,6 @@ namespace OpenGloveWCF
 
         public int Activate(string gloveAddress, int actuator, int intensity)
         {
-            Console.WriteLine("DATOS DE ENTRADA: " + gloveAddress + " / " + actuator + " / " + intensity);
             if (intensity < 0)
             {
                 intensity = 0;

@@ -64,12 +64,7 @@ namespace OpenGlove
         /// <param name="values">List with the intensities to activate the motors. It can be "HIGH" or "LOW" in digital mode or a number bewteen 0 and 255 in analog mode</param>
         public void ActivateMotor(IEnumerable<int> pins, IEnumerable<string> values)
         {
-            foreach (var item in values)
-            {
-                System.Console.WriteLine("POTENCIA DE ACTIVACION API MONSALVE: " + item);
-            }
             string message = messageGenerator.ActivateMotor(pins, values);
-            System.Console.WriteLine("MENSAJE PARA OPENGLOVE: " + message);
             communication.Write(message);
         }
         /// <summary>

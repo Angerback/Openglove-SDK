@@ -64,7 +64,38 @@ namespace OpenGloveSDKConfigurationPrototype2
                 {
                     selector.SelectionChanged -= new SelectionChangedEventHandler(selectorsSelectionChanged);
                 }
-            }    
+            }
+
+            // Flip controls based on hand side.
+            if (this.selectedGlove.Side == Side.Left) {
+                flipControls();
+            }
+        }
+
+        /// <summary>
+        /// Flips the actuator selectors to match the hand side (left). Dont use if the hand is right
+        /// </summary>
+        private void flipControls() {
+            ScaleTransform st = new ScaleTransform();
+            st.ScaleX = -1;
+            st.ScaleY = 1;
+            imagePalmar.RenderTransform = st;
+            selectorsGrid.RenderTransform = st;
+
+            foreach (var item in selectors)
+            {
+                item.RenderTransform = st;
+            }
+
+            List<Grid> grids = selectorsGrid.Children.OfType<Grid>().ToList();
+
+            foreach (var grid in grids)
+            {
+                foreach (var label in grid.Children.OfType<Label>())
+                {
+                    label.RenderTransform = st;
+                }
+            }
         }
 
         /// <summary>
@@ -94,7 +125,6 @@ namespace OpenGloveSDKConfigurationPrototype2
         /// <param name="owner"></param>
         private void removeActuator(String actuator, object owner)
         {
-            //Console.WriteLine("Removiendo actuador.");
             foreach (ComboBox selector in this.selectors)
             {
                 if (((ComboBox)owner) != selector)

@@ -121,7 +121,6 @@ namespace OpenGlovePrototype2
 
         private void listViewGloves_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             selectedGlove = (Glove)((ListView)sender).SelectedItem;
             refreshControls();
         }
@@ -231,7 +230,7 @@ namespace OpenGlovePrototype2
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Hide();
         }
 
         private void CurrentProfileMenuItem_Click(object sender, RoutedEventArgs e)
@@ -280,10 +279,13 @@ namespace OpenGlovePrototype2
         private void buttonCreateProfileConfig_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult messageBoxResult = MessageBox.Show("This will close the current profile. Are you sure?", "New configuration confirmation", MessageBoxButton.YesNo);
-
-            ConfigurationTool config = new ConfigurationTool(this.selectedGlove);
-            config.ShowDialog();
-            refreshControls();
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                ConfigurationTool config = new ConfigurationTool(this.selectedGlove);
+                config.ShowDialog();
+                refreshControls();
+            }
+            
         }
     }
 }
