@@ -374,10 +374,10 @@ namespace OpenGlovePrototype2
             ServiceController service = new ServiceController("OpenGloveService");
             try
             {
-                TimeSpan timeout = TimeSpan.FromMilliseconds(100000);
+                TimeSpan timeout = TimeSpan.FromMilliseconds(50000);
 
                 service.Stop();
-                service.WaitForStatus(ServiceControllerStatus.Running, timeout);
+                service.WaitForStatus(ServiceControllerStatus.Stopped, timeout);
                 return 1;
             }
             catch (Exception ex)
