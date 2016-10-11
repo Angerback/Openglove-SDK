@@ -5,18 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OpenGlovePrototype2"
         mc:Ignorable="d"
-        Title="Greeter" Height="479.189" Width="727.058" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,4,36">
+        Title="Greeter" Height="417.189" Width="727.058" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,4,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="232*"/>
+            <ColumnDefinition Width="485*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Fill="#FF00B47F" Height="77" Stroke="#FF00B47F" StrokeThickness="3" VerticalAlignment="Top" Margin="0,32,0,0"/>
+        <Rectangle Fill="#FF00B47F" Height="77" Stroke="#FF00B47F" StrokeThickness="3" VerticalAlignment="Top" Margin="0,32,0,0" Grid.ColumnSpan="2"/>
         <Label x:Name="label" Content="Current Glove Configuration:&#xA;" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Height="25" Foreground="White" FontSize="13" Width="175"/>
-        <Label x:Name="labelGloveConfig" Content="Glove name&#xA;" HorizontalAlignment="Left" Margin="185,42,0,0" VerticalAlignment="Top" Width="366" Foreground="White" FontSize="13" Height="25"/>
+        <Label x:Name="labelGloveConfig" Content="Glove name&#xA;" HorizontalAlignment="Left" Margin="185,42,0,0" VerticalAlignment="Top" Width="366" Foreground="White" FontSize="13" Height="25" Grid.ColumnSpan="2"/>
         <Label x:Name="label1" Content="Current Profile:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="162" Foreground="White" FontSize="13" Height="27"/>
-        <Label x:Name="labelProfile" Content="Profile name&#xA;" HorizontalAlignment="Left" Margin="185,72,0,0" VerticalAlignment="Top" Foreground="White" FontSize="13" Width="366" Height="27"/>
-        <Menu x:Name="menu" Height="37" VerticalAlignment="Top" Background="Black">
+        <Label x:Name="labelProfile" Content="Profile name&#xA;" HorizontalAlignment="Left" Margin="185,72,0,0" VerticalAlignment="Top" Foreground="White" FontSize="13" Width="366" Height="27" Grid.ColumnSpan="2"/>
+        <Menu x:Name="menu" Height="37" VerticalAlignment="Top" Background="Black" Grid.ColumnSpan="2">
             <Separator HorizontalAlignment="Left" Height="35" Width="12" Background="Black" BorderBrush="Black"/>
             <MenuItem x:Name="HideWindowMenuItem" Header="Hide Window" Height="37" Width="86" HorizontalAlignment="Center"  Foreground="White" Background="Black" BorderBrush="Black" Click="HideWindowMenuItem_Click"/>
             <Separator Width="11"/>
@@ -24,9 +25,8 @@
             <Separator Width="11"/>
             <MenuItem x:Name="CurrentProfileMenuItem" Header="Current Profile" Foreground="White" Click="CurrentProfileMenuItem_Click" IsEnabled="False"/>
             <Separator Width="18" Background="Black"/>
-            <MenuItem x:Name="serviceToggle" Header="ServiceToggle" Foreground="White" Click="serviceToggle_Click"/>
         </Menu>
-        <ListView x:Name="listViewGloves" Margin="10,121,0,51" SelectionChanged="listViewGloves_SelectionChanged" HorizontalAlignment="Left" Width="375">
+        <ListView x:Name="listViewGloves" Margin="10,155,332,0" SelectionChanged="listViewGloves_SelectionChanged" Grid.ColumnSpan="2" Height="124" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Glove" Width="140" DisplayMemberBinding="{Binding Name}" />
@@ -36,8 +36,8 @@
 
             </ListView.View>
         </ListView>
-        <Button x:Name="buttonRefreshGloves" Content="Refresh Gloves" Margin="10,0,0,10" FontSize="20" Height="36" VerticalAlignment="Bottom" Click="buttonRefreshGloves_Click" HorizontalAlignment="Left" Width="375"/>
-        <Grid Margin="390,122,10,51">
+        <Button x:Name="buttonRefreshGloves" Content="Refresh Gloves" Margin="10,284,332,0" FontSize="20" Height="50" VerticalAlignment="Top" Click="buttonRefreshGloves_Click" Grid.ColumnSpan="2"/>
+        <Grid Margin="158,122,10,0" Grid.Column="1" Height="241" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="7*"/>
                 <RowDefinition Height="205*"/>
@@ -45,10 +45,10 @@
             <Button x:Name="buttonCreateGloveConfig" Content="Create Glove Configuration" VerticalAlignment="Top" Height="48" FontSize="18" Click="buttonCreateGloveConfig_Click" IsEnabled="False" Grid.RowSpan="2"/>
             <Button x:Name="buttonOpenGloveConfig" Content="Open Glove Configuration" Margin="0,47,0,0" VerticalAlignment="Top" Height="49" FontSize="18" IsEnabled="False" Click="buttonOpenGloveConfig_Click" Grid.Row="1"/>
             <Button x:Name="buttonCreateProfileConfig" Content="Create Profile Configuration" Margin="0,102,0,0" VerticalAlignment="Top" Height="48" FontSize="18" IsEnabled="False" Click="buttonCreateProfileConfig_Click" Grid.Row="1"/>
-            <Button x:Name="buttonOpenProfileConfig" Content="Open Profile Configuration" Margin="0,156,0,0" FontSize="18" IsEnabled="False" Click="buttonOpenProfileConfig_Click" Grid.Row="1"/>
+            <Button x:Name="buttonOpenProfileConfig" Content="Open Profile Configuration" Margin="0,156,0,0" FontSize="18" IsEnabled="False" Click="buttonOpenProfileConfig_Click" Grid.Row="1" Height="49" VerticalAlignment="Top"/>
         </Grid>
-        <ComboBox x:Name="comboBoxSide" Margin="390,0,10,10" SelectionChanged="comboBoxSide_SelectionChanged" Height="36" VerticalAlignment="Bottom" IsEnabled="False"/>
-        <StatusBar HorizontalAlignment="Left" Height="40" Margin="0,409,0,-35" VerticalAlignment="Top" Width="717" Background="#FF00B47F">
+        <ComboBox x:Name="comboBoxSide" Margin="83,122,332,0" SelectionChanged="comboBoxSide_SelectionChanged" IsEnabled="False" Grid.ColumnSpan="2" Height="28" VerticalAlignment="Top"/>
+        <StatusBar Height="40" Margin="0,339,332,0" VerticalAlignment="Top" Background="#FF00B47F" Grid.ColumnSpan="2">
             <Ellipse x:Name="ServiceStatusIcon" Height="30" Stroke="Black" StrokeThickness="3" Width="30">
                 <Ellipse.Fill>
                     <SolidColorBrush Color="#FFB4B4B4"/>
@@ -56,5 +56,9 @@
             </Ellipse>
             <StatusBarItem x:Name="ServiceStatus" Content="StatusBarItem" Height="40" VerticalAlignment="Top" Foreground="White"/>
         </StatusBar>
+        <Label x:Name="label2" Content="Glove side:" Margin="10,122,149,0" Height="28" VerticalAlignment="Top"/>
+        <Menu x:Name="menuService" Grid.Column="1" Height="40" Margin="0,339,0,0" VerticalAlignment="Top" Background="#FF00B47F" HorizontalAlignment="Right" Width="332">
+            <MenuItem x:Name="serviceToggle" Header="ServiceToggle" Foreground="White" Click="serviceToggle_Click" Height="40" Width="337"/>
+        </Menu>
     </Grid>
 </Window>
