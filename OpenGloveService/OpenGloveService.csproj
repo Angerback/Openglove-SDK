@@ -90,7 +90,6 @@
     <ProjectReference Include="..\Core\Core\Core.csproj">
       <Project>{db720216-65ad-4a2d-b5eb-9a67a20d8636}</Project>
       <Name>Core</Name>
-      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\OpenGlove API C Sharp\OpenGlove API C Sharp\OpenGlove API C Sharp.csproj">
       <Project>{cef4f9b5-732b-4af3-9963-deda08f9b0f7}</Project>
