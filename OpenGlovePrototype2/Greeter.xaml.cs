@@ -75,17 +75,15 @@ namespace OpenGlovePrototype2
             if (e.Result != null)
             {
                 this.listViewGloves.ItemsSource = (List<Glove>)e.Result;
-                this.ServiceStatus.Content = "Service running";
-                this.serviceToggle.Header = "Stop Service";
-                this.ServiceStatusIcon.Fill = SystemColors.HighlightBrush;
+                this.serviceToggle.Header = "Service running (Click to Stop)";
+                this.ServiceStatusIcon.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString("#00ff3f"); 
                 serviceAvailable = true;
                 
             }
             else {
                 this.listViewGloves.ItemsSource = null;
-                this.ServiceStatus.Content = "Service unavailable";
-                this.serviceToggle.Header = "Start Service";
-                this.ServiceStatusIcon.Fill = SystemColors.ControlBrush;
+                this.serviceToggle.Header = "Service unavailable (Click to Start)";
+                this.ServiceStatusIcon.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString("#ff0000");
                 serviceAvailable = false;
             }
         }

@@ -100,7 +100,7 @@ namespace OpenGlove_API_C_Sharp_HL
     }
 
 
-    public enum PalmRegion
+    public enum PalmarRegion
     {
         FingerSmallDistal,
         FingerRingDistal,
@@ -141,7 +141,7 @@ namespace OpenGlove_API_C_Sharp_HL
         HypoThenarProximal
     }
 
-    public enum DorsoRegion
+    public enum DorsalRegion
     {
         FingerSmallDistal = 29,
         FingerRingDistal,
