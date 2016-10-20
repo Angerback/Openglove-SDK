@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2fcc66f4-1d34-40b7-8a77-b36302fe5a1d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1b686049-b89a-42d4-864b-0018408e3cd4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,12 +22,12 @@
     <MetadataSource Address="http://localhost:9001/OGService/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="9c7f6e6e-5f3c-4469-bfdc-f022d77d61b9" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="26023061-6db9-49ea-b958-d635ca57d300" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="0c3423d2-ff4a-434a-bd6b-772acea83606" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
-    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="2c213495-4612-40a7-9fa6-4a6111cb3b4f" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
-    <MetadataFile FileName="OpenGloveSDK.xsd" MetadataType="Schema" ID="f1a69120-a30b-4d2c-9b2b-ea1c529b7d12" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
-    <MetadataFile FileName="OpenGlove.xsd" MetadataType="Schema" ID="71573480-7f8f-44dc-889e-cf5055dac897" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="0915fc4f-ad58-486d-adf4-9f2d0fe2c2d5" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="ff7502d9-45ba-44f0-a937-02b32fd5539f" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="8686e654-dfd3-48ed-888f-b8d7bf4f4a25" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="b3b5e565-20a7-4974-af9a-190dded25b19" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
+    <MetadataFile FileName="OpenGloveSDK.xsd" MetadataType="Schema" ID="f301ecba-5ba3-4e6a-b4f7-b867473d3c99" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
+    <MetadataFile FileName="OpenGlove.xsd" MetadataType="Schema" ID="b985a753-835e-45ea-9e65-c68ff7aab559" SourceId="1" SourceUrl="http://localhost:9001/OGService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

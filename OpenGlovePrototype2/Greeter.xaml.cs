@@ -33,6 +33,7 @@ namespace OpenGlovePrototype2
         public Greeter()
         {
             InitializeComponent();
+
             sdkClient = new OGServiceClient("BasicHttpBinding_IOGService");
 
             sdkCore = OGCore.GetCore();
