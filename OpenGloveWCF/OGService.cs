@@ -20,6 +20,7 @@ namespace OpenGloveWCF
             IEnumerable<int> actuator = (IEnumerable<int>)(((List<object>)e.Argument)[1]);
             IEnumerable<string> intensity = (IEnumerable<string>)(((List<object>)e.Argument)[2]);
             //Your time taking work. Here it's your data query method.
+            
             g.LegacyGlove.ActivateMotor(actuator, intensity);
         }
 
@@ -73,7 +74,35 @@ namespace OpenGloveWCF
             }
             return 0; //OK
         }
-
+        
+        public int ActivateMany(string gloveAddress, List<int> actuators, List<int> intensityList)
+        {
+            foreach (Glove g in Glove.Gloves)
+            {
+                if (g.BluetoothAddress.Equals(gloveAddress))
+                {
+                    if (g.Connected)
+                    {
+                        try
+                        {
+                            bgw = new BackgroundWorker();
+                            bgw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgw_RunWorkerCompleted);
+                            bgw.DoWork += new DoWorkEventHandler(bgw_DoWork);
+                            bgw.RunWorkerAsync(new List<object>() { g, actuators, intensityList.ConvertAll<string>(delegate (int i) { return i.ToString(); }) });
+                            return 0;
+                        }
+                        catch (Exception)
+                        {
+                            g.Connected = false;
+                            g.LegacyGlove = new LegacyOpenGlove();
+                            return 1;// CANT ACTIVATE
+                        }
+                    }
+                }
+            }
+            return 0; //OK
+        }
+        
         public List<Glove> GetGloves()
         {
             return Glove.Gloves;

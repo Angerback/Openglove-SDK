@@ -1,4 +1,7 @@
-﻿using System.IO.Ports;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.IO.Ports;
 
 namespace OpenGlove
 {
@@ -8,6 +11,8 @@ namespace OpenGlove
     /// </summary>
     class Communication
     {
+        private static ConcurrentBag<string> activationTimes = new ConcurrentBag<string>();
+
         /// <summary>
         /// Serial port communication field. 
         /// </summary>
@@ -24,7 +29,7 @@ namespace OpenGlove
         /// </summary>
         /// <param name="portName">Name of the serial port to open a communication </param>
         /// <param name="baudRate">Data rate in bits per second. Use one of these values: 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, or 115200</param>
-        public Communication(string portName, int baudRate)  
+        public Communication(string portName, int baudRate)
         {
             this.port.PortName = portName;
             this.port.BaudRate = baudRate;
@@ -35,8 +40,8 @@ namespace OpenGlove
         /// </summary>
         /// <returns>An array with the names of all active serial ports</returns>
 
-        public string[] GetPortNames() {
-
+        public string[] GetPortNames()
+        {
             return SerialPort.GetPortNames();
         }
         /// <summary>
@@ -46,10 +51,12 @@ namespace OpenGlove
         /// <param name="baudRate">Data rate in bits per second. Use one of these values: 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, or 115200</param>
         public void OpenPort(string portName, int baudRate)
         {
-           
+
             this.port.PortName = portName;
             this.port.BaudRate = baudRate;
+            this.port.DataReceived += new SerialDataReceivedEventHandler(serial_DataRecieved);
             this.port.Open();
+            
         }
         /// <summary>
         /// Send the string to the serial port
@@ -58,6 +65,27 @@ namespace OpenGlove
         public void Write(string data)
         {
             this.port.Write(data);
+        }
+
+        void serial_DataRecieved(object sender, SerialDataReceivedEventArgs e)
+        { 
+            if (!this.port.IsOpen) this.port.Open();
+            string messageFromArduino = string.Empty;
+
+            try
+            {
+                messageFromArduino = this.port.ReadExisting();
+                //activationTimes.Add(messageFromArduino);
+                
+                    //write to disk
+                    System.IO.File.AppendAllText(@"C:\Users\Sebastian\Documents\Tesis\pruebas\CS-ARDUINO.txt", messageFromArduino);
+                
+            }
+            catch (Exception exc)
+            {
+
+            }
+
         }
         /// <summary>
         /// Read the input buffet until a next line character
@@ -76,7 +104,7 @@ namespace OpenGlove
 
         }
 
-       
+
 
 
     }

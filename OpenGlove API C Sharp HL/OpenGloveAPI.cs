@@ -71,12 +71,6 @@ namespace OpenGlove_API_C_Sharp_HL
                 return -1;
             }
         }
-        /*
-        public void Activate(Glove selectedGlove, int region, int intensity, int time)
-        {
-            this.serviceClient.ActivateTimed(selectedGlove, region, intensity, time);
-        }
-        */
 
         public void Activate(Glove selectedGlove, int region, int intensity)
         {
@@ -86,7 +80,6 @@ namespace OpenGlove_API_C_Sharp_HL
                 if (item.Key.Equals(region.ToString()))
                 {
                     actuator = Int32.Parse(item.Value);
-                    //Console.WriteLine("REGION: " + item.Key + ", ACTUATOR: " + item.Value);
                     break;
                 }
             }
@@ -96,6 +89,31 @@ namespace OpenGlove_API_C_Sharp_HL
             }
             this.serviceClient.Activate(selectedGlove.BluetoothAddress, actuator, intensity);
 
+        }
+
+        public void Activate(Glove selectedGlove, List<int> regions, List<int> intensityList)
+        {
+            List<int> actuators = new List<int>();
+
+            foreach (var region in regions)
+            {
+                int actuator = -1;
+                foreach (var item in selectedGlove.GloveConfiguration.GloveProfile.Mappings)
+                {
+                    if (item.Key.Equals(region.ToString()))
+                    {
+                        actuator = Int32.Parse(item.Value);
+                        break;
+                    }
+                }
+                if (actuator == -1)
+                {
+                    return;
+                }
+                actuators.Add(actuator);
+            }
+
+            this.serviceClient.ActivateMany(selectedGlove.BluetoothAddress, actuators.ToArray(), intensityList.ToArray());
         }
     }
 

@@ -91,7 +91,7 @@ namespace OpenGlove
 
             var activateMessage = new StringBuilder();
 
-            activateMessage.Append(activateMotorFunctionNumber + separator + pins.Count());
+            activateMessage.Append(activateMotorTimeTestFunctionNumber + separator + pins.Count());
 
             for (var i = 0; i < pins.Count(); i++)
             {

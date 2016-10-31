@@ -9,7 +9,6 @@ using System.ServiceModel.Web;
 
 namespace OpenGloveWCF
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface IOGService
     {
@@ -57,6 +56,15 @@ namespace OpenGloveWCF
                     BodyStyle = WebMessageBodyStyle.Bare,
                     UriTemplate = "Disconnect?gloveAddress={gloveAddress}")]
         int Disconnect(string gloveAddress);
+        
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+                    ResponseFormat = WebMessageFormat.Json,
+                    RequestFormat = WebMessageFormat.Json,
+                    BodyStyle = WebMessageBodyStyle.Wrapped,
+                    UriTemplate = "ActivateMany?gloveAddress={gloveAddress}")]
+        int ActivateMany(string gloveAddress, List<int> actuators, List<int> intensityList);
+        
     }
 
     [DataContract]

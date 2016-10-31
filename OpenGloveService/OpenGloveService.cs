@@ -25,7 +25,7 @@ namespace OpenGloveService
     {
         private ServiceHost m_svcHost = null;
 
-        private const bool DEBUGGING = false;
+        private const bool DEBUGGING = true;
 
         public OpenGloveService()
         {
@@ -66,6 +66,16 @@ namespace OpenGloveService
             */
 
             m_svcHost = new ServiceHost(typeof(OpenGloveWCF.OGService));
+            
+            var endpoints = m_svcHost.Description.Endpoints;
+            foreach (var endpoint in endpoints)
+            {
+                if (endpoint.Address.ToString().Equals("rest"))
+                {
+                    endpoint.EndpointBehaviors.Add(new OpenGloveWCF.CORSEnablingBehavior());
+                }
+            }
+            
             m_svcHost.Open();
         }
 
