@@ -9,8 +9,14 @@ namespace OpenGlove_API_C_Sharp_HL
 {
     public class OpenGloveAPI
     {
+        /// <summary>
+        /// Singleton instance of the API
+        /// </summary>
         private static OpenGloveAPI instance;
 
+        /// <summary>
+        /// Client for the WCF service
+        /// </summary>
         private OGServiceClient serviceClient;
 
         OpenGloveAPI()
@@ -21,6 +27,10 @@ namespace OpenGlove_API_C_Sharp_HL
             
         }
 
+        /// <summary>
+        /// Gets the current API instance
+        /// </summary>
+        /// <returns>Current API instance</returns>
         public static OpenGloveAPI GetInstance()
         {
             if (instance == null)
@@ -30,8 +40,14 @@ namespace OpenGlove_API_C_Sharp_HL
             return instance;
         }
 
+        /// <summary>
+        /// List of current connected devices
+        /// </summary>
         private List<Glove> devices;
 
+        /// <summary>
+        /// Property for getting current devices
+        /// </summary>
         public List<Glove> Devices
         {
             get
@@ -41,11 +57,20 @@ namespace OpenGlove_API_C_Sharp_HL
             }
         }
 
+        /// <summary>
+        /// Refreshes the current devices list
+        /// </summary>
+        /// <returns></returns>
         public List<Glove> UpdateDevices()
         {
             return serviceClient.RefreshGloves().ToList();
         }
 
+        /// <summary>
+        /// Establishes connection with a glove
+        /// </summary>
+        /// <param name="selectedGlove">A Glove object to be connected</param>
+        /// <returns>Result code</returns>
         public int Connect(Glove selectedGlove)
         {
             try
@@ -59,6 +84,11 @@ namespace OpenGlove_API_C_Sharp_HL
             }
         }
 
+        /// <summary>
+        /// Closes a connection with a glove
+        /// </summary>
+        /// <param name="selectedGlove">A Glove object to be connected</param>
+        /// <returns>Result code</returns>
         public int Disconnect(Glove selectedGlove)
         {
             try
@@ -72,6 +102,12 @@ namespace OpenGlove_API_C_Sharp_HL
             }
         }
 
+        /// <summary>
+        /// Activates a region with certain intensity
+        /// </summary>
+        /// <param name="selectedGlove"></param>
+        /// <param name="region"></param>
+        /// <param name="intensity"></param>
         public void Activate(Glove selectedGlove, int region, int intensity)
         {
             int actuator = -1;

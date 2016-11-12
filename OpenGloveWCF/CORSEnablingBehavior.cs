@@ -5,6 +5,7 @@ using System.ServiceModel.Channels;
 using System.ServiceModel.Configuration;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
+using System.ServiceModel.Web;
 
 namespace OpenGloveWCF
 {
@@ -48,12 +49,13 @@ namespace OpenGloveWCF
       {
         { "Access-Control-Allow-Origin", "*" },
         { "Access-Control-Request-Method", "POST,GET,PUT,DELETE,OPTIONS" },
-        { "Access-Control-Allow-Headers", "X-Requested-With,Content-Type" }
+        { "Access-Control-Allow-Headers", "accept,X-Requested-With,Content-Type" }
       };
 
             public void BeforeSendReply(ref Message reply, object correlationState)
             {
                 var httpHeader = reply.Properties["httpResponse"] as HttpResponseMessageProperty;
+                
                 foreach (var item in _headersToInject)
                     httpHeader.Headers.Add(item.Key, item.Value);
             }

@@ -77,6 +77,9 @@ namespace OpenGloveWCF
         
         public int ActivateMany(string gloveAddress, List<int> actuators, List<int> intensityList)
         {
+            if (actuators == null || intensityList == null) {
+                return 0;
+            }
             foreach (Glove g in Glove.Gloves)
             {
                 if (g.BluetoothAddress.Equals(gloveAddress))

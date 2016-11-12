@@ -41,30 +41,6 @@ namespace OpenGloveService
 
             if (m_svcHost != null) m_svcHost.Close();
 
-            /*
-            string strAdrHTTP = "http://localhost:9001/OGService";
-            string strAdrTCP = "net.tcp://localhost:9002/OGService";
-
-            Uri[] adrbase = { new Uri(strAdrHTTP), new Uri(strAdrTCP) };
-            m_svcHost = new ServiceHost(typeof(OGService), adrbase);
-
-            ServiceMetadataBehavior mBehave = new ServiceMetadataBehavior();
-            mBehave.HttpGetEnabled = true;
-            m_svcHost.Description.Behaviors.Add(mBehave);
-
-            BasicHttpBinding httpb = new BasicHttpBinding();
-
-            m_svcHost.AddServiceEndpoint(typeof(IOGService), httpb, strAdrHTTP);
-            m_svcHost.AddServiceEndpoint(typeof(IMetadataExchange),
-            MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
-
-
-            NetTcpBinding tcpb = new NetTcpBinding();
-            m_svcHost.AddServiceEndpoint(typeof(IOGService), tcpb, strAdrTCP);
-            m_svcHost.AddServiceEndpoint(typeof(IMetadataExchange),
-            MetadataExchangeBindings.CreateMexTcpBinding(), "mex");
-            */
-
             m_svcHost = new ServiceHost(typeof(OpenGloveWCF.OGService));
             
             var endpoints = m_svcHost.Description.Endpoints;

@@ -59,14 +59,20 @@ namespace TimeTest
                 upInit.Add(255);
                 downInit.Add(0);
             }
-
+            
+            //thumb
             regions.Add((int) PalmarRegion.FingerThumbDistal);
             upInit.Add(255);
             downInit.Add(0);
-
+            
+            //palm
+            regions.Add((int)PalmarRegion.ThenarIndex);
+            upInit.Add(255);
+            downInit.Add(0);
+            
             foreach (var glove in gloves)
             {
-                for (int i = 0; i < 501; i++)
+                for (int i = 0; i < 1000; i++)
                 {
                     Stopwatch sw = new Stopwatch();
                     sw.Restart();

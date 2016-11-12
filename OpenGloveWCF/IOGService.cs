@@ -58,7 +58,7 @@ namespace OpenGloveWCF
         int Disconnect(string gloveAddress);
         
         [OperationContract]
-        [WebInvoke(Method = "POST",
+        [WebInvoke(Method = "*",
                     ResponseFormat = WebMessageFormat.Json,
                     RequestFormat = WebMessageFormat.Json,
                     BodyStyle = WebMessageBodyStyle.Wrapped,
@@ -66,6 +66,19 @@ namespace OpenGloveWCF
         int ActivateMany(string gloveAddress, List<int> actuators, List<int> intensityList);
         
     }
+    /*
+    [DataContract]
+    public class ActivateManyData {
+        [DataMember]
+        string gloveAddress;
+
+        [DataMember]
+        List<int> actuators;
+
+        [DataMember]
+        List<int> intensityList;
+    }
+    */
 
     [DataContract]
     public class Glove

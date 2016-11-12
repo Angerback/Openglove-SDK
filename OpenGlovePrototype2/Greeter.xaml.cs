@@ -134,7 +134,7 @@ namespace OpenGlovePrototype2
         private void onTrayClick(object sender, RoutedEventArgs e)
         {
             toggleVisibility();
-            ReloadGloves();
+            //ReloadGloves();
         }
 
         private void toggleVisibility() {
