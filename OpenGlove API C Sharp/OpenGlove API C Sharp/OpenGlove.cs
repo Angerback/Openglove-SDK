@@ -58,15 +58,16 @@ namespace OpenGlove
         /// <param name="values">List with the intensities to activate the motors. It can be "HIGH" or "LOW" in digital mode or a number bewteen 0 and 255 in analog mode</param>
         public void ActivateMotor(IEnumerable<int> pins, IEnumerable<string> values)
         {
+            /*
             Stopwatch lowLevelAPITime = new Stopwatch();
             lowLevelAPITime.Start();
-            
+            */
             string message = messageGenerator.ActivateMotor(pins, values);
             communication.Write(message);
-
+            /*
             lowLevelAPITime.Stop();
             System.IO.File.AppendAllText(@"C:\Users\Sebastian\Documents\Tesis\pruebas\CS-API-MONSALVE.txt", (lowLevelAPITime.ElapsedTicks * 1000000 / Stopwatch.Frequency).ToString() + "\r\n");
-
+            */
         }
         /// <summary>
         /// Read the input buffet until a next line character

@@ -71,7 +71,7 @@ namespace OpenGlove
         { 
             if (!this.port.IsOpen) this.port.Open();
             string messageFromArduino = string.Empty;
-
+            /*
             try
             {
                 messageFromArduino = this.port.ReadExisting();
@@ -85,7 +85,7 @@ namespace OpenGlove
             {
 
             }
-
+            */
         }
         /// <summary>
         /// Read the input buffet until a next line character
